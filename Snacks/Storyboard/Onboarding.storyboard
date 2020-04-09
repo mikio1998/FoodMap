@@ -15,10 +15,10 @@
             </objects>
             <point key="canvasLocation" x="754" y="145"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding Content View Controller-->
         <scene sceneID="ED5-JI-kNr">
             <objects>
-                <viewController id="C0i-W1-189" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingContentViewController" id="C0i-W1-189" customClass="OnboardingContentViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o6u-rk-wvf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,6 +62,11 @@
                         <viewLayoutGuide key="safeArea" id="KcB-HB-ZWh"/>
                     </view>
                     <size key="freeformSize" width="414" height="624"/>
+                    <connections>
+                        <outlet property="contentImageView" destination="eW4-A3-2tF" id="nT0-dc-Jcn"/>
+                        <outlet property="headingLabel" destination="m8e-0k-iQw" id="lLV-yc-gfm"/>
+                        <outlet property="subheadingLabel" destination="G4f-Rw-lPP" id="GKe-SE-d65"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xR-xP-OvH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,7 +81,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmO-O5-Q7z">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="623.5"/>
                                 <connections>
                                     <segue destination="4g9-Sg-aSl" kind="embed" id="lbU-I1-Lq8"/>
                                 </connections>
