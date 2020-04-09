@@ -19,6 +19,9 @@
 		C1504ED2243C53BC0075FC17 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ED1243C53BC0075FC17 /* Utilities.swift */; };
 		C1504ED4243C55C10075FC17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */; };
 		C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192C64F243C7D4C007ADEF9 /* Constants.swift */; };
+		C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B98243EDE3400353CAF /* ProfileViewController.swift */; };
+		C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B9A243EF64600353CAF /* StoneLocation.swift */; };
+		C1971B9E243EFB5100353CAF /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1971B9D243EFB5100353CAF /* Onboarding.storyboard */; };
 		C21CC23A8CDBD0E82A5A2222 /* Pods_Snacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924FAF60A82838DDD76D032B /* Pods_Snacks.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		C1504ED1243C53BC0075FC17 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C192C64F243C7D4C007ADEF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C1971B98243EDE3400353CAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C1971B9A243EF64600353CAF /* StoneLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoneLocation.swift; sourceTree = "<group>"; };
+		C1971B9D243EFB5100353CAF /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		CE6CED025A6D6722E5B086E0 /* Pods-Snacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.debug.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.debug.xcconfig"; sourceTree = "<group>"; };
 		DE2209011B6433C428A120EF /* Pods-Snacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.release.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,14 +98,13 @@
 		C1504EB1243C41A10075FC17 /* Snacks */ = {
 			isa = PBXGroup;
 			children = (
-				C1504ED0243C53AE0075FC17 /* Helpers */,
+				C1971B9C243EFAA600353CAF /* Storyboard */,
+				C1504ED0243C53AE0075FC17 /* Model */,
+				C1504EC7243C41C50075FC17 /* View */,
 				C1504EC6243C41B50075FC17 /* Controllers */,
-				C1504EC7243C41C50075FC17 /* Cells */,
-				C1504EB2243C41A10075FC17 /* AppDelegate.swift */,
 				C1504EB4243C41A10075FC17 /* SceneDelegate.swift */,
-				C1504EB8243C41A10075FC17 /* Main.storyboard */,
+				C1504EB2243C41A10075FC17 /* AppDelegate.swift */,
 				C1504EBB243C41A40075FC17 /* Assets.xcassets */,
-				C1504EBD243C41A40075FC17 /* LaunchScreen.storyboard */,
 				C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */,
 				C1504EC0243C41A40075FC17 /* Info.plist */,
 			);
@@ -110,35 +115,47 @@
 			isa = PBXGroup;
 			children = (
 				C1504ECB243C4FE90075FC17 /* User Auth */,
+				C1504EC9243C4EE00075FC17 /* HomeViewController.swift */,
+				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		C1504EC7243C41C50075FC17 /* Cells */ = {
+		C1504EC7243C41C50075FC17 /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Cells;
+			path = View;
 			sourceTree = "<group>";
 		};
 		C1504ECB243C4FE90075FC17 /* User Auth */ = {
 			isa = PBXGroup;
 			children = (
 				C1504EB6243C41A10075FC17 /* ViewController.swift */,
-				C1504EC9243C4EE00075FC17 /* HomeViewController.swift */,
 				C1504ECC243C50C90075FC17 /* SignUpViewController.swift */,
 				C1504ECE243C50D80075FC17 /* LogInViewController.swift */,
 			);
 			path = "User Auth";
 			sourceTree = "<group>";
 		};
-		C1504ED0243C53AE0075FC17 /* Helpers */ = {
+		C1504ED0243C53AE0075FC17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C1504ED1243C53BC0075FC17 /* Utilities.swift */,
 				C192C64F243C7D4C007ADEF9 /* Constants.swift */,
+				C1971B9A243EF64600353CAF /* StoneLocation.swift */,
 			);
-			path = Helpers;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C1971B9C243EFAA600353CAF /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C1504EB8243C41A10075FC17 /* Main.storyboard */,
+				C1504EBD243C41A40075FC17 /* LaunchScreen.storyboard */,
+				C1971B9D243EFB5100353CAF /* Onboarding.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1504EBF243C41A40075FC17 /* LaunchScreen.storyboard in Resources */,
+				C1971B9E243EFB5100353CAF /* Onboarding.storyboard in Resources */,
 				C1504ED4243C55C10075FC17 /* GoogleService-Info.plist in Resources */,
 				C1504EBC243C41A40075FC17 /* Assets.xcassets in Resources */,
 				C1504EBA243C41A10075FC17 /* Main.storyboard in Resources */,
@@ -263,7 +281,9 @@
 				C1504ECF243C50D80075FC17 /* LogInViewController.swift in Sources */,
 				C1504EB5243C41A10075FC17 /* SceneDelegate.swift in Sources */,
 				C1504ECA243C4EE00075FC17 /* HomeViewController.swift in Sources */,
+				C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */,
 				C1504ECD243C50C90075FC17 /* SignUpViewController.swift in Sources */,
+				C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */,
 				C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
