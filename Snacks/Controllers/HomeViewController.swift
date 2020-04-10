@@ -18,5 +18,23 @@ class HomeViewController: UIViewController {
 
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.hidesBarsOnSwipe = true
+//    }
+    
+    
+    // - OnboardingViewController
+    // viewDidAppear will automatically be called by iOS
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let onboardingViewController = storyboard.instantiateViewController(identifier: "OnboardingViewController") as? OnboardingViewController {
+            //print(onboardingViewController)
+            present(onboardingViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
     
 }

@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Page View Controller-->
+        <!--Onboarding Page View Controller-->
         <scene sceneID="ktw-0f-nTd">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="4g9-Sg-aSl" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="OnboardingPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="4g9-Sg-aSl" customClass="OnboardingPageViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yE-4N-TsH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="754" y="145"/>
@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1471" y="145"/>
         </scene>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="dly-rd-T2k">
             <objects>
-                <viewController id="7Eq-d0-QUG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="7Eq-d0-QUG" customClass="OnboardingViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7oV-on-ZpD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,10 +139,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Vu-Kv-xHd"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="Ll6-TW-EFk" id="jsi-Fv-P7M"/>
+                        <outlet property="pageControl" destination="bSF-RY-wtF" id="GZx-zS-l9i"/>
+                        <outlet property="skipButton" destination="oJB-qR-ZKQ" id="h8z-D1-Z2E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCt-st-XV3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-109" y="145"/>
+            <point key="canvasLocation" x="-106" y="145"/>
         </scene>
     </scenes>
 </document>
