@@ -80,7 +80,8 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
     // MARK: - Helper
     // With an index, returns the corresponding page.
     func contentViewController(at index: Int) -> OnboardingContentViewController? {
-        if index < 0 || pageHeadings.count >= 0 {
+        if index < 0 || index >= pageHeadings.count {
+            print("called")
             return nil
         }
         print("I got called!")
