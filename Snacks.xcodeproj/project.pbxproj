@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101477B2441B00100EEEA17 /* TabBarController.swift */; };
 		C1504EB3243C41A10075FC17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504EB2243C41A10075FC17 /* AppDelegate.swift */; };
 		C1504EB5243C41A10075FC17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504EB4243C41A10075FC17 /* SceneDelegate.swift */; };
 		C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504EB6243C41A10075FC17 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		924FAF60A82838DDD76D032B /* Pods_Snacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C101477B2441B00100EEEA17 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C1504EAF243C41A10075FC17 /* Snacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1504EB2243C41A10075FC17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1504EB4243C41A10075FC17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C101477A2441AD5200EEEA17 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C1971B9F243F384C00353CAF /* OnboardingContentViewController.swift */,
+				C1971BA4244024A600353CAF /* OnboardingPageViewController.swift */,
+				C1971BA6244032E500353CAF /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		C1504EA6243C41A10075FC17 = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +132,11 @@
 		C1504EC6243C41B50075FC17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C101477A2441AD5200EEEA17 /* Onboarding */,
 				C1504ECB243C4FE90075FC17 /* User Auth */,
 				C1504EC9243C4EE00075FC17 /* HomeViewController.swift */,
 				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
-				C1971B9F243F384C00353CAF /* OnboardingContentViewController.swift */,
-				C1971BA4244024A600353CAF /* OnboardingPageViewController.swift */,
-				C1971BA6244032E500353CAF /* OnboardingViewController.swift */,
+				C101477B2441B00100EEEA17 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +306,7 @@
 				C1504ECA243C4EE00075FC17 /* HomeViewController.swift in Sources */,
 				C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */,
 				C1504ECD243C50C90075FC17 /* SignUpViewController.swift in Sources */,
+				C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */,
 				C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */,
 				C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */,
 			);
