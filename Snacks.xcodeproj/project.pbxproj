@@ -19,6 +19,7 @@
 		C1504ECF243C50D80075FC17 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ECE243C50D80075FC17 /* LogInViewController.swift */; };
 		C1504ED2243C53BC0075FC17 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ED1243C53BC0075FC17 /* Utilities.swift */; };
 		C1504ED4243C55C10075FC17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */; };
+		C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17489642441B77B00B0691E /* AccountTableViewCell.swift */; };
 		C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192C64F243C7D4C007ADEF9 /* Constants.swift */; };
 		C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B98243EDE3400353CAF /* ProfileViewController.swift */; };
 		C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B9A243EF64600353CAF /* StoneLocation.swift */; };
@@ -45,6 +46,7 @@
 		C1504ECE243C50D80075FC17 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C1504ED1243C53BC0075FC17 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C17489642441B77B00B0691E /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		C192C64F243C7D4C007ADEF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1971B98243EDE3400353CAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C1971B9A243EF64600353CAF /* StoneLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoneLocation.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		C1504EC7243C41C50075FC17 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C17489642441B77B00B0691E /* AccountTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,9 +174,9 @@
 		C1971B9C243EFAA600353CAF /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				C1504EB8243C41A10075FC17 /* Main.storyboard */,
 				C1504EBD243C41A40075FC17 /* LaunchScreen.storyboard */,
 				C1971B9D243EFB5100353CAF /* Onboarding.storyboard */,
+				C1504EB8243C41A10075FC17 /* Main.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */,
 				C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */,
 				C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */,
+				C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */,
 				C1504EB3243C41A10075FC17 /* AppDelegate.swift in Sources */,
 				C1504ED2243C53BC0075FC17 /* Utilities.swift in Sources */,
 				C1971BA5244024A600353CAF /* OnboardingPageViewController.swift in Sources */,

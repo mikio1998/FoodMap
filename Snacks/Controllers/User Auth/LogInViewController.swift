@@ -47,30 +47,41 @@ class LogInViewController: UIViewController {
     
     @IBAction func loginTapped(_ sender: Any) {
         
+        // IN PRODUCTION MODE
+        // Do not use in distribution
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
+        
+        self.view.window?.rootViewController = homeViewController
+        self.view.window?.makeKeyAndVisible()
+        
+        
+// MARK: - Temporarily deactivated --v--
+        
         // TODO: Validate Text Fields
         
         // Create cleaned versions of the text field
-        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//        // Signing in the user
+//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+//
+//            if error != nil {
+//                // Couldn't sign in
+//                self.errorLabel.text = error!.localizedDescription
+//                self.errorLabel.alpha = 1
+//            }
+//            else {
+//
+//                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
+//
+//                self.view.window?.rootViewController = homeViewController
+//                self.view.window?.makeKeyAndVisible()
+//            }
+//        }
         
-        // Signing in the user
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            
-            if error != nil {
-                // Couldn't sign in
-                self.errorLabel.text = error!.localizedDescription
-                self.errorLabel.alpha = 1
-            }
-            else {
-                
-                //let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
-                
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
-            }
-        }
-        
+    
+// MARK: Temporarily deactivated --^--
         
     }
     
