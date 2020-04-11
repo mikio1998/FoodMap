@@ -6,6 +6,10 @@
 //  Copyright © 2020 Mikio Nakata. All rights reserved.
 //
 
+
+
+
+
 import UIKit
 
 class OnboardingViewController: UIViewController {
@@ -19,7 +23,51 @@ class OnboardingViewController: UIViewController {
     }
     @IBOutlet var skipButton: UIButton!
     
+    // MARK: - Properties
     
+    // Use reference of onboardingPageViewController to get current index of onboarding screen.
+    // The containerView connects w/ onboardingPageVC through an embed segue.
+    // Thus, can access the current index through prepare segue.
+    var onboardingPageViewController: OnboardingPageViewController?
+    
+    @IBAction func skipButtonTapped(sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func nextButtonTapped(sender: UIButton) {
+        if let index = onboardingPageViewController?.currentIndex {
+            switch index {
+            case 0...1:
+                onboardingPageViewController?.forwardPage()
+            case 2:
+                dismiss(animated: true, completion: nil)
+            default:
+                break
+            }
+        }
+        
+        updateUI()
+    }
+    
+    // MARK: - Helper
+    func updateUI() {
+        if let index = onboardingPageViewController?.currentIndex {
+            switch index {
+            case 0...1:
+                nextButton.setTitle("NEXT", for: .normal)
+                skipButton.isHidden = false
+            case 2:
+                nextButton.setTitle("Get Started!", for: .normal)
+                skipButton.isHidden = true
+            default:
+                break
+            }
+        pageControl.currentPage = index
+        }
+    }
+    
+    
+    // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +75,15 @@ class OnboardingViewController: UIViewController {
 
         
     }
+    
+    // Setting up the onboardingPageViewController Property as instance of the current onboardingPageVC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination
+        if let pageViewController = destination as? OnboardingPageViewController {
+            onboardingPageViewController = pageViewController
+        } // Now, the current onboardingPageViewController is instantiated.
+    }
+    
     
 
 }

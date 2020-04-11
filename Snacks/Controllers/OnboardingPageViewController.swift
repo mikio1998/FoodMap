@@ -99,11 +99,16 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
         }
         
         return nil
-        
-        
     }
-
     
+    
+    // Next button helper function.
+    func forwardPage() {
+        currentIndex += 1
+        if let nextViewController = contentViewController(at: currentIndex) {
+            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        }
+    }
 }
     
 
