@@ -12,7 +12,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+class OnboardingViewController: UIViewController, OnboardingPageViewControllerDelegate {
     
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var nextButton: UIButton! {
@@ -31,6 +31,8 @@ class OnboardingViewController: UIViewController {
     var onboardingPageViewController: OnboardingPageViewController?
     
     @IBAction func skipButtonTapped(sender: UIButton) {
+        // Tell userdefaults that onboarding tutorial has been done before.
+        UserDefaults.standard.set(true, forKey: "hasViewedOnboarding")
         dismiss(animated: true, completion: nil)
     }
     
@@ -40,6 +42,8 @@ class OnboardingViewController: UIViewController {
             case 0...1:
                 onboardingPageViewController?.forwardPage()
             case 2:
+                // Tell userdefaults that onboarding tutorial has been done before.
+                UserDefaults.standard.set(true, forKey: "hasViewedOnboarding")
                 dismiss(animated: true, completion: nil)
             default:
                 break
@@ -66,6 +70,10 @@ class OnboardingViewController: UIViewController {
         }
     }
     
+    func didUpdatePageIndex(currentIndex: Int) {
+        updateUI()
+    }
+    
     
     // MARK: - View Controller Lifecycle
     
@@ -81,6 +89,7 @@ class OnboardingViewController: UIViewController {
         let destination = segue.destination
         if let pageViewController = destination as? OnboardingPageViewController {
             onboardingPageViewController = pageViewController
+            onboardingPageViewController?.onboardingDelegate = self
         } // Now, the current onboardingPageViewController is instantiated.
     }
     

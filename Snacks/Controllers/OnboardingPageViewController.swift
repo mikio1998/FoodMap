@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol OnboardingPageViewControllerDelegate: class {
+    func didUpdatePageIndex(currentIndex: Int)
+}
+
 class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    
+    // MARK: - Properties
+    
+    weak var onboardingDelegate: OnboardingPageViewControllerDelegate?
     
     var pageHeadings = ["Onboarding Heading 1", "Onboarding Heading 2", "Onboarding Heading 3"]
     var pageImages = ["onboarding-1", "onboarding-2", "onboarding-3"]
@@ -19,7 +27,7 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set datasource of UIPageViewController to self.
+        // Set datasource and delegate of UIPageViewController to self.
         dataSource = self
         delegate = self
         
@@ -109,6 +117,23 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
             setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         }
     }
+    
+    // MARK: - OnboardingPageViewControllerDelegate
+    // First check if page transition is completed.
+    // Then find the current page index.
+    // Then call delegate method .didUpdatePageIndex to inform the delegate.
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            if let contentViewController = pageViewController.viewControllers?.first as? OnboardingContentViewController {
+                currentIndex = contentViewController.index
+                
+                onboardingDelegate?.didUpdatePageIndex(currentIndex: currentIndex)
+            }
+        }
+    }
+    
+    
+    
 }
     
 
