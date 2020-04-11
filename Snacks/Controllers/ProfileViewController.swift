@@ -37,7 +37,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         // - First Cell, the Profile Cell.
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Account Profile Cell") as! AccountProfileTableViewCell
-            cell.setCellLabel()
+            cell.setCellLabelandImage()
 
             return cell
         }

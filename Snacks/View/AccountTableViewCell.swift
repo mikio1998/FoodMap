@@ -37,18 +37,26 @@ class AccountProfileTableViewCell: UITableViewCell {
     var name = "Mikio Nakata"
     var img = "mikionakataface"
 
-        
+    
     
     
     
     
     // MARK: - Helper
-    func setCellLabel() {
+    func setCellLabelandImage() {
         CellLabel.text = name
-        //CellImage.image = UIImage(named: "mikionakataface", in: Bundle(for: type(of: self)), compatibleWith: nil)
         CellImage.image = UIImage(named: img, in: Bundle(for: type(of: self)), compatibleWith: nil)
 
-        
+        makeRounded()
+    }
+    
+    // - Makes UIImageView round.
+    func makeRounded() {
+        self.CellImage.layer.borderWidth = 1
+        self.CellImage.layer.masksToBounds = false
+        self.CellImage.layer.borderColor = UIColor.black.cgColor
+        self.CellImage.layer.cornerRadius = self.CellImage.frame.height/2
+        self.CellImage.clipsToBounds = true
     }
     
     
