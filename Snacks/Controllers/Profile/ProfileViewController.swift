@@ -19,9 +19,10 @@ class ProfileViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-
-
+        
+        
     }
+    
     
     
 }
@@ -38,7 +39,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Account Profile Cell") as! AccountProfileTableViewCell
             cell.setCellLabelandImage()
-
+            
             return cell
         }
         

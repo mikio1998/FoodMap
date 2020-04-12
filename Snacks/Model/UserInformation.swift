@@ -8,16 +8,23 @@
 
 import Foundation
 
+
+
 struct setUserInfoStruct {
     
     static var username: String = ""
     static var email: String = ""
     static var firstname: String = ""
-    static var lastname: String = ""
+    static var lastname: String = "haha"
     static var uid: String = ""
     
-    static func printItAll() {
-        print(setUserInfoStruct.firstname, "YEHAHHHHH")
+    static func printUserInfoToConsole() {
+        print("Logged In:", firstname, lastname)
+        //print("Username:", setUserInfoStruct.username)
+        //print("First Name:", setUserInfoStruct.firstname)
+        //print("First Name:", setUserInfoStruct.lastname)
+        print("Email:", setUserInfoStruct.email)
+        print("UID:", setUserInfoStruct.uid)
     }
     
     // - Assigns data to the static variables above.
@@ -26,20 +33,11 @@ struct setUserInfoStruct {
         let publicDocRef = FireStoreReferenceManager.referenceForUserPublicData(uid: uid)
         let privateDocRef = FireStoreReferenceManager.referenceForUserPrivateData(uid: uid)
         
-//        var username: String = ""
-//        var email: String = ""
-//        var firstname: String = ""
-//        var lastname: String = ""
-//        var uid: String = ""
-        
         // - Snapshot for Public Collection
         publicDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                
-                // 1
+
                 setUserInfoStruct.username = document.get("username") as? String ?? "User Name"
-                //2
-                //username = document.get("username") as? String ?? "User Name"
                 
                 print("Document data: \(username)")
             } else {
@@ -50,17 +48,12 @@ struct setUserInfoStruct {
         // - Snapshot for Private Collection
         privateDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                //1
+
                 setUserInfoStruct.email = document.get("email") as? String ?? "email"
                 setUserInfoStruct.firstname = document.get("firstname") as? String ?? "first"
                 setUserInfoStruct.lastname = document.get("lastname") as? String ?? "last"
                 setUserInfoStruct.uid = document.get("uid") as? String ?? "uid"
-                
-                //2
-//                email = document.get("email") as? String ?? "email"
-//                firstname = document.get("firstname") as? String ?? "first"
-//                lastname = document.get("lastname") as? String ?? "last"
-//                uid = document.get("uid") as? String ?? "uid"
+
                 print("Document data: \(email) \(firstname) \(lastname) \(uid)")
             } else {
                 print("Document does not exist")
@@ -97,7 +90,25 @@ class userInfo {
 //
 //    }
 }
+struct currentUser {
+    
+    static var uid : String = ""
+    static var username : String = ""
+    static var firstName: String = ""
+    static var lastName: String = ""
+    static var email: String = ""
+    
+    
+    static var current = userInfo(uid: currentUser.uid, username: currentUser.username, firstName: currentUser.firstName, lastName: currentUser.lastName, email: currentUser.email)
 
+
+}
+
+    
+    
+    
+
+//var current = userInfo(uid: <#T##String#>, username: <#T##String#>, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>)
 
 
 

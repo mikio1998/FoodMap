@@ -85,7 +85,7 @@
             </objects>
             <point key="canvasLocation" x="1532" y="-204"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="90o-dH-54n">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="h81-kA-dOq" customClass="HomeViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,11 +104,40 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="YRi-Ui-Yg9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Pj0-D2-4vT"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="Pj0-D2-4vT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Io-wY-fZl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3584" y="-362"/>
+        </scene>
+        <!--Order History-->
+        <scene sceneID="udJ-4f-mK7">
+            <objects>
+                <tableViewController id="V7C-DN-jwx" customClass="OrderHistoryTableViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pmJ-LS-4qz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ErV-Nu-lGo">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ErV-Nu-lGo" id="HKi-Oi-MHj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="V7C-DN-jwx" id="q7r-Md-i6Z"/>
+                            <outlet property="delegate" destination="V7C-DN-jwx" id="MlC-pB-tvx"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Order History" image="yensign.circle.fill" catalog="system" selectedImage="yensign.circle.fill" id="bAs-aM-dZx"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eGX-5T-JXq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4248" y="96"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="wOt-w9-v0l">
@@ -210,7 +239,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9IP-AY-gxn"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" selectedImage="person.fill" catalog="system" id="sfn-Oj-dPG"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="person.fill" catalog="system" selectedImage="person.fill" id="sfn-Oj-dPG"/>
                     <connections>
                         <outlet property="tableView" destination="FOq-cz-5Vf" id="TtN-nq-txy"/>
                     </connections>
@@ -218,22 +247,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMm-Pz-6nb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3644.9275362318845" y="618.75"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="GmW-HT-xNV">
-            <objects>
-                <viewController id="3tj-V1-jaL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kwF-yg-CTf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="kKM-IO-ECk"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="mdW-AV-bCo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="drf-Yu-Tlr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4310" y="96"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -380,7 +393,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="h81-kA-dOq" kind="relationship" relationship="viewControllers" id="Cgk-li-yOa"/>
-                        <segue destination="3tj-V1-jaL" kind="relationship" relationship="viewControllers" id="rql-IL-9oq"/>
+                        <segue destination="V7C-DN-jwx" kind="relationship" relationship="viewControllers" id="ZDZ-2f-RA8"/>
                         <segue destination="1LR-oh-ttq" kind="relationship" relationship="viewControllers" id="RBf-Fv-Yq7"/>
                     </connections>
                 </tabBarController>
@@ -390,6 +403,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="yensign.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

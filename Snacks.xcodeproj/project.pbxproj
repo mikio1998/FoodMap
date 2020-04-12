@@ -21,6 +21,7 @@
 		C1504ED4243C55C10075FC17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */; };
 		C16DE5792442D6DC00040686 /* UserAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */; };
 		C16DE57B2443001D00040686 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE57A2443001D00040686 /* UserInformation.swift */; };
+		C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */; };
 		C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17489642441B77B00B0691E /* AccountTableViewCell.swift */; };
 		C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192C64F243C7D4C007ADEF9 /* Constants.swift */; };
 		C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B98243EDE3400353CAF /* ProfileViewController.swift */; };
@@ -50,6 +51,7 @@
 		C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressTableViewController.swift; sourceTree = "<group>"; };
 		C16DE57A2443001D00040686 /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
 		C17489642441B77B00B0691E /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		C192C64F243C7D4C007ADEF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1971B98243EDE3400353CAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
+				C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */,
 				C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */,
 			);
 			path = Profile;
@@ -315,6 +318,7 @@
 				C16DE57B2443001D00040686 /* UserInformation.swift in Sources */,
 				C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */,
 				C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */,
+				C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */,
 				C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */,
 				C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */,
 				C1504EB3243C41A10075FC17 /* AppDelegate.swift in Sources */,

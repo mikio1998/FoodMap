@@ -75,14 +75,22 @@ class LogInViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else {
+                
+                // This initialization occurs, but values are still empty. Might need to fix in future.
+                // Maybe need to reload, or smt
                 setUserInfoStruct.setUserInfo(uid: (result?.user.uid)!)
-                setUserInfoStruct.printItAll()
+                
+                // Thus, this will print empty string.
+                setUserInfoStruct.printUserInfoToConsole()
+                
                 
                 
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
+                
 
                 self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
+
             }
         }
 

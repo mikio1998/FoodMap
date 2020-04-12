@@ -34,7 +34,8 @@ class AccountProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var CellLabel: UILabel!
     @IBOutlet weak var CellImage: UIImageView!
     
-    var name = "Mikio Nakata"
+    var name = "\(setUserInfoStruct.firstname) \(setUserInfoStruct.lastname)" 
+
     var img = "mikionakataface"
 
     

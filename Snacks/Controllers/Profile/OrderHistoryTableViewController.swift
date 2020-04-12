@@ -1,5 +1,5 @@
 //
-//  UserAddressTableViewController.swift
+//  OrderHistoryTableViewController.swift
 //  Snacks
 //
 //  Created by Mikio Nakata on 4/12/20.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class UserAddressTableViewController: UITableViewController {
+class OrderHistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUserInfoStruct.printUserInfoToConsole()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
