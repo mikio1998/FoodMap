@@ -39,7 +39,22 @@ struct FireStoreReferenceManager {
             .document(FireBaseKeys.CollectionPath.publicData)
     }
     
+    static func referenceForUserPrivateData(uid: String) -> DocumentReference {
+        return root
+            .collection(FireBaseKeys.CollectionPath.users)
+            .document(uid)
+            .collection(FireBaseKeys.CollectionPath.privateData)
+            .document(FireBaseKeys.CollectionPath.privateData)
+    }
+    static func referenceForUserData(uid: String) -> DocumentReference {
+        return root
+            .collection(FireBaseKeys.CollectionPath.users)
+            .document(uid)
+
+    }
+    
 }
+
 
 struct FireBaseKeys {
     struct CollectionPath {
@@ -47,7 +62,8 @@ struct FireBaseKeys {
         static let publicData = "publicData"
         
         static let users = "users"
-        //static let
+        
+        let userUid = ""
         
     }
 }
