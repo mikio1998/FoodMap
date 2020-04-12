@@ -19,6 +19,7 @@
 		C1504ECF243C50D80075FC17 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ECE243C50D80075FC17 /* LogInViewController.swift */; };
 		C1504ED2243C53BC0075FC17 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ED1243C53BC0075FC17 /* Utilities.swift */; };
 		C1504ED4243C55C10075FC17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */; };
+		C16DE5792442D6DC00040686 /* UserAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */; };
 		C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17489642441B77B00B0691E /* AccountTableViewCell.swift */; };
 		C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192C64F243C7D4C007ADEF9 /* Constants.swift */; };
 		C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B98243EDE3400353CAF /* ProfileViewController.swift */; };
@@ -46,6 +47,7 @@
 		C1504ECE243C50D80075FC17 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C1504ED1243C53BC0075FC17 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressTableViewController.swift; sourceTree = "<group>"; };
 		C17489642441B77B00B0691E /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		C192C64F243C7D4C007ADEF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1971B98243EDE3400353CAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -134,11 +136,10 @@
 		C1504EC6243C41B50075FC17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C1504EC9243C4EE00075FC17 /* HomeViewController.swift */,
 				C101477A2441AD5200EEEA17 /* Onboarding */,
 				C1504ECB243C4FE90075FC17 /* User Auth */,
-				C1504EC9243C4EE00075FC17 /* HomeViewController.swift */,
-				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
-				C101477B2441B00100EEEA17 /* TabBarController.swift */,
+				C16DE5772442D62400040686 /* Profile */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				C17489642441B77B00B0691E /* AccountTableViewCell.swift */,
+				C101477B2441B00100EEEA17 /* TabBarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +171,15 @@
 				C1971B9A243EF64600353CAF /* StoneLocation.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C16DE5772442D62400040686 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
+				C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C1971B9C243EFAA600353CAF /* Storyboard */ = {
@@ -309,6 +320,7 @@
 				C1504EB5243C41A10075FC17 /* SceneDelegate.swift in Sources */,
 				C1504ECA243C4EE00075FC17 /* HomeViewController.swift in Sources */,
 				C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */,
+				C16DE5792442D6DC00040686 /* UserAddressTableViewController.swift in Sources */,
 				C1504ECD243C50C90075FC17 /* SignUpViewController.swift in Sources */,
 				C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */,
 				C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */,

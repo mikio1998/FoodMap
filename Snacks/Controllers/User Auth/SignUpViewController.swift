@@ -107,22 +107,50 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     
-                    // User was created successfully, now store the first name and last name
-                    let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: [
+                    // MARK: - WRITING USER DATA
+                    
+                    
+                    // - Public Data
+                    FireStoreReferenceManager.root
+                        .collection(FireBaseKeys.CollectionPath.users)
+                        .document(result!.user.uid)
+                        .collection(FireBaseKeys.CollectionPath.publicData)
+                        .document(FireBaseKeys.CollectionPath.publicData)
+                        .setData([
+                            
+                        "username" : "Username"
                         
-                        "firstname":firstName,
-                        "lastname":lastName,
-                        "uid": result!.user.uid
-                        
-                    ]) { (error) in
+                        ]) { (error) in
                         
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
                         }
                     }
+                        
+                    // - Private Data
+                    FireStoreReferenceManager.root
+                        .collection(FireBaseKeys.CollectionPath.users)
+                        .document(result!.user.uid)
+                        .collection(FireBaseKeys.CollectionPath.privateData)
+                        .document(FireBaseKeys.CollectionPath.privateData)
+                        .setData([
+                            
+                        "firstname" : firstName,
+                        "lastname": lastName,
+                        "email" : email,
+                        "uid": result!.user.uid
+
+                        ]) { (error) in
+
+                        if error != nil {
+                            // Show error message
+                            self.showError("Error saving user data")
+                        }
+                    }
+                    
+                    
                     
                     // Transition to the home screen
                     self.transitionToHome()
@@ -151,7 +179,7 @@ class SignUpViewController: UIViewController {
     // Instantiating and replacing HomeViewController on sign Up/ log in.
     func transitionToHome() {
         
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
             
         
         view.window?.rootViewController = homeViewController

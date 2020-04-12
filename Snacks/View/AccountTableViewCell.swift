@@ -11,7 +11,7 @@ import UIKit
 class AccountTableViewCell: UITableViewCell {
     
 //    var CellLabelsArray = ["Mikio Nakata", "Account Details", "My Delivery Locations", "Payment Methods"]
-    var CellLabelsArray = ["Account Details", "My Delivery Locations", "Payment Methods"]
+    var CellLabelsArray = ["Account Settings", "My Delivery Locations", "Payment Methods"]
 
     @IBOutlet weak var CellLabel: UILabel!
     

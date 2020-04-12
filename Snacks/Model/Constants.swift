@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 
 
@@ -20,5 +21,42 @@ struct Constants {
     }
     
 }
+
+
+struct FireStoreReferenceManager {
+    // Change to "prod" for production environment.
+    static let environment = "dev"
+    static let db = Firestore.firestore()
+    
+    // dev > dev > 
+    static let root = db.collection(environment).document(environment)
+    
+    static func referenceForUserPublicData(uid: String) -> DocumentReference {
+        return root
+            .collection(FireBaseKeys.CollectionPath.users)
+            .document(uid)
+            .collection(FireBaseKeys.CollectionPath.publicData)
+            .document(FireBaseKeys.CollectionPath.publicData)
+    }
+    
+}
+
+struct FireBaseKeys {
+    struct CollectionPath {
+        static let privateData = "privateData"
+        static let publicData = "publicData"
+        
+        static let users = "users"
+        //static let
+        
+    }
+}
+
+
+
+
+
+
+
 
 
