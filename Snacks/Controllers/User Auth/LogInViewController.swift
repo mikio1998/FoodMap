@@ -12,8 +12,19 @@ import FirebaseAuth
 import FirebaseFirestore
 
 
+protocol initiateTransitionProtocol {
+    func goToHomeVC()
+}
 
-class LogInViewController: UIViewController {
+
+struct userInfoObserver {
+
+    // When the logging in user's information is written, initiate transition to HomeVC.
+    static var didFinishWritingUserInfo = false
+}
+
+
+class LogInViewController: UIViewController, initiateTransitionProtocol {
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -22,6 +33,16 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var errorLabel: UILabel!
+
+    
+    
+    func goToHomeVC() {
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
+        
+        self.view.window?.rootViewController = homeViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+
     
     
     
@@ -30,6 +51,9 @@ class LogInViewController: UIViewController {
         
         
         setUpElements()
+        
+        
+        
 
     }
     
@@ -76,23 +100,40 @@ class LogInViewController: UIViewController {
             }
             else {
                 
-                // This initialization occurs, but values are still empty. Might need to fix in future.
-                // Maybe need to reload, or smt
-                setUserInfoStruct.setUserInfo(uid: (result?.user.uid)!)
+//                // This initialization occurs, but values are still empty. Might need to fix in future.
+//                setUserInfoStruct.setUserInfo(uid: (result?.user.uid)!)
+//                // Thus, this will print empty string.
+//                setUserInfoStruct.printUserInfoToConsole()
                 
-                // Thus, this will print empty string.
-                setUserInfoStruct.printUserInfoToConsole()
+//                while userInfoObserver.didFinishWritingUserInfo == false {
+//                    print("loading")
+//                }
                 
-                
+                let serialQueue = DispatchQueue(label: "queuename")
+
+                serialQueue.async {
+                    
+                    // This initialization occurs, but values are still empty. Might need to fix in future.
+                    setUserInfoStruct.setUserInfo(uid: (result?.user.uid)!)
+                    // Thus, this will print empty string.
+                    setUserInfoStruct.printUserInfoToConsole()
+                    
+                    print("Task 1 started")
+                    // Do some work..
+                    print("Task 1 finished")
+                }
+
+                        
                 
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
-                
 
                 self.view.window?.rootViewController = homeViewController
                 self.view.window?.makeKeyAndVisible()
+                
 
             }
         }
+        
 
     
 // MARK: Temporarily deactivated --^--

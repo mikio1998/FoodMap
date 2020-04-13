@@ -17,10 +17,10 @@ class HomeViewController: UIViewController {
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.hidesBarsOnSwipe = true
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     // - OnboardingViewController
     // viewDidAppear will automatically be called by iOS

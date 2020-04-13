@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(setUserInfoClass.firstname, "da first name")
         tableView.dataSource = self
         tableView.delegate = self
         

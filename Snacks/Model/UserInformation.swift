@@ -9,14 +9,57 @@
 import Foundation
 
 
+class setUserInfoClass {
 
-struct setUserInfoStruct {
     
     static var username: String = ""
     static var email: String = ""
     static var firstname: String = ""
     static var lastname: String = "haha"
+    
+    static var uid: String = "" {
+        
+        didSet {
+            userInfoObserver.didFinishWritingUserInfo = true
+            
+            
+            print("done!")
+            print(userInfoObserver.didFinishWritingUserInfo)
+        }
+        
+        
+        
+    }
+    
+}
+
+
+struct setUserInfoStruct {
+
+    
+    static var username: String = ""
+    static var email: String = ""
+    static var firstname: String = ""
+    static var lastname: String = "haha"
+    
+    
+     //When UID is updated to the logging in User, changes HomeVC Struct property to true.
     static var uid: String = ""
+//    {
+//
+//        didSet {
+//            //userInfoObserver.didFinishWritingUserInfo = true
+//            LogInViewController.userInfoObserver.didFinishWritingUserInfo = true
+//
+//
+//
+//        }
+//    }
+    
+    
+    
+    
+
     
     static func printUserInfoToConsole() {
         print("Logged In:", firstname, lastname)
@@ -48,6 +91,13 @@ struct setUserInfoStruct {
         // - Snapshot for Private Collection
         privateDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
+                
+                setUserInfoClass.email = document.get("email") as? String ?? "email"
+                setUserInfoClass.firstname = document.get("firstname") as? String ?? "first"
+                setUserInfoClass.lastname = document.get("lastname") as? String ?? "last"
+                setUserInfoClass.uid = document.get("uid") as? String ?? "uid"
+                
+
 
                 setUserInfoStruct.email = document.get("email") as? String ?? "email"
                 setUserInfoStruct.firstname = document.get("firstname") as? String ?? "first"
@@ -59,6 +109,9 @@ struct setUserInfoStruct {
                 print("Document does not exist")
             }
         }
+        
+
+        
         
     }
 
@@ -105,10 +158,3 @@ struct currentUser {
 }
 
     
-    
-    
-
-//var current = userInfo(uid: <#T##String#>, username: <#T##String#>, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>)
-
-
-
