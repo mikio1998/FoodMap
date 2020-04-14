@@ -38,11 +38,6 @@ class AccountProfileTableViewCell: UITableViewCell {
 
     var img = "mikionakataface"
 
-    
-    
-    
-    
-    
     // MARK: - Helper
     func setCellLabelandImage() {
         CellLabel.text = name

@@ -30,6 +30,8 @@
 		C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B9F243F384C00353CAF /* OnboardingContentViewController.swift */; };
 		C1971BA5244024A600353CAF /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971BA4244024A600353CAF /* OnboardingPageViewController.swift */; };
 		C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971BA6244032E500353CAF /* OnboardingViewController.swift */; };
+		C1DFCC1B244583250060292A /* AccountSettingsProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1A244583250060292A /* AccountSettingsProfileCell.swift */; };
+		C1DFCC1E244589AC0060292A /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1D244589AC0060292A /* EditAccountViewController.swift */; };
 		C21CC23A8CDBD0E82A5A2222 /* Pods_Snacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924FAF60A82838DDD76D032B /* Pods_Snacks.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		C1971B9F243F384C00353CAF /* OnboardingContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentViewController.swift; sourceTree = "<group>"; };
 		C1971BA4244024A600353CAF /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		C1971BA6244032E500353CAF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C1DFCC1A244583250060292A /* AccountSettingsProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsProfileCell.swift; sourceTree = "<group>"; };
+		C1DFCC1D244589AC0060292A /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		CE6CED025A6D6722E5B086E0 /* Pods-Snacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.debug.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.debug.xcconfig"; sourceTree = "<group>"; };
 		DE2209011B6433C428A120EF /* Pods-Snacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.release.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +155,7 @@
 		C1504EC7243C41C50075FC17 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C17489642441B77B00B0691E /* AccountTableViewCell.swift */,
+				C1DFCC1C244583350060292A /* Cells */,
 				C101477B2441B00100EEEA17 /* TabBarController.swift */,
 			);
 			path = View;
@@ -182,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
+				C1DFCC1D244589AC0060292A /* EditAccountViewController.swift */,
 				C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */,
 				C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */,
 			);
@@ -196,6 +201,15 @@
 				C1504EB8243C41A10075FC17 /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		C1DFCC1C244583350060292A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C17489642441B77B00B0691E /* AccountTableViewCell.swift */,
+				C1DFCC1A244583250060292A /* AccountSettingsProfileCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,8 +329,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DFCC1B244583250060292A /* AccountSettingsProfileCell.swift in Sources */,
 				C16DE57B2443001D00040686 /* UserInformation.swift in Sources */,
 				C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */,
+				C1DFCC1E244589AC0060292A /* EditAccountViewController.swift in Sources */,
 				C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */,
 				C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */,
 				C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */,
