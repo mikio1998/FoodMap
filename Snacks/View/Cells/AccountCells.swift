@@ -13,13 +13,13 @@ class AccountProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var CellLabel: UILabel!
     @IBOutlet weak var CellImage: UIImageView!
     
-    var name = "\(setUserInfoStruct.firstname) \(setUserInfoStruct.lastname)" 
+    var username = "\(setUserInfoStruct.username)"
 
     var img = "mikionakataface"
 
     // MARK: - Helper
     func setCellLabelandImage() {
-        CellLabel.text = name
+        CellLabel.text = username
         CellImage.image = UIImage(named: img, in: Bundle(for: type(of: self)), compatibleWith: nil)
 
         makeRounded()
@@ -41,7 +41,7 @@ class AccountProfileTableViewCell: UITableViewCell {
 class AccountMenuTableViewCell: UITableViewCell {
     
 //    var CellLabelsArray = ["Mikio Nakata", "Account Details", "My Delivery Locations", "Payment Methods"]
-    var CellLabelsArray = ["Account Settings", "My Delivery Locations", "Payment Methods"]
+    var CellLabelsArray = ["My Delivery Locations", "Payment Methods"]
 
     @IBOutlet weak var CellLabel: UILabel!
     

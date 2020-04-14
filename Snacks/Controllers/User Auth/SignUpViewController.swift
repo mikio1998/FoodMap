@@ -15,6 +15,7 @@ import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
     
+    @IBOutlet weak var usernameTextField: UITextField!
     
     @IBOutlet weak var firstNameTextField: UITextField!
     
@@ -43,6 +44,7 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 0
     
         // Style the elements
+        Utilities.styleTextField(usernameTextField)
         Utilities.styleTextField(firstNameTextField)
         Utilities.styleTextField(lastNameTextField)
         Utilities.styleTextField(emailTextField)
@@ -56,7 +58,9 @@ class SignUpViewController: UIViewController {
     func validateFields() -> String? {
         
         // Check that all fields are filled in
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        if
+            usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
@@ -91,6 +95,8 @@ class SignUpViewController: UIViewController {
         else {
             
             // Create cleaned versions of the data
+            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -119,7 +125,7 @@ class SignUpViewController: UIViewController {
                         .document(FireBaseKeys.CollectionPath.publicData)
                         .setData([
                             
-                        "username" : "Username"
+                        "username" : username
                         
                         ]) { (error) in
                         

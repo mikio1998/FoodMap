@@ -15,14 +15,16 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var CellNameField: UITextField!
 
     var img = "mikionakataface"
-    var name = "\(setUserInfoStruct.firstname) \(setUserInfoStruct.lastname)"
+    var username = "\(setUserInfoStruct.username)"
+    var firstname = "\(setUserInfoStruct.firstname)"
+    var lastname = "\(setUserInfoStruct.lastname)"
     
     
     // MARK: - Helpers
     
     func setCellNameFieldandImage() {
         
-        CellNameField.text = "user name"
+        CellNameField.text = username
         
         CellImage.image = UIImage(named: img, in: Bundle(for: type(of: self)), compatibleWith: nil)
 
@@ -51,13 +53,20 @@ class ProfileDescriptionTableViewCell: UITableViewCell {
         
         CellTextField.placeholder = "Hello, my name is..."
         //CellTextField.frame.height = 68.0
-        
-        
-        
-        
-        
+    }
+}
+
+
+class ProfileIdentityInfoTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var CellLabel: UILabel!
+    
+    var cellLabelsArray = ["First Name", "Last Name", "Phone Number", "Email", "Password"]
+    
+    func setCellLabel(index: Int) {
+        // Minus 2 since there are two other cells before these cells. 
+        CellLabel.text = cellLabelsArray[index-2]
     }
     
     
-
 }

@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,25 +41,40 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Cell") as! ProfileTableViewCell
             
             cell.setCellNameFieldandImage()
+            cell.backgroundView = UIImageView(image: UIImage(named: "izu-stone"))
+            return cell
+        } else if indexPath.row == 1 {
+            // - Second Cell, the Profle Description Cell.
             
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Description Cell") as! ProfileDescriptionTableViewCell
+            cell.setCellTextFieldPlaceholder()
             return cell
         }
-        
-        // - Second Cell, the Profle Description Cell.
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Description Cell") as! ProfileDescriptionTableViewCell
-        //cell.setCellLabel(index: indexPath.row)
-        cell.setCellTextFieldPlaceholder()
-        
-
+        // - Remaining Cells are Identity Info Cells.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Identity Info Cell") as! ProfileIdentityInfoTableViewCell
+        cell.setCellLabel(index: indexPath.row)
         return cell
+        
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 265.0
+            return 255.0
+        } else if indexPath.row == 1 {
+            return 120.0
         }
         
-        return 155.0
+        return 55.0
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
