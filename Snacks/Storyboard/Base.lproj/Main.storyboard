@@ -146,7 +146,7 @@
             </objects>
             <point key="canvasLocation" x="4248" y="96"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--My Profile-->
         <scene sceneID="FaV-X7-OjW">
             <objects>
                 <viewController id="aLu-nS-6SC" customClass="ProfileViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,14 +231,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WKs-TS-zuP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cRM-m6-rt8"/>
+                    <navigationItem key="navigationItem" title="My Profile" id="cRM-m6-rt8"/>
                     <connections>
                         <outlet property="tableView" destination="HMR-SL-xES" id="vXd-pF-r3Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCq-6R-VoR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5360.8695652173919" y="1064.7321428571429"/>
+            <point key="canvasLocation" x="5094" y="654"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="Exx-Fi-HIp">
@@ -253,7 +253,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Account Profile Cell" rowHeight="145" id="LaY-Zp-zvs" customClass="AccountProfileTableViewCell" customModule="Snacks" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Account Profile Cell" rowHeight="145" id="LaY-Zp-zvs" customClass="AccountProfileTableViewCell" customModule="Snacks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LaY-Zp-zvs" id="VdG-l2-Za1">
@@ -279,7 +279,7 @@
                                             <segue destination="aLu-nS-6SC" kind="show" id="dEy-TP-LHy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Account Cell" rowHeight="55" id="Ig1-py-XQE" customClass="AccountMenuTableViewCell" customModule="Snacks" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Account Cell" rowHeight="55" id="Ig1-py-XQE" customClass="AccountMenuTableViewCell" customModule="Snacks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="173" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ig1-py-XQE" id="iAo-vY-SCr">
@@ -320,7 +320,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMm-Pz-6nb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4492.753623188406" y="1051.3392857142858"/>
+            <point key="canvasLocation" x="4333" y="1051"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qhs-pv-Q1d">
+            <objects>
+                <viewController id="47M-t8-Eo2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G5W-J1-Yvp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7c0-TE-AnB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jjh-uC-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5110" y="1293"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
