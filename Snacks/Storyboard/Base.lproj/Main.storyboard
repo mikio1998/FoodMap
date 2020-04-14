@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="4248" y="96"/>
         </scene>
-        <!--Edit Profile View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="FaV-X7-OjW">
             <objects>
-                <viewController id="aLu-nS-6SC" customClass="EditProfileViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aLu-nS-6SC" customClass="ProfileViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pSX-bq-njZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="5360.8695652173919" y="1064.7321428571429"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Account View Controller-->
         <scene sceneID="Exx-Fi-HIp">
             <objects>
-                <viewController id="1LR-oh-ttq" customClass="ProfileViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1LR-oh-ttq" customClass="AccountViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xzY-1z-5Xa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,7 +249,7 @@
                                             <segue destination="aLu-nS-6SC" kind="show" id="dEy-TP-LHy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Account Cell" id="Ig1-py-XQE" customClass="AccountTableViewCell" customModule="Snacks" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Account Cell" id="Ig1-py-XQE" customClass="AccountMenuTableViewCell" customModule="Snacks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ig1-py-XQE" id="iAo-vY-SCr">

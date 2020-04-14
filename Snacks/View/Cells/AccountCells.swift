@@ -8,27 +8,6 @@
 
 import UIKit
 
-class AccountTableViewCell: UITableViewCell {
-    
-//    var CellLabelsArray = ["Mikio Nakata", "Account Details", "My Delivery Locations", "Payment Methods"]
-    var CellLabelsArray = ["Account Settings", "My Delivery Locations", "Payment Methods"]
-
-    @IBOutlet weak var CellLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    // MARK: - Helper
-    func setCellLabel(index: Int) {
-        // Minus 1, since there is the Profile Cell at the beginning. 
-        CellLabel.text = CellLabelsArray[index-1]
-    }
-
-
-}
-
 class AccountProfileTableViewCell: UITableViewCell {
     
     @IBOutlet weak var CellLabel: UILabel!
@@ -57,4 +36,25 @@ class AccountProfileTableViewCell: UITableViewCell {
     
     
     
+}
+
+class AccountMenuTableViewCell: UITableViewCell {
+    
+//    var CellLabelsArray = ["Mikio Nakata", "Account Details", "My Delivery Locations", "Payment Methods"]
+    var CellLabelsArray = ["Account Settings", "My Delivery Locations", "Payment Methods"]
+
+    @IBOutlet weak var CellLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    // MARK: - Helper
+    func setCellLabel(index: Int) {
+        // Minus 1, since there is the Profile Cell at the beginning.
+        CellLabel.text = CellLabelsArray[index-1]
+    }
+
+
 }

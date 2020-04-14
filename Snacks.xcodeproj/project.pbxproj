@@ -22,16 +22,16 @@
 		C16DE5792442D6DC00040686 /* UserAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */; };
 		C16DE57B2443001D00040686 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE57A2443001D00040686 /* UserInformation.swift */; };
 		C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */; };
-		C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17489642441B77B00B0691E /* AccountTableViewCell.swift */; };
+		C17489652441B77B00B0691E /* AccountCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17489642441B77B00B0691E /* AccountCells.swift */; };
 		C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C192C64F243C7D4C007ADEF9 /* Constants.swift */; };
-		C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B98243EDE3400353CAF /* ProfileViewController.swift */; };
+		C1971B99243EDE3400353CAF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B98243EDE3400353CAF /* AccountViewController.swift */; };
 		C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B9A243EF64600353CAF /* StoneLocation.swift */; };
 		C1971B9E243EFB5100353CAF /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1971B9D243EFB5100353CAF /* Onboarding.storyboard */; };
 		C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971B9F243F384C00353CAF /* OnboardingContentViewController.swift */; };
 		C1971BA5244024A600353CAF /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971BA4244024A600353CAF /* OnboardingPageViewController.swift */; };
 		C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971BA6244032E500353CAF /* OnboardingViewController.swift */; };
-		C1DFCC1B244583250060292A /* AccountSettingsProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1A244583250060292A /* AccountSettingsProfileCell.swift */; };
-		C1DFCC1E244589AC0060292A /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1D244589AC0060292A /* EditAccountViewController.swift */; };
+		C1DFCC1B244583250060292A /* ProfileCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1A244583250060292A /* ProfileCells.swift */; };
+		C1DFCC1E244589AC0060292A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1D244589AC0060292A /* ProfileViewController.swift */; };
 		C21CC23A8CDBD0E82A5A2222 /* Pods_Snacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924FAF60A82838DDD76D032B /* Pods_Snacks.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,16 +54,16 @@
 		C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressTableViewController.swift; sourceTree = "<group>"; };
 		C16DE57A2443001D00040686 /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
-		C17489642441B77B00B0691E /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		C17489642441B77B00B0691E /* AccountCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCells.swift; sourceTree = "<group>"; };
 		C192C64F243C7D4C007ADEF9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C1971B98243EDE3400353CAF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C1971B98243EDE3400353CAF /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C1971B9A243EF64600353CAF /* StoneLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoneLocation.swift; sourceTree = "<group>"; };
 		C1971B9D243EFB5100353CAF /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		C1971B9F243F384C00353CAF /* OnboardingContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentViewController.swift; sourceTree = "<group>"; };
 		C1971BA4244024A600353CAF /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		C1971BA6244032E500353CAF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		C1DFCC1A244583250060292A /* AccountSettingsProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsProfileCell.swift; sourceTree = "<group>"; };
-		C1DFCC1D244589AC0060292A /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
+		C1DFCC1A244583250060292A /* ProfileCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCells.swift; sourceTree = "<group>"; };
+		C1DFCC1D244589AC0060292A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE6CED025A6D6722E5B086E0 /* Pods-Snacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.debug.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.debug.xcconfig"; sourceTree = "<group>"; };
 		DE2209011B6433C428A120EF /* Pods-Snacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.release.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,8 +185,8 @@
 		C16DE5772442D62400040686 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C1971B98243EDE3400353CAF /* ProfileViewController.swift */,
-				C1DFCC1D244589AC0060292A /* EditAccountViewController.swift */,
+				C1971B98243EDE3400353CAF /* AccountViewController.swift */,
+				C1DFCC1D244589AC0060292A /* ProfileViewController.swift */,
 				C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */,
 				C16DE5782442D6DC00040686 /* UserAddressTableViewController.swift */,
 			);
@@ -206,8 +206,8 @@
 		C1DFCC1C244583350060292A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C17489642441B77B00B0691E /* AccountTableViewCell.swift */,
-				C1DFCC1A244583250060292A /* AccountSettingsProfileCell.swift */,
+				C17489642441B77B00B0691E /* AccountCells.swift */,
+				C1DFCC1A244583250060292A /* ProfileCells.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -329,21 +329,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1DFCC1B244583250060292A /* AccountSettingsProfileCell.swift in Sources */,
+				C1DFCC1B244583250060292A /* ProfileCells.swift in Sources */,
 				C16DE57B2443001D00040686 /* UserInformation.swift in Sources */,
 				C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */,
-				C1DFCC1E244589AC0060292A /* EditAccountViewController.swift in Sources */,
+				C1DFCC1E244589AC0060292A /* ProfileViewController.swift in Sources */,
 				C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */,
 				C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */,
 				C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */,
-				C17489652441B77B00B0691E /* AccountTableViewCell.swift in Sources */,
+				C17489652441B77B00B0691E /* AccountCells.swift in Sources */,
 				C1504EB3243C41A10075FC17 /* AppDelegate.swift in Sources */,
 				C1504ED2243C53BC0075FC17 /* Utilities.swift in Sources */,
 				C1971BA5244024A600353CAF /* OnboardingPageViewController.swift in Sources */,
 				C1504ECF243C50D80075FC17 /* LogInViewController.swift in Sources */,
 				C1504EB5243C41A10075FC17 /* SceneDelegate.swift in Sources */,
 				C1504ECA243C4EE00075FC17 /* HomeViewController.swift in Sources */,
-				C1971B99243EDE3400353CAF /* ProfileViewController.swift in Sources */,
+				C1971B99243EDE3400353CAF /* AccountViewController.swift in Sources */,
 				C16DE5792442D6DC00040686 /* UserAddressTableViewController.swift in Sources */,
 				C1504ECD243C50C90075FC17 /* SignUpViewController.swift in Sources */,
 				C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */,
