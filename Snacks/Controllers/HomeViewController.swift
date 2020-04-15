@@ -8,13 +8,17 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 
 
 class HomeViewController: UIViewController {
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCurrentLocation()
         
     }
     
@@ -37,5 +41,28 @@ class HomeViewController: UIViewController {
             present(onboardingViewController, animated: true, completion: nil)
         }
     }
+    
+    func getCurrentLocation() {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+    }
+}
 
+
+extension HomeViewController: CLLocationManagerDelegate {
+    // Called when User location changes.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+           guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+           print("locations = \(locValue.latitude) \(locValue.longitude)")
+        
+        //lblLocation.text = "latitude = \(locValue.latitude), longitude = \(locValue.longitude)"
+    }
 }

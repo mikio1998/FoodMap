@@ -348,20 +348,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feo-J6-DGn">
-                                <rect key="frame" x="0.0" y="89" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feo-J6-DGn" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="feo-J6-DGn" firstAttribute="leading" secondItem="7c0-TE-AnB" secondAttribute="leading" id="PNv-cs-PPQ"/>
+                            <constraint firstItem="feo-J6-DGn" firstAttribute="bottom" secondItem="7c0-TE-AnB" secondAttribute="bottom" id="TWX-IE-bi4"/>
+                            <constraint firstItem="feo-J6-DGn" firstAttribute="top" secondItem="7c0-TE-AnB" secondAttribute="top" id="btU-Fp-3HG"/>
+                            <constraint firstItem="feo-J6-DGn" firstAttribute="trailing" secondItem="7c0-TE-AnB" secondAttribute="trailing" id="uVK-Wf-XJz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7c0-TE-AnB"/>
                     </view>
                     <navigationItem key="navigationItem" id="UCf-Az-sUa"/>
+                    <connections>
+                        <outlet property="mapView" destination="feo-J6-DGn" id="xxX-6m-39g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjh-uC-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5812" y="1051"/>
+            <point key="canvasLocation" x="5811.594202898551" y="1050.6696428571429"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

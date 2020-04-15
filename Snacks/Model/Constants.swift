@@ -8,7 +8,13 @@
 
 import Foundation
 import Firebase
+import GoogleMaps
 
+
+// MARK: - Keys
+struct Keys {
+    static let GMSAPIKey = "AIzaSyDZQev69ikkMinqOZ06BmIHGbSg_NKIXXo"
+}
 
 
 struct Constants {
