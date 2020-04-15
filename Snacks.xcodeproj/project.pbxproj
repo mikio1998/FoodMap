@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101477B2441B00100EEEA17 /* TabBarController.swift */; };
+		C12D99672446DB6D003F1174 /* DeliveryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */; };
 		C1504EB3243C41A10075FC17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504EB2243C41A10075FC17 /* AppDelegate.swift */; };
 		C1504EB5243C41A10075FC17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504EB4243C41A10075FC17 /* SceneDelegate.swift */; };
 		C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504EB6243C41A10075FC17 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		924FAF60A82838DDD76D032B /* Pods_Snacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C101477B2441B00100EEEA17 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMapViewController.swift; sourceTree = "<group>"; };
 		C1504EAF243C41A10075FC17 /* Snacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1504EB2243C41A10075FC17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1504EB4243C41A10075FC17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		C16DE5772442D62400040686 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				C1971B98243EDE3400353CAF /* AccountViewController.swift */,
 				C1DC4C7B2445B22900F447A3 /* Profile */,
 				C1DC4C7C2445B25800F447A3 /* Delivery Location */,
 				C1DC4C7D2445B26800F447A3 /* Payment Options */,
@@ -204,7 +207,6 @@
 		C1DC4C7B2445B22900F447A3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C1971B98243EDE3400353CAF /* AccountViewController.swift */,
 				C1DFCC1D244589AC0060292A /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -213,6 +215,7 @@
 		C1DC4C7C2445B25800F447A3 /* Delivery Location */ = {
 			isa = PBXGroup;
 			children = (
+				C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */,
 			);
 			path = "Delivery Location";
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				C1504EAC243C41A10075FC17 /* Frameworks */,
 				C1504EAD243C41A10075FC17 /* Resources */,
 				488D147C5E9660EA1936127B /* [CP] Embed Pods Frameworks */,
+				37EA3506E667365DC421CC19 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,6 +308,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		37EA3506E667365DC421CC19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Snacks/Pods-Snacks-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Snacks/Pods-Snacks-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Snacks/Pods-Snacks-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		488D147C5E9660EA1936127B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +390,7 @@
 				C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */,
 				C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */,
 				C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */,
+				C12D99672446DB6D003F1174 /* DeliveryMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

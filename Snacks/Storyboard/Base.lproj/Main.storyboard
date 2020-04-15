@@ -276,7 +276,6 @@
                                         <connections>
                                             <outlet property="CellImage" destination="qW0-qL-i3T" id="WwO-Br-1R1"/>
                                             <outlet property="CellLabel" destination="bRm-q3-4oQ" id="7do-dc-ozo"/>
-                                            <segue destination="aLu-nS-6SC" kind="show" id="dEy-TP-LHy"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Account Cell" rowHeight="55" id="Ig1-py-XQE" customClass="AccountMenuTableViewCell" customModule="Snacks" customModuleProvider="target">
@@ -316,6 +315,9 @@
                     <navigationItem key="navigationItem" id="Bdh-ub-YyT"/>
                     <connections>
                         <outlet property="tableView" destination="FOq-cz-5Vf" id="TtN-nq-txy"/>
+                        <segue destination="47M-t8-Eo2" kind="show" identifier="Delivery Map Segue" id="c67-wV-iDq"/>
+                        <segue destination="aLu-nS-6SC" kind="show" identifier="Profile Page Segue" id="PbJ-gh-VEU"/>
+                        <segue destination="vmI-kp-FZo" kind="show" identifier="Payment Methods Segue" id="OWf-gQ-nkZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMm-Pz-6nb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -323,19 +325,43 @@
             <point key="canvasLocation" x="4333" y="1051"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="qhs-pv-Q1d">
+        <scene sceneID="duv-dD-e4P">
             <objects>
-                <viewController id="47M-t8-Eo2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G5W-J1-Yvp">
+                <viewController id="vmI-kp-FZo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hVo-UR-rc2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="NQe-cZ-P5h"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="neQ-Tv-OHA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyV-DS-CxB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5094" y="1434"/>
+        </scene>
+        <!--Delivery Map View Controller-->
+        <scene sceneID="qhs-pv-Q1d">
+            <objects>
+                <viewController id="47M-t8-Eo2" customClass="DeliveryMapViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G5W-J1-Yvp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feo-J6-DGn">
+                                <rect key="frame" x="0.0" y="89" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="7c0-TE-AnB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UCf-Az-sUa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjh-uC-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5110" y="1293"/>
+            <point key="canvasLocation" x="5812" y="1051"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

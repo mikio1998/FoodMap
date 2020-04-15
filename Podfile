@@ -12,4 +12,10 @@ pod 'Firebase/Firestore'
 pod 'Firebase/Database'
 pod 'Firebase/Core'
 
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+
+
 end
+
+
