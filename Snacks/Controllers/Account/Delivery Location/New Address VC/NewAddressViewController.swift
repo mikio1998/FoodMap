@@ -16,6 +16,9 @@ class NewAddressViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // Hides unused cells.
+        tableView.tableFooterView = UIView()
     }
     
 

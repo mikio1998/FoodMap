@@ -10,7 +10,6 @@ import UIKit
 
 class AddressManagementViewController: UIViewController {
 
-    @IBOutlet weak var NewAddressButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,9 +19,13 @@ class AddressManagementViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // Hides unused cells.
+        tableView.tableFooterView = UIView()
     }
 
 }
+
 
 extension AddressManagementViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,14 +38,25 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "My Address Cell", for: indexPath) as! MyAddressCell
         
-        
-        
+        cell.setCellElements(name: "Person \(indexPath.row)", address: "123-4567 Down the road", lastvisited: "Last Visited: 4/11 2020", image: "izu-stone")
         
         return cell
         
     }
+    
+    // - Row Heights
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.row == 0 {
+//            return 225.0
+//        }
+        
+        return 225.0
+    }
+        
+    
     
     
 }

@@ -368,14 +368,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ah-Y0-Ogh">
-                                                    <rect key="frame" x="210" y="29" width="138" height="21"/>
+                                                    <rect key="frame" x="210" y="29" width="168" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgd-fR-ZDr">
-                                                    <rect key="frame" x="210" y="58" width="138" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgd-fR-ZDr">
+                                                    <rect key="frame" x="210" y="58" width="196" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -412,7 +412,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fiS-Ut-seS" kind="presentation" id="iTk-N3-hmt"/>
+                                    <segue destination="fiS-Ut-seS" kind="show" id="eHr-7O-5Qm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -421,7 +421,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Manage Addresses" id="kZy-ZA-S0e"/>
                     <connections>
-                        <outlet property="NewAddressButton" destination="8Yl-xk-yA1" id="t4I-jg-7Cc"/>
                         <outlet property="tableView" destination="kWz-Y5-Kka" id="h5n-a1-k3K"/>
                     </connections>
                 </viewController>
@@ -429,16 +428,16 @@
             </objects>
             <point key="canvasLocation" x="5792.753623188406" y="1050.6696428571429"/>
         </scene>
-        <!--Delivery Map View Controller-->
+        <!--Map View-->
         <scene sceneID="qhs-pv-Q1d">
             <objects>
                 <viewController id="47M-t8-Eo2" customClass="DeliveryMapViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G5W-J1-Yvp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feo-J6-DGn" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -451,25 +450,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7c0-TE-AnB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UCf-Az-sUa"/>
+                    <navigationItem key="navigationItem" title="Map View" id="UCf-Az-sUa"/>
                     <connections>
                         <outlet property="mapView" destination="feo-J6-DGn" id="xxX-6m-39g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjh-uC-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7272" y="1371"/>
+            <point key="canvasLocation" x="7323" y="1722"/>
         </scene>
-        <!--Manage Address-->
+        <!--New Address-->
         <scene sceneID="ayk-Ec-Gg7">
             <objects>
-                <viewController title="Manage Address" id="fiS-Ut-seS" customClass="NewAddressViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fiS-Ut-seS" customClass="NewAddressViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Be3-D2-A7k">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bot-kT-qV3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Get Address Manually Cell" rowHeight="162" id="zTa-NP-Xfh" customClass="GetAddressManuallyCell" customModule="Snacks" customModuleProvider="target">
@@ -480,9 +479,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-AP-X9u">
-                                                    <rect key="frame" x="184" y="102" width="46" height="30"/>
+                                                    <rect key="frame" x="101" y="102" width="170" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
+                                                    <state key="normal" title="Enter Address"/>
+                                                    <connections>
+                                                        <segue destination="D0U-VU-IWe" kind="show" id="wvo-cE-MMa"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -513,10 +515,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="bot-kT-qV3" firstAttribute="leading" secondItem="LB8-QZ-uvd" secondAttribute="leading" id="0ym-hr-9d2"/>
-                            <constraint firstItem="bot-kT-qV3" firstAttribute="bottom" secondItem="LB8-QZ-uvd" secondAttribute="bottom" id="Ic4-g3-Fs9"/>
-                            <constraint firstItem="bot-kT-qV3" firstAttribute="trailing" secondItem="LB8-QZ-uvd" secondAttribute="trailing" id="J5h-qz-f2x"/>
-                            <constraint firstItem="bot-kT-qV3" firstAttribute="top" secondItem="LB8-QZ-uvd" secondAttribute="top" id="NxW-1d-Oq5"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="top" secondItem="LB8-QZ-uvd" secondAttribute="top" id="9Jn-13-GP0"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="trailing" secondItem="LB8-QZ-uvd" secondAttribute="trailing" id="Q4A-uX-evN"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="bottom" secondItem="LB8-QZ-uvd" secondAttribute="bottom" id="TWL-my-feY"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="leading" secondItem="LB8-QZ-uvd" secondAttribute="leading" id="jBb-Vk-n4e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LB8-QZ-uvd"/>
                     </view>
@@ -527,7 +529,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P86-wE-I6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6512" y="1371"/>
+            <point key="canvasLocation" x="6563.7681159420299" y="1370.7589285714284"/>
+        </scene>
+        <!--Find Manually-->
+        <scene sceneID="K8r-aQ-R1A">
+            <objects>
+                <viewController id="D0U-VU-IWe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZHF-oN-J5v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="mYe-wP-Sp8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find Manually" id="XwI-kU-ujh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvk-NY-Gm5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7317" y="1081"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

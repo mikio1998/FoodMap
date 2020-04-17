@@ -35,6 +35,8 @@
 		C1F5695C24498A19002FA0C8 /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */; };
 		C1F5695E24498D28002FA0C8 /* AddressManagementCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5695D24498D28002FA0C8 /* AddressManagementCells.swift */; };
 		C1F5696024499733002FA0C8 /* AddressManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */; };
+		C1F569622449A3EF002FA0C8 /* SavedAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F569612449A3EF002FA0C8 /* SavedAddressViewController.swift */; };
+		C1F569652449AAB2002FA0C8 /* ManualAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F569642449AAB2002FA0C8 /* ManualAddressViewController.swift */; };
 		C21CC23A8CDBD0E82A5A2222 /* Pods_Snacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924FAF60A82838DDD76D032B /* Pods_Snacks.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
 		C1F5695D24498D28002FA0C8 /* AddressManagementCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManagementCells.swift; sourceTree = "<group>"; };
 		C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManagementViewController.swift; sourceTree = "<group>"; };
+		C1F569612449A3EF002FA0C8 /* SavedAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressViewController.swift; sourceTree = "<group>"; };
+		C1F569642449AAB2002FA0C8 /* ManualAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualAddressViewController.swift; sourceTree = "<group>"; };
 		CE6CED025A6D6722E5B086E0 /* Pods-Snacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.debug.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.debug.xcconfig"; sourceTree = "<group>"; };
 		DE2209011B6433C428A120EF /* Pods-Snacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snacks.release.xcconfig"; path = "Target Support Files/Pods-Snacks/Pods-Snacks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,9 +225,9 @@
 		C1DC4C7C2445B25800F447A3 /* Delivery Location */ = {
 			isa = PBXGroup;
 			children = (
+				C1F569632449AA6D002FA0C8 /* New Address VC */,
 				C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */,
-				C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */,
-				C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */,
+				C1F569612449A3EF002FA0C8 /* SavedAddressViewController.swift */,
 			);
 			path = "Delivery Location";
 			sourceTree = "<group>";
@@ -243,6 +247,16 @@
 				C1F5695D24498D28002FA0C8 /* AddressManagementCells.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C1F569632449AA6D002FA0C8 /* New Address VC */ = {
+			isa = PBXGroup;
+			children = (
+				C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */,
+				C1F569642449AAB2002FA0C8 /* ManualAddressViewController.swift */,
+				C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */,
+			);
+			path = "New Address VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,6 +400,8 @@
 				C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */,
 				C1DFCC1E244589AC0060292A /* ProfileViewController.swift in Sources */,
 				C1971BA0243F384C00353CAF /* OnboardingContentViewController.swift in Sources */,
+				C1F569652449AAB2002FA0C8 /* ManualAddressViewController.swift in Sources */,
+				C1F569622449A3EF002FA0C8 /* SavedAddressViewController.swift in Sources */,
 				C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */,
 				C1504EB7243C41A10075FC17 /* ViewController.swift in Sources */,
 				C17489652441B77B00B0691E /* AccountCells.swift in Sources */,
