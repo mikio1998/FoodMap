@@ -100,8 +100,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rto-j0-m1K">
-                                <rect key="frame" x="169" y="334" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Front Page Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rto-j0-m1K">
+                                <rect key="frame" x="80" y="334" width="248" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaM-ua-YLG">
+                                <rect key="frame" x="58" y="454" width="292" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -115,9 +122,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Io-wY-fZl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3584" y="-362"/>
+            <point key="canvasLocation" x="3582.608695652174" y="-362.27678571428572"/>
         </scene>
-        <!--Order History-->
+        <!--My Orders-->
         <scene sceneID="udJ-4f-mK7">
             <objects>
                 <tableViewController id="V7C-DN-jwx" customClass="OrderHistoryTableViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,7 +147,7 @@
                             <outlet property="delegate" destination="V7C-DN-jwx" id="MlC-pB-tvx"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Order History" image="yensign.circle.fill" catalog="system" selectedImage="yensign.circle.fill" id="bAs-aM-dZx"/>
+                    <tabBarItem key="tabBarItem" title="My Orders" image="yensign.circle.fill" catalog="system" selectedImage="yensign.circle.fill" id="bAs-aM-dZx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGX-5T-JXq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,9 +322,9 @@
                     <navigationItem key="navigationItem" id="Bdh-ub-YyT"/>
                     <connections>
                         <outlet property="tableView" destination="FOq-cz-5Vf" id="TtN-nq-txy"/>
-                        <segue destination="47M-t8-Eo2" kind="show" identifier="Delivery Map Segue" id="c67-wV-iDq"/>
                         <segue destination="aLu-nS-6SC" kind="show" identifier="Profile Page Segue" id="PbJ-gh-VEU"/>
                         <segue destination="vmI-kp-FZo" kind="show" identifier="Payment Methods Segue" id="OWf-gQ-nkZ"/>
+                        <segue destination="dpS-Da-wye" kind="show" identifier="Address Management Segue" id="qfR-8V-7Ft"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMm-Pz-6nb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -340,16 +347,98 @@
             </objects>
             <point key="canvasLocation" x="5094" y="1434"/>
         </scene>
+        <!--Manage Addresses-->
+        <scene sceneID="X2M-gO-f26">
+            <objects>
+                <viewController id="dpS-Da-wye" customClass="AddressManagementViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2lq-d0-wCj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kWz-Y5-Kka">
+                                <rect key="frame" x="0.0" y="88" width="414" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="My Address Cell" rowHeight="168" id="sv6-eW-b5B" customClass="MyAddressCell" customModule="Snacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="168"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sv6-eW-b5B" id="ykl-v2-7SX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="168"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ah-Y0-Ogh">
+                                                    <rect key="frame" x="210" y="29" width="138" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgd-fR-ZDr">
+                                                    <rect key="frame" x="210" y="58" width="138" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-oB-5lV">
+                                                    <rect key="frame" x="20" y="20" width="180" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Visited" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qit-KZ-cmG">
+                                                    <rect key="frame" x="210" y="127" width="168" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="CellAddress" destination="pgd-fR-ZDr" id="Bii-ZT-3qD"/>
+                                            <outlet property="CellImage" destination="bAh-oB-5lV" id="g8w-BC-gvo"/>
+                                            <outlet property="CellLastVisited" destination="Qit-KZ-cmG" id="Zn3-IP-Byo"/>
+                                            <outlet property="CellName" destination="0Ah-Y0-Ogh" id="WWx-Sq-tV8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Yl-xk-yA1">
+                                <rect key="frame" x="20" y="743" width="374" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Add New Address">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fiS-Ut-seS" kind="presentation" id="iTk-N3-hmt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5F3-uZ-MIC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Manage Addresses" id="kZy-ZA-S0e"/>
+                    <connections>
+                        <outlet property="NewAddressButton" destination="8Yl-xk-yA1" id="t4I-jg-7Cc"/>
+                        <outlet property="tableView" destination="kWz-Y5-Kka" id="h5n-a1-k3K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ng9-1q-t1O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5792.753623188406" y="1050.6696428571429"/>
+        </scene>
         <!--Delivery Map View Controller-->
         <scene sceneID="qhs-pv-Q1d">
             <objects>
                 <viewController id="47M-t8-Eo2" customClass="DeliveryMapViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G5W-J1-Yvp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feo-J6-DGn" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -369,7 +458,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjh-uC-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5811.594202898551" y="1050.6696428571429"/>
+            <point key="canvasLocation" x="7272" y="1371"/>
+        </scene>
+        <!--Manage Address-->
+        <scene sceneID="ayk-Ec-Gg7">
+            <objects>
+                <viewController title="Manage Address" id="fiS-Ut-seS" customClass="NewAddressViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Be3-D2-A7k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bot-kT-qV3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Get Address Manually Cell" rowHeight="162" id="zTa-NP-Xfh" customClass="GetAddressManuallyCell" customModule="Snacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="162"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zTa-NP-Xfh" id="lHb-8B-JTW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-AP-X9u">
+                                                    <rect key="frame" x="184" y="102" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Get Address Current Location Cell" rowHeight="207" id="Vaw-TN-xO1" customClass="GetAddressCurrentLocationCell" customModule="Snacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="190" width="414" height="207"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vaw-TN-xO1" id="rM8-t6-SFd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5t0-Nj-fpn">
+                                                    <rect key="frame" x="104" y="121" width="206" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Open Map"/>
+                                                    <connections>
+                                                        <segue destination="47M-t8-Eo2" kind="show" id="Fbe-8H-R3U"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="OpenMapButton" destination="5t0-Nj-fpn" id="xgP-mK-IcC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="leading" secondItem="LB8-QZ-uvd" secondAttribute="leading" id="0ym-hr-9d2"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="bottom" secondItem="LB8-QZ-uvd" secondAttribute="bottom" id="Ic4-g3-Fs9"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="trailing" secondItem="LB8-QZ-uvd" secondAttribute="trailing" id="J5h-qz-f2x"/>
+                            <constraint firstItem="bot-kT-qV3" firstAttribute="top" secondItem="LB8-QZ-uvd" secondAttribute="top" id="NxW-1d-Oq5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LB8-QZ-uvd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Address" id="dQa-ZF-bgW"/>
+                    <connections>
+                        <outlet property="tableView" destination="bot-kT-qV3" id="ORC-v3-yCg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P86-wE-I6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6512" y="1371"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

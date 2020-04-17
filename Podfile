@@ -14,6 +14,7 @@ pod 'Firebase/Core'
 
 pod 'GoogleMaps'
 pod 'GooglePlaces'
+pod 'GooglePlacePicker'
 
 
 end

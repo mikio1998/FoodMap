@@ -60,7 +60,7 @@ extension AccountViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             performSegue(withIdentifier: "Profile Page Segue", sender: self)
         } else if indexPath.row == 1 {
-            performSegue(withIdentifier: "Delivery Map Segue", sender: self)
+            performSegue(withIdentifier: "Address Management Segue", sender: self)
         } else if indexPath.row == 2 {
             performSegue(withIdentifier: "Payment Methods Segue", sender: self)
         }
@@ -70,9 +70,13 @@ extension AccountViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DeliveryMapViewController {
+//        if let destination = segue.destination as? DeliveryMapViewController {
+//            //tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
+//        }
+        //if let destination = segue.destination as? AddressManagementViewController {
             //tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
-        }
+        //}
+        
     }
     
     
