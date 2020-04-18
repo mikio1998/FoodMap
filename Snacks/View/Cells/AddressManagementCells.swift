@@ -42,10 +42,17 @@ class GetAddressManuallyCell: UITableViewCell {
     
 }
 
-
 class GetAddressCurrentLocationCell: UITableViewCell {
     @IBOutlet weak var OpenMapButton: UIButton!
-    
+}
+
+
+// MARK: Confirmation Images CollectionView Cell
+class ConfirmAddressCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var CellImage: UIImageView!
+    func setImage(image: String) {
+        CellImage.image = UIImage(named: image, in: Bundle(for: type(of: self)), compatibleWith: nil)
+    }
     
     
 }

@@ -10,18 +10,43 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 
-class DeliveryMapViewController: UIViewController {
+class DeliveryMapViewController: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        
         // GOOGLE MAPS SDK: Compass
         mapView.settings.compassButton = true
         // GOOGLE MAPS SDK: User Location
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+
+        
+        
+        let camera = GMSCameraPosition.camera(withLatitude: 35.724605, longitude: 139.771596, zoom: 18)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        
+        view = mapView
+        
+        
+        //let currentLocation = CLLocationCoordinate2DMake(35.724605, 139.771596)
+        //let marker = GMSMarker(position: currentLocation)
+        let marker = GMSMarker(position: camera.target)
+        
+        //marker.isDraggable = true
+        marker.title = "Stone 1"
+        marker.map = mapView
+        
+        func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+            marker.position = position.target
+            print(marker.position)
+        }
+
+        
         
         
         
