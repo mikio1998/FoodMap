@@ -1,5 +1,5 @@
 //
-//  ManualAddressConfirmViewController.swift
+//  StoneViewController.swift
 //  Snacks
 //
 //  Created by Mikio Nakata on 4/18/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManualAddressConfirmViewController: UIViewController {
+class StoneViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -21,7 +21,7 @@ class ManualAddressConfirmViewController: UIViewController {
 
 }
 
-extension ManualAddressConfirmViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension StoneViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -36,7 +36,7 @@ extension ManualAddressConfirmViewController: UICollectionViewDataSource, UIColl
         
         let images = ["stonepic1", "stonepic2", "stonepic3", "stonepic4", "stonepic5"]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Confirm Address Image Cell", for: indexPath) as! ConfirmAddressCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Stone Image Cell", for: indexPath) as! StoneCollectionViewCell
         cell.setImage(image: images[indexPath.row])
         
         return cell
@@ -51,7 +51,7 @@ extension ManualAddressConfirmViewController: UICollectionViewDataSource, UIColl
     
 }
 
-extension ManualAddressConfirmViewController: UICollectionViewDelegateFlowLayout {
+extension StoneViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

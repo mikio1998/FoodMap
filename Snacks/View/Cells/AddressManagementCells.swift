@@ -48,7 +48,7 @@ class GetAddressCurrentLocationCell: UITableViewCell {
 
 
 // MARK: Confirmation Images CollectionView Cell
-class ConfirmAddressCollectionViewCell: UICollectionViewCell {
+class StoneCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var CellImage: UIImageView!
     

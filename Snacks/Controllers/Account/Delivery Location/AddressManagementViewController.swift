@@ -46,6 +46,17 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
         
     }
     
+    // - Did select row
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        //self.selectedIndex = indexPath.row
+//        performSegue(withIdentifier: "", sender: Any?.self)
+//
+//    }
+    
+    
+    
     // - Row Heights
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
