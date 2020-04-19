@@ -36,33 +36,46 @@ class MyAddressCell: UITableViewCell {
 }
 
 
-
-// - MARK: New Address Cells
-class GetAddressManuallyCell: UITableViewCell {
-    
-}
-
-class GetAddressCurrentLocationCell: UITableViewCell {
-    @IBOutlet weak var OpenMapButton: UIButton!
-}
-
-
-// MARK: Confirmation Images CollectionView Cell
+// MARK: - Saved Stone Page
+// Stone Images CollectionView Cell
 class StoneCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var CellImage: UIImageView!
-    
-    
-    
+
     func setImage(image: String) {
         CellImage.image = UIImage(named: image, in: Bundle(for: type(of: self)), compatibleWith: nil)
         //CellImage.contentMode = UIView.ContentMode.scaleAspectFit
         //CellImage.contentMode = UICollectionViewCell.ContentMode.scaleAspectFit
         //CellImage.clipsToBounds = true
     }
-    
+}
 
+
+
+// MARK: - New Address Menu Cells
+class GetAddressMenuManuallyCell: UITableViewCell {
     
+}
+
+class GetAddressMenuCurrentLocationCell: UITableViewCell {
+    @IBOutlet weak var OpenMapButton: UIButton!
+}
+
+
+
+
+// MARK: - New Manual Address Screen
+class NewManualAddressScreenImagesCell: UITableViewCell {
+    // Five Image Views
     
+}
+
+class NewManualAddressScreenTextFieldCell: UITableViewCell {
+    @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    
+    func setCellLabel(label: String) {
+        cellLabel.text = label
+    }
     
 }

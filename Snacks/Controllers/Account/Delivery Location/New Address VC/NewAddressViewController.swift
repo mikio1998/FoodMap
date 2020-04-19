@@ -34,13 +34,13 @@ extension NewAddressViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Get Address Manually Cell") as! GetAddressManuallyCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Get Address Manually Cell") as! GetAddressMenuManuallyCell
         
             return cell
             
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Get Address Current Location Cell") as! GetAddressCurrentLocationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Get Address Current Location Cell") as! GetAddressMenuCurrentLocationCell
         
             return cell
     }
