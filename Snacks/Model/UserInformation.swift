@@ -80,7 +80,7 @@ struct setUserInfoStruct {
         publicDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
 
-                setUserInfoStruct.username = document.get("username") as? String ?? "User Name"
+                //setUserInfoStruct.username = document.get("username") as? String ?? "User Name"
                 
                 print("Document data: \(username)")
             } else {
@@ -91,6 +91,8 @@ struct setUserInfoStruct {
         // - Snapshot for Private Collection
         privateDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
+                
+                setUserInfoClass.username = document.get("username") as? String ?? "email"
                 
                 setUserInfoClass.email = document.get("email") as? String ?? "email"
                 setUserInfoClass.firstname = document.get("firstname") as? String ?? "first"

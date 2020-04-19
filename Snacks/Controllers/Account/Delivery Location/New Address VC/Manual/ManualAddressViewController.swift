@@ -12,12 +12,13 @@ class ManualAddressViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+
     @IBOutlet weak var saveButton: UIButton!
     
     
-    
-    @IBAction func saveButtonPressed() {
-        
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        print("Pressed!")
+
     }
     
     override func viewDidLoad() {
@@ -68,3 +69,4 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     
     
 }
+
