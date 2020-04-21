@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+
 
 class ManualAddressViewController: UIViewController {
 
@@ -18,7 +21,7 @@ class ManualAddressViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         print("Pressed!")
-
+        saveToDB()
     }
     
     override func viewDidLoad() {
@@ -32,9 +35,63 @@ class ManualAddressViewController: UIViewController {
        
     }
     
+    func saveToDB() {
 
+        let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
+        
+        var inputs = [String]()
+        
+        // Get the cells.
+        // Should iterate in order.
+        for cell in 1..<8 {
+            let ndx = IndexPath(row:cell, section: 0)
+            let cell = tableView.cellForRow(at: ndx) as! NewManualAddressScreenTextFieldCell
 
+            print("\(cell.textField.text!)")
+            
+            inputs.append("\(cell.textField.text!)")
+        }
+        
+        
+        let newStone =
+            Stone(name: inputs[0],
+                  description: inputs[1],
+                  都道府県: inputs[3],
+                  市区町村: inputs[4],
+                  郵便番号: inputs[2],
+                  番地: inputs[5],
+                  other: inputs[6])
+
+        print(newStone)
+        
+        // Add new entry to sales track.
+        stonesRef.document(newStone.name).setData([
+            "name": newStone.name,
+            "description": newStone.description,
+            "都道府県": newStone.都道府県,
+            "市区町村": newStone.市区町村,
+            "郵便番号": newStone.郵便番号,
+            "番地": newStone.番地,
+            "other": newStone.other
+        
+        ])
+
+        
+        // Dismiss modal on tap.
+        //self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
 
 extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
