@@ -18,13 +18,15 @@ class AddressManagementViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // Stone Data
-    var savedStoneNames: [String] = []
-    var savedStones: [Stone] = []
+    //var savedStonesArray = [Dictionary<String, String>]()
+    //var savedStoneNames: [String] = []
+    var savedStonesArray: [Stone] = []
     
     // Func that unwinds VC's to this VC.
     // To pass data: https://www.youtube.com/watch?v=ULd2v4mHyQ4
     @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {}
-    
+        
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,176 +35,60 @@ class AddressManagementViewController: UIViewController {
         
         // Hides unused cells.
         tableView.tableFooterView = UIView()
-        
         firestoreToArray()
     }
+
     
-    
-    // TODO: Read saved stones from FB
     func firestoreToArray() {
         
-        // MARK: - Get all stone names.
-        let publicDataDocument = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid)
-        
-        publicDataDocument.getDocument { (documentSnapshot, err) in
-             if let err = err {
-                 print("Error getting documents: \(err)")
-             } else {
-                let names = documentSnapshot?.get("stone names") as! String
-                let splitNames = names.components(separatedBy: " - ")
-                
-                for i in splitNames {
-                    self.savedStoneNames.append(i)
-                }
-                // - Getting names finished. -
-                print(self.savedStoneNames)
-
-                //self.tableView.reloadData()
-             
-                }
-        }
-        
-        print("for stoneName.....", self.savedStoneNames)
-        // MARK: Get all Saved Stones (using the previous names)
-        for stoneName in savedStoneNames {
-            print(stoneName, "this")
-            // Stone Collection
-            let stoneCollection =
-                FireStoreReferenceManager.root.collection(FireBaseKeys.CollectionPath.users)
-                    .document(Auth.auth().currentUser!.uid)
-                    .collection(FireBaseKeys.CollectionPath.publicData)
-                    .document(FireBaseKeys.CollectionPath.publicData).collection(stoneName)
+        let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
             
+            // MARK: TODO: Fix snapshot listener
+            // MARK: It's adding duplicate.
+            // Solution: Use snapshot diff. Just append the diff to the array.
             
-            
-            // MARK:
-            stoneCollection.getDocuments { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    
-                    // Stone Address Doc
-                    print("hello")
-                    print(querySnapshot?.documents.count)
-                    
-                    
-                    // Stone Description Doc
-                    // Stone Images Doc
-                    
-                    
-                    // For document in the query... check if product is already in Array.
-//                    for document in querySnapshot!.documents {
-//
-//                        // Check if product is already in Array.
-//                        let getName = document.get("name") as! String
-//                        var notIn = true
-//                        // Add to productArray if it completes every loop
-//                        for product in self.savedStones {
-//                            // if it's already in there, Break loop.
-//                            if product.name == getName {
-//                                notIn = false
-//                                break
-//                            } else {
-//                                // else if it's not in there, continue looping.
-//                                continue
-//                            }
-//                        }
-//
-//                        // If true, append to brandArray
-//                        if notIn {
-////                            //var new = document
-////                            var doc = document.data() as [String:Any]
-////                            doc.removeValue(forKey: "quantity")
-//
-////                            self.productArray.append(doc as! [String : String])
-//
-//                            self.savedStones.append()
-//                        }
-//                    }
-
-                    // Dammn, I just spent a week solving this problem... one line.
-                    self.tableView.reloadData()
-        
+            stonesRef.addSnapshotListener { querySnapshot, err in
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(err!)")
+                    return
                 }
                 
-                
-            }
-            
-            
-            
-            
-//            stoneCollection.addSnapshotListener { (DocumentSnapshot, err) in
-//                guard let snapshot = DocumentSnapshot else {
-//                    print("Error fetching snapshots: \(err!)")
-//                    return
-//                }
-     
-//                snapshot.documentChanges.forEach { diff in
-//                    if (diff.type == .added) {
-//
-//                        print("New stone: \(diff.document.data())")
-//
-//                        //var addedData: [Product] = diff.document.data().values
-//                        let Description = diff.document.get("description") as! String
-//                        let 都道府県 = diff.document.get("都道府県") as! String
-//                        let 市区町村 = diff.document.get("市区町村") as! String
-//                        let 郵便番号 = diff.document.get("郵便番号") as! String
-//                        let 番地 = diff.document.get("番地") as! String
-//                        let other = diff.document.get("other") as! String
-//
-//
-//                        let stone = Stone(description: Description, 都道府県: 都道府県, 市区町村: 市区町村, 郵便番号: 郵便番号, 番地: 番地, other: other)
-//
-//                        self.savedStones.append(stone)
-//
-//                        self.tableView.reloadData()
-//                    }
-//
-//
-//                    // MARK: - Listen for changes.
-//    //
-//    //                if (diff.type == .modified) {
-//    //                    print("Modified stone: \(diff.document.data())")
-//    //
-//    //                    let Name = diff.document.get("name") as! String
-//    //                    let Quantity = diff.document.get("quantity") as! Int
-//    //
-//    //                    //print(self.thirdFloorArray, "array 33")
-//    //                    if self.thirdFloorItems.contains(Name) { // Check product's floor
-//    //                        // find it on thirdFLoorArray
-//    //                        for element in self.thirdFloorArray {
-//    //                            if element.name == Name {
-//    //                                element.quantity = Quantity
-//    //                                break
-//    //                            }
-//    //                         }
-//    //                    } else {
-//    //                        for element in self.otherFloorArray {
-//    //                           if element.name == Name {
-//    //                               element.quantity = Quantity
-//    //                               break
-//    //                           }
-//    //                        }
-//    //                    }
-//    //                    self.tableView.reloadData()
-//    //                }
-//
-//
-//                    }
-            
-            
-            
-        }
-        
- 
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        print("Stone: \(diff.document.data())")
+                        
+                        //var addedData: [Product] = diff.document.data().values
+                        
+                        
+                        
+                        let Name = diff.document.get("name") as! String
+                        print(Name, "NAME")
+                        let Description = diff.document.get("description") as! String
+                        print(Description, "NAME")
+                        let 都道府県 = diff.document.get("都道府県") as! String
+                        let 市区町村 = diff.document.get("市区町村") as! String
+                        let 郵便番号 = diff.document.get("郵便番号") as! String
+                        let 番地 = diff.document.get("番地") as! String
+                        let other = diff.document.get("other") as! String
+                        
+                        let stone = Stone(name: Name, description: Description, 都道府県: 都道府県, 市区町村: 市区町村, 郵便番号: 郵便番号, 番地: 番地, other: other)
+                        
+                        self.savedStonesArray.append(stone)
 
- 
+                        self.tableView.reloadData()
+                    }
+                    print(self.savedStonesArray, "saved stones")
+                    }
+                }
+
             }
 
         }
-        
 
     
+    
+    
+
     
     
     
@@ -213,16 +99,20 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // later, read data from FireStore
-        let testCount = 2
+        let testCount = savedStonesArray.count
         
         return testCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let stone = savedStonesArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "My Address Cell", for: indexPath) as! MyAddressCell
         
-        cell.setCellElements(name: "Person \(indexPath.row)", address: "123-4567 Down the road", lastvisited: "Last Visited: 4/11 2020", image: "izu-stone")
+        
+        cell.setCellElements(name: stone.name, address: stone.都道府県, lastvisited: "na", image: "izu-stone")
+        
+        //cell.setCellElements(name: "Place \(indexPath.row)", address: "123-4567 Down the road", lastvisited: "Last Visited: 4/11 2020", image: "izu-stone")
         
         return cell
         

@@ -15,7 +15,7 @@ class AccountProfileTableViewCell: UITableViewCell {
     
     var username = "\(setUserInfoStruct.username)"
 
-    var img = "mikionakataface"
+    var img = "usericon"
 
     // MARK: - Helper
     func setCellLabelandImage() {

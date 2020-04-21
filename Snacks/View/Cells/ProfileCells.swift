@@ -14,7 +14,7 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var CellImage: UIImageView!
     @IBOutlet weak var CellNameField: UITextField!
 
-    var img = "mikionakataface"
+    var img = "usericon"
     var username = "\(setUserInfoStruct.username)"
     var firstname = "\(setUserInfoStruct.firstname)"
     var lastname = "\(setUserInfoStruct.lastname)"
