@@ -109,8 +109,9 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
         let stone = savedStonesArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "My Address Cell", for: indexPath) as! MyAddressCell
         
+        cell.setCellElements(name: stone.name, 郵便番号: stone.郵便番号, 都道府県: stone.都道府県, 市区町村: stone.市区町村, 番地: stone.番地, other: stone.other, image: "izu-stone")
         
-        cell.setCellElements(name: stone.name, address: stone.都道府県, lastvisited: "na", image: "izu-stone")
+        
         
         //cell.setCellElements(name: "Place \(indexPath.row)", address: "123-4567 Down the road", lastvisited: "Last Visited: 4/11 2020", image: "izu-stone")
         
@@ -136,7 +137,7 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
 //            return 225.0
 //        }
         
-        return 225.0
+        return 185.0
     }
         
     

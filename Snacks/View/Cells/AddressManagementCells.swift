@@ -18,15 +18,37 @@ class MyAddressCell: UITableViewCell {
     
     @IBOutlet weak var CellImage: UIImageView!
     @IBOutlet weak var CellName: UILabel!
-    @IBOutlet weak var CellAddress: UILabel!
-    @IBOutlet weak var CellLastVisited: UILabel!
+    
+    @IBOutlet weak var Cell郵便番号: UILabel!
+    
+
+    @IBOutlet weak var Cell都道府県: UILabel!
     
     
-    func setCellElements(name: String, address: String, lastvisited: String, image: String) {
+    @IBOutlet weak var Cell市区町村: UILabel!
+    @IBOutlet weak var Cell番地: UILabel!
+    
+    @IBOutlet weak var CellOther: UILabel!
+    
+    
+
+    
+    
+    func setCellElements(
+        name: String,
+        郵便番号: String,
+        都道府県: String,
+        市区町村: String,
+        番地: String,
+        other: String,
+        image: String) {
         
         CellName.text = name
-        CellAddress.text = address
-        CellLastVisited.text = lastvisited
+        Cell郵便番号.text = 郵便番号
+        Cell都道府県.text = 都道府県
+        Cell市区町村.text = 市区町村
+        Cell番地.text = 番地
+        CellOther.text = other
         
         CellImage.image = UIImage(named: image, in: Bundle(for: type(of: self)), compatibleWith: nil)
         
