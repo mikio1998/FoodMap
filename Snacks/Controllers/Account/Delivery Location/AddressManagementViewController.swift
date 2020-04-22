@@ -48,69 +48,31 @@ class AddressManagementViewController: UIViewController {
     
     func firestoreToArray() {
         
+        self.savedStonesArray.removeAll()
+        
         let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
-            
-            // MARK: TODO: Fix snapshot listener
-            // MARK: It's adding duplicate.
-            // Solution: Use snapshot diff. Just append the diff to the array.
-            
-            stonesRef.addSnapshotListener { querySnapshot, err in
-                guard let snapshot = querySnapshot else {
-                    print("Error fetching snapshots: \(err!)")
-                    return
-                }
-                
-                snapshot.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                        print("Stone: \(diff.document.data())")
-                        
-                        //var addedData: [Product] = diff.document.data().values
-                        
-                        
-                        
-                        let Name = diff.document.get("name") as! String
-                        print(Name, "NAME")
-                        let Description = diff.document.get("description") as! String
-                        let 都道府県 = diff.document.get("都道府県") as! String
-                        let 市区町村 = diff.document.get("市区町村") as! String
-                        let 郵便番号 = diff.document.get("郵便番号") as! String
-                        let 番地 = diff.document.get("番地") as! String
-                        let other = diff.document.get("other") as! String
-                        
-                        let stone = Stone(name: Name, description: Description, 都道府県: 都道府県, 市区町村: 市区町村, 郵便番号: 郵便番号, 番地: 番地, other: other)
-                        
-                        self.savedStonesArray.append(stone)
 
-                        self.tableView.reloadData()
-                    }
-                    print(self.savedStonesArray, "saved stones")
-                    
-//                    if (diff.type == .modified) {
-//
-//                        print("Modified Stone: \(diff.document.data())")
-//
-//                        let Name = diff.document.get("name") as! String
-//                        for element in self.savedStonesArray {
-//                            if element.name == Name {
-//                                print("")
-//                                element.name = Name
-//                                break
-//                            }
-//                        }
-//                        self.tableView.reloadData()
-//                    }
-                    
-                    
-                    
-                    
-                    
-                    
-                    }
-                }
+        stonesRef.getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let Name = document.get("name") as! String
+                    let Description = document.get("description") as! String
+                    let 都道府県 = document.get("都道府県") as! String
+                    let 市区町村 = document.get("市区町村") as! String
+                    let 郵便番号 = document.get("郵便番号") as! String
+                    let 番地 = document.get("番地") as! String
+                    let other = document.get("other") as! String
 
+                    let stone = Stone(name: Name, description: Description, 都道府県: 都道府県, 市区町村: 市区町村, 郵便番号: 郵便番号, 番地: 番地, other: other)
+                    self.savedStonesArray.append(stone)
+                    self.tableView.reloadData()
+                }
             }
-
         }
+    }
+}
 
     
     
@@ -190,19 +152,8 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
         if segue.identifier == "Edit Saved Stone Segue" {
             
             let vc = segue.destination as! EditSavedStoneViewController
-            
-//            // Instantiate navigation VC.
-//            let nav = segue.destination as! UINavigationController
-//
-//            // Set Edit Stones VC as the top VC.
-//            let vc1 = nav.topViewController as! EditSavedStoneViewController
-            
-           print("sending selected stone")
-        //vc.stoneData.append(selectedStone[0])
+
             vc.stoneData = selectedStone
-            print("sent selected stone")
-            
-            
             
         }
         

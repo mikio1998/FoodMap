@@ -30,15 +30,13 @@ class EditSavedStoneViewController: UIViewController {
         
         
         // Reference to the stone document.
-        let stoneRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones").document(stoneData.name)
+//        let stoneRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones").document(stoneData.name)
+        let stoneCollectionRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
+        
         
         
         var inputs = [String]()
-        
-        //print(tableView.cellForRow(at: IndexPath(row: 0, section: 0)), "will this be nil")
-        
-        // Get the cells.
-        // Should iterate in order.
+        // Get text values from cells. Create Stone object with values.
         for cell in 0..<7 {
             let index = IndexPath(row:cell, section: 0)
             //print(tableView.cellForRow(at: index), "cell!")
@@ -58,8 +56,11 @@ class EditSavedStoneViewController: UIViewController {
                   other: inputs[6])
         print(newStone)
 
-        // Add new entry to sales track.
-        stoneRef.setData([
+        // TODO: delete old document
+        stoneCollectionRef.document(stoneData.name).delete()
+        
+        // TODO: set new document
+        stoneCollectionRef.document(newStone.name).setData([
             "name": newStone.name,
             "description": newStone.description,
             "都道府県": newStone.都道府県,
@@ -69,14 +70,24 @@ class EditSavedStoneViewController: UIViewController {
             "other": newStone.other
         ])
         
+        // Add new entry to sales track.
+//        stoneRef.setData([
+//            "name": newStone.name,
+//            "description": newStone.description,
+//            "都道府県": newStone.都道府県,
+//            "市区町村": newStone.市区町村,
+//            "郵便番号": newStone.郵便番号,
+//            "番地": newStone.番地,
+//            "other": newStone.other
+//        ])
+
         // Empty out the savedStonesArray
         // So we can fill in the updated stones.
-        destinationVC.savedStonesArray.removeAll()
+        //destinationVC.savedStonesArray.removeAll()
+
         
         // Fill in savedStonesArray with updated stones.
         destinationVC.firestoreToArray()
-        
-        //destinationVC.tableView.reloadData()
     }
     
     //var stoneData: [Stone] = []
