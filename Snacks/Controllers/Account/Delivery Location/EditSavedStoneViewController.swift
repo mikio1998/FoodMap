@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseAuth
 
 
 class EditSavedStoneViewController: UIViewController {
@@ -16,8 +17,70 @@ class EditSavedStoneViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var stoneData: [Stone] = []
+    @IBOutlet weak var saveButton: UIButton!
+        
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+  
+    }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! AddressManagementViewController
+        
+        
+        // Reference to the stone document.
+        let stoneRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones").document(stoneData.name)
+        
+        
+        var inputs = [String]()
+        
+        //print(tableView.cellForRow(at: IndexPath(row: 0, section: 0)), "will this be nil")
+        
+        // Get the cells.
+        // Should iterate in order.
+        for cell in 0..<7 {
+            let index = IndexPath(row:cell, section: 0)
+            //print(tableView.cellForRow(at: index), "cell!")
+            let cell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
+            print(cell.textField.text ?? "")
+
+            inputs.append("\(cell.textField.text!)")
+        }
+        
+        let newStone =
+            Stone(name: inputs[0],
+                  description: inputs[1],
+                  都道府県: inputs[3],
+                  市区町村: inputs[4],
+                  郵便番号: inputs[2],
+                  番地: inputs[5],
+                  other: inputs[6])
+        print(newStone)
+
+        // Add new entry to sales track.
+        stoneRef.setData([
+            "name": newStone.name,
+            "description": newStone.description,
+            "都道府県": newStone.都道府県,
+            "市区町村": newStone.市区町村,
+            "郵便番号": newStone.郵便番号,
+            "番地": newStone.番地,
+            "other": newStone.other
+        ])
+        
+        // Empty out the savedStonesArray
+        // So we can fill in the updated stones.
+        destinationVC.savedStonesArray.removeAll()
+        
+        // Fill in savedStonesArray with updated stones.
+        destinationVC.firestoreToArray()
+        
+        //destinationVC.tableView.reloadData()
+    }
+    
+    //var stoneData: [Stone] = []
+    var stoneData: Stone = Stone(name: "", description: "", 都道府県: "", 市区町村: "", 郵便番号: "", 番地: "", other: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +90,8 @@ class EditSavedStoneViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        // Hides unused cells.
+        tableView.tableFooterView = UIView()
     }
 
 }
@@ -39,28 +104,40 @@ extension EditSavedStoneViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        // Stone data in array form. 
+        // Cell Labels in array form.
+        let labels = [
+            "Name",
+            "Description",
+            "郵便番号",
+            "都道府県",
+            "市区町村",
+            "番地",
+            "other"]
+        
+        // Stone data in array form.
         let stone = [
-            stoneData[0].name,
-            stoneData[0].description,
-            stoneData[0].郵便番号,
-            stoneData[0].都道府県,
-            stoneData[0].市区町村,
-            stoneData[0].番地,
-            stoneData[0].other]
+            stoneData.name,
+            stoneData.description,
+            stoneData.郵便番号,
+            stoneData.都道府県,
+            stoneData.市区町村,
+            stoneData.番地,
+            stoneData.other]
+        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Edit Saved Stone Text Cell", for: indexPath) as! EditSavedStoneTextCell
-        
-        
-        cell.setTextFieldText(text: stone[indexPath.row])
-        
-        
-        
+
+        cell.setTextFieldAndLabel(labelText: labels[indexPath.row], fieldText: stone[indexPath.row])
+
         return cell
     }
     
-    
+    // MARK: - Cell size
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
 }
+
 
 extension EditSavedStoneViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

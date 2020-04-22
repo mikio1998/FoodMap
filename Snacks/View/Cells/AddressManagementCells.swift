@@ -61,10 +61,16 @@ class EditSavedStoneCollectionViewCell: UICollectionViewCell {
 }
 
 class EditSavedStoneTextCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
-    func setTextFieldText(text: String) {
-        self.textField.text = text
+    
+    
+    func setTextFieldAndLabel(labelText: String, fieldText: String) {
+        self.cellLabel.text = labelText
+        self.textField.text = fieldText
     }
 }
 

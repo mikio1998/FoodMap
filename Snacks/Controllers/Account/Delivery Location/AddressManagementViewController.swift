@@ -23,7 +23,8 @@ class AddressManagementViewController: UIViewController {
     
     
     var savedStonesArray: [Stone] = []
-    var selectedStone: [Stone] = []
+
+    var selectedStone: Stone = Stone(name: "", description: "", 都道府県: "", 市区町村: "", 郵便番号: "", 番地: "", other: "")
     
     
     // Func that unwinds VC's to this VC.
@@ -31,6 +32,8 @@ class AddressManagementViewController: UIViewController {
     @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {}
         
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +44,7 @@ class AddressManagementViewController: UIViewController {
         tableView.tableFooterView = UIView()
         firestoreToArray()
     }
-
+    
     
     func firestoreToArray() {
         
@@ -68,7 +71,6 @@ class AddressManagementViewController: UIViewController {
                         let Name = diff.document.get("name") as! String
                         print(Name, "NAME")
                         let Description = diff.document.get("description") as! String
-                        print(Description, "NAME")
                         let 都道府県 = diff.document.get("都道府県") as! String
                         let 市区町村 = diff.document.get("市区町村") as! String
                         let 郵便番号 = diff.document.get("郵便番号") as! String
@@ -82,6 +84,27 @@ class AddressManagementViewController: UIViewController {
                         self.tableView.reloadData()
                     }
                     print(self.savedStonesArray, "saved stones")
+                    
+//                    if (diff.type == .modified) {
+//
+//                        print("Modified Stone: \(diff.document.data())")
+//
+//                        let Name = diff.document.get("name") as! String
+//                        for element in self.savedStonesArray {
+//                            if element.name == Name {
+//                                print("")
+//                                element.name = Name
+//                                break
+//                            }
+//                        }
+//                        self.tableView.reloadData()
+//                    }
+                    
+                    
+                    
+                    
+                    
+                    
                     }
                 }
 
@@ -141,7 +164,8 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
             番地: self.savedStonesArray[indexPath.row].番地,
             other: self.savedStonesArray[indexPath.row].other)
         
-        self.selectedStone.append(newStone)
+        self.selectedStone = newStone
+        //self.selectedStone.append(newStone)
         
 //        self.selectedStone[0].name = self.savedStonesArray[indexPath.row].name
 //        self.selectedStone[0].description = self.savedStonesArray[indexPath.row].description
@@ -154,7 +178,7 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
         
         
         
-        print("selected stone loaded", selectedStone[0])
+        //print("selected stone loaded", selectedStone[0])
         
         performSegue(withIdentifier: "Edit Saved Stone Segue", sender: Any?.self)
 
@@ -174,8 +198,8 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
 //            let vc1 = nav.topViewController as! EditSavedStoneViewController
             
            print("sending selected stone")
-        vc.stoneData.append(selectedStone[0])
-            
+        //vc.stoneData.append(selectedStone[0])
+            vc.stoneData = selectedStone
             print("sent selected stone")
             
             

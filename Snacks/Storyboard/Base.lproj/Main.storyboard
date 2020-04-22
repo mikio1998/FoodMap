@@ -784,22 +784,22 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="New Manual Address Screen Text Field Cell" rowHeight="77" id="H30-UR-TW0" customClass="NewManualAddressScreenTextFieldCell" customModule="Snacks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="145" width="414" height="77"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="New Manual Address Screen Text Field Cell" rowHeight="84" id="H30-UR-TW0" customClass="NewManualAddressScreenTextFieldCell" customModule="Snacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="145" width="414" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H30-UR-TW0" id="gzs-Ci-zhI">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rom-ey-iZq">
-                                                    <rect key="frame" x="20" y="8" width="193" height="21"/>
+                                                    <rect key="frame" x="20" y="7" width="361" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83z-dV-oXy">
-                                                    <rect key="frame" x="20" y="32" width="374" height="34"/>
+                                                    <rect key="frame" x="20" y="34" width="374" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -820,6 +820,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
+                                    <action selector="saveButton:" destination="mex-AD-PsH" eventType="touchUpInside" id="0Dn-vk-DCJ"/>
                                     <action selector="saveButtonPressed:" destination="PZN-C8-uVw" eventType="touchUpInside" id="PaL-v3-8ls"/>
                                     <segue destination="mex-AD-PsH" kind="unwind" unwindAction="unwindToAddressManagement:" id="z5F-Ma-znx"/>
                                 </connections>
@@ -886,26 +887,34 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uAF-NG-HHf">
-                                <rect key="frame" x="0.0" y="319" width="413" height="447"/>
+                                <rect key="frame" x="0.0" y="319" width="413" height="428"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Edit Saved Stone Text Cell" rowHeight="66" id="7G9-5T-sFg" customClass="EditSavedStoneTextCell" customModule="Snacks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="413" height="66"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Edit Saved Stone Text Cell" rowHeight="90" id="7G9-5T-sFg" customClass="EditSavedStoneTextCell" customModule="Snacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="413" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7G9-5T-sFg" id="3x6-y9-VDf">
-                                            <rect key="frame" x="0.0" y="0.0" width="413" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="413" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOX-eC-QEu">
-                                                    <rect key="frame" x="16" y="16" width="381" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnd-Kr-lJH">
+                                                    <rect key="frame" x="20" y="6" width="345" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOX-eC-QEu">
+                                                    <rect key="frame" x="16" y="28" width="381" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cellLabel" destination="jnd-Kr-lJH" id="OvL-ej-Jx5"/>
                                             <outlet property="textField" destination="GOX-eC-QEu" id="umD-Eg-ncf"/>
                                         </connections>
                                     </tableViewCell>
@@ -915,6 +924,17 @@
                                 <rect key="frame" x="147" y="795" width="121" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0N-ZK-WmC">
+                                <rect key="frame" x="66" y="755" width="282" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="q4z-AB-cRc" eventType="touchUpInside" id="aZL-Lf-c5a"/>
+                                    <segue destination="T6L-Fk-SRG" kind="unwind" unwindAction="unwindToAddressManagement:" id="yKY-fz-Hci"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -928,10 +948,12 @@
                     <navigationItem key="navigationItem" id="kCf-ne-dmb"/>
                     <connections>
                         <outlet property="collectionView" destination="g5v-49-Glo" id="Tbw-9L-cHJ"/>
+                        <outlet property="saveButton" destination="Q0N-ZK-WmC" id="djc-6H-M0c"/>
                         <outlet property="tableView" destination="uAF-NG-HHf" id="ddB-PU-d7s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sa-ek-Lk4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="T6L-Fk-SRG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6473.913043478261" y="703.79464285714278"/>
         </scene>
