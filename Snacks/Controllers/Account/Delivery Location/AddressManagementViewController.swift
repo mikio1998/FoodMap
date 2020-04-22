@@ -48,6 +48,8 @@ class AddressManagementViewController: UIViewController {
     
     func firestoreToArray() {
         
+        // Empty the savedStonesArray every time called.
+        // Removes duplcates after changes.
         self.savedStonesArray.removeAll()
         
         let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")

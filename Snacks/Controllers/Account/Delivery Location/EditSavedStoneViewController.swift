@@ -54,7 +54,6 @@ class EditSavedStoneViewController: UIViewController {
                   郵便番号: inputs[2],
                   番地: inputs[5],
                   other: inputs[6])
-        print(newStone)
 
         // TODO: delete old document
         stoneCollectionRef.document(stoneData.name).delete()
@@ -69,22 +68,6 @@ class EditSavedStoneViewController: UIViewController {
             "番地": newStone.番地,
             "other": newStone.other
         ])
-        
-        // Add new entry to sales track.
-//        stoneRef.setData([
-//            "name": newStone.name,
-//            "description": newStone.description,
-//            "都道府県": newStone.都道府県,
-//            "市区町村": newStone.市区町村,
-//            "郵便番号": newStone.郵便番号,
-//            "番地": newStone.番地,
-//            "other": newStone.other
-//        ])
-
-        // Empty out the savedStonesArray
-        // So we can fill in the updated stones.
-        //destinationVC.savedStonesArray.removeAll()
-
         
         // Fill in savedStonesArray with updated stones.
         destinationVC.firestoreToArray()
