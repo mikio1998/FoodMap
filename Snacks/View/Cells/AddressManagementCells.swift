@@ -18,21 +18,11 @@ class MyAddressCell: UITableViewCell {
     
     @IBOutlet weak var CellImage: UIImageView!
     @IBOutlet weak var CellName: UILabel!
-    
     @IBOutlet weak var Cell郵便番号: UILabel!
-    
-
     @IBOutlet weak var Cell都道府県: UILabel!
-    
-    
     @IBOutlet weak var Cell市区町村: UILabel!
     @IBOutlet weak var Cell番地: UILabel!
-    
     @IBOutlet weak var CellOther: UILabel!
-    
-    
-
-    
     
     func setCellElements(
         name: String,
@@ -51,16 +41,14 @@ class MyAddressCell: UITableViewCell {
         CellOther.text = other
         
         CellImage.image = UIImage(named: image, in: Bundle(for: type(of: self)), compatibleWith: nil)
-        
-        
     }
-    
 }
 
 
 // MARK: - Saved Stone Page
+// MARK: - Edit Saved Stone screen
 // Stone Images CollectionView Cell
-class StoneCollectionViewCell: UICollectionViewCell {
+class EditSavedStoneCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var CellImage: UIImageView!
 
@@ -69,6 +57,14 @@ class StoneCollectionViewCell: UICollectionViewCell {
         //CellImage.contentMode = UIView.ContentMode.scaleAspectFit
         //CellImage.contentMode = UICollectionViewCell.ContentMode.scaleAspectFit
         //CellImage.clipsToBounds = true
+    }
+}
+
+class EditSavedStoneTextCell: UITableViewCell {
+    @IBOutlet weak var textField: UITextField!
+    
+    func setTextFieldText(text: String) {
+        self.textField.text = text
     }
 }
 
@@ -101,3 +97,6 @@ class NewManualAddressScreenTextFieldCell: UITableViewCell {
     }
     
 }
+
+
+

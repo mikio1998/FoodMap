@@ -20,7 +20,11 @@ class AddressManagementViewController: UIViewController {
     // Stone Data
     //var savedStonesArray = [Dictionary<String, String>]()
     //var savedStoneNames: [String] = []
+    
+    
     var savedStonesArray: [Stone] = []
+    var selectedStone: [Stone] = []
+    
     
     // Func that unwinds VC's to this VC.
     // To pass data: https://www.youtube.com/watch?v=ULd2v4mHyQ4
@@ -120,17 +124,70 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
     }
     
     // - Did select row
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
+        //self.selectedIndex = indexPath.row
+        
+        // Get the selected stone data to send it through segue.
+        // SelectedStone[0] will be passed through the segue,
+        // in prepare segue method.
+        let newStone = Stone(
+            name: self.savedStonesArray[indexPath.row].name,
+            description: self.savedStonesArray[indexPath.row].description,
+            都道府県: self.savedStonesArray[indexPath.row].都道府県,
+            市区町村: self.savedStonesArray[indexPath.row].市区町村,
+            郵便番号: self.savedStonesArray[indexPath.row].郵便番号,
+            番地: self.savedStonesArray[indexPath.row].番地,
+            other: self.savedStonesArray[indexPath.row].other)
+        
+        self.selectedStone.append(newStone)
+        
+//        self.selectedStone[0].name = self.savedStonesArray[indexPath.row].name
+//        self.selectedStone[0].description = self.savedStonesArray[indexPath.row].description
+//        self.selectedStone[0].郵便番号 = self.savedStonesArray[indexPath.row].郵便番号
+//        self.selectedStone[0].都道府県 = self.savedStonesArray[indexPath.row].都道府県
+//        self.selectedStone[0].市区町村 = self.savedStonesArray[indexPath.row].市区町村
+//        self.selectedStone[0].番地 = self.savedStonesArray[indexPath.row].番地
+//        self.selectedStone[0].other = self.savedStonesArray[indexPath.row].other
+        
+        
+        
+        
+        print("selected stone loaded", selectedStone[0])
+        
+        performSegue(withIdentifier: "Edit Saved Stone Segue", sender: Any?.self)
+
+    }
+    
+    
+    // MARK: - Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Edit Saved Stone Segue" {
+            
+            let vc = segue.destination as! EditSavedStoneViewController
+            
+//            // Instantiate navigation VC.
+//            let nav = segue.destination as! UINavigationController
 //
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        //self.selectedIndex = indexPath.row
-//        performSegue(withIdentifier: "", sender: Any?.self)
-//
-//    }
+//            // Set Edit Stones VC as the top VC.
+//            let vc1 = nav.topViewController as! EditSavedStoneViewController
+            
+           print("sending selected stone")
+        vc.stoneData.append(selectedStone[0])
+            
+            print("sent selected stone")
+            
+            
+            
+        }
+        
+        
+    }
     
     
     
-    // - Row Heights
+    // MARK: - Row Heights
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        if indexPath.row == 0 {

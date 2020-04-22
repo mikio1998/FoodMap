@@ -1,5 +1,5 @@
 //
-//  StoneViewController.swift
+//  EditSavedStoneViewController.swift
 //  Snacks
 //
 //  Created by Mikio Nakata on 4/18/20.
@@ -8,20 +8,61 @@
 
 import UIKit
 
-class StoneViewController: UIViewController {
+
+
+class EditSavedStoneViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var stoneData: [Stone] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
 }
 
-extension StoneViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension EditSavedStoneViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        // Stone data in array form. 
+        let stone = [
+            stoneData[0].name,
+            stoneData[0].description,
+            stoneData[0].郵便番号,
+            stoneData[0].都道府県,
+            stoneData[0].市区町村,
+            stoneData[0].番地,
+            stoneData[0].other]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Edit Saved Stone Text Cell", for: indexPath) as! EditSavedStoneTextCell
+        
+        
+        cell.setTextFieldText(text: stone[indexPath.row])
+        
+        
+        
+        return cell
+    }
+    
+    
+}
+
+extension EditSavedStoneViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -36,7 +77,7 @@ extension StoneViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         let images = ["stonepic1", "stonepic2", "stonepic3", "stonepic4", "stonepic5"]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Stone Image Cell", for: indexPath) as! StoneCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Stone Image Cell", for: indexPath) as! EditSavedStoneCollectionViewCell
         cell.setImage(image: images[indexPath.row])
         
         return cell
@@ -51,7 +92,7 @@ extension StoneViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
 }
 
-extension StoneViewController: UICollectionViewDelegateFlowLayout {
+extension EditSavedStoneViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

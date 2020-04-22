@@ -32,7 +32,7 @@
 		C1971BA7244032E500353CAF /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971BA6244032E500353CAF /* OnboardingViewController.swift */; };
 		C1DFCC1B244583250060292A /* ProfileCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1A244583250060292A /* ProfileCells.swift */; };
 		C1DFCC1E244589AC0060292A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFCC1D244589AC0060292A /* ProfileViewController.swift */; };
-		C1F1DEAF244AED04000B17AC /* StoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1DEAE244AED04000B17AC /* StoneViewController.swift */; };
+		C1F1DEAF244AED04000B17AC /* EditSavedStoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1DEAE244AED04000B17AC /* EditSavedStoneViewController.swift */; };
 		C1F5695C24498A19002FA0C8 /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */; };
 		C1F5695E24498D28002FA0C8 /* AddressManagementCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5695D24498D28002FA0C8 /* AddressManagementCells.swift */; };
 		C1F5696024499733002FA0C8 /* AddressManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */; };
@@ -69,7 +69,7 @@
 		C1971BA6244032E500353CAF /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C1DFCC1A244583250060292A /* ProfileCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCells.swift; sourceTree = "<group>"; };
 		C1DFCC1D244589AC0060292A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		C1F1DEAE244AED04000B17AC /* StoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoneViewController.swift; sourceTree = "<group>"; };
+		C1F1DEAE244AED04000B17AC /* EditSavedStoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSavedStoneViewController.swift; sourceTree = "<group>"; };
 		C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
 		C1F5695D24498D28002FA0C8 /* AddressManagementCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManagementCells.swift; sourceTree = "<group>"; };
 		C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressManagementViewController.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 			children = (
 				C1F569632449AA6D002FA0C8 /* New Address VC */,
 				C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */,
-				C1F1DEAE244AED04000B17AC /* StoneViewController.swift */,
+				C1F1DEAE244AED04000B17AC /* EditSavedStoneViewController.swift */,
 			);
 			path = "Delivery Location";
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */,
 				C1F5695C24498A19002FA0C8 /* NewAddressViewController.swift in Sources */,
 				C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */,
-				C1F1DEAF244AED04000B17AC /* StoneViewController.swift in Sources */,
+				C1F1DEAF244AED04000B17AC /* EditSavedStoneViewController.swift in Sources */,
 				C12D99672446DB6D003F1174 /* DeliveryMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
