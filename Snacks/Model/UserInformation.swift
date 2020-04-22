@@ -92,15 +92,16 @@ struct setUserInfoStruct {
         privateDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 
-                setUserInfoClass.username = document.get("username") as? String ?? "email"
-                
-                setUserInfoClass.email = document.get("email") as? String ?? "email"
-                setUserInfoClass.firstname = document.get("firstname") as? String ?? "first"
-                setUserInfoClass.lastname = document.get("lastname") as? String ?? "last"
-                setUserInfoClass.uid = document.get("uid") as? String ?? "uid"
+//                setUserInfoClass.username = document.get("username") as? String ?? "username"
+//
+//                setUserInfoClass.email = document.get("email") as? String ?? "email"
+//                setUserInfoClass.firstname = document.get("firstname") as? String ?? "first"
+//                setUserInfoClass.lastname = document.get("lastname") as? String ?? "last"
+//                setUserInfoClass.uid = document.get("uid") as? String ?? "uid"
                 
 
-
+                setUserInfoStruct.username = document.get("username") as? String ?? "username"
+                
                 setUserInfoStruct.email = document.get("email") as? String ?? "email"
                 setUserInfoStruct.firstname = document.get("firstname") as? String ?? "first"
                 setUserInfoStruct.lastname = document.get("lastname") as? String ?? "last"

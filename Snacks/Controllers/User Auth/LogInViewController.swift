@@ -115,6 +115,8 @@ class LogInViewController: UIViewController, initiateTransitionProtocol {
 
                     // This initialization occurs, but values are still empty. Might need to fix in future.
                     setUserInfoStruct.setUserInfo(uid: (result?.user.uid)!)
+                    print("test1", result?.user.uid)
+                    print("test", setUserInfoStruct.uid)
                     // Thus, this will print empty string.
                     setUserInfoStruct.printUserInfoToConsole()
 
