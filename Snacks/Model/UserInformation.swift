@@ -46,23 +46,8 @@ struct setUserInfoStruct {
     static var introduction: String = ""
     static var password: String = "placeholder password"
     
-    
      //When UID is updated to the logging in User, changes HomeVC Struct property to true.
     static var uid: String = ""
-//    {
-//
-//        didSet {
-//            //userInfoObserver.didFinishWritingUserInfo = true
-//            LogInViewController.userInfoObserver.didFinishWritingUserInfo = true
-//
-//
-//
-//        }
-//    }
-    
-    
-    
-    
 
     
     static func printUserInfoToConsole() {
@@ -84,8 +69,6 @@ struct setUserInfoStruct {
         publicDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
 
-
-
             } else {
                 print("Document does not exist")
             }
@@ -103,7 +86,6 @@ struct setUserInfoStruct {
                 
                 setUserInfoStruct.phonenumber = document.get("phone") as? String ?? "0"
                 setUserInfoStruct.introduction = document.get("introduction") as? String ?? "Hello!"
-                
                 
                 setUserInfoStruct.uid = document.get("uid") as? String ?? "uid"
                 

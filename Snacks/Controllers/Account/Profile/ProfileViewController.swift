@@ -17,10 +17,17 @@ class ProfileViewController: UIViewController {
 
     @IBAction func saveBarButtonPressed(_ sender: Any) {
         saveUserInfo()
+        navigationController?
+            .popViewController(animated: true)
+        
+        setUserInfoStruct.setUserInfo(uid: Auth.auth().currentUser!.uid)
+        
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,6 +37,7 @@ class ProfileViewController: UIViewController {
         
         // Remove lines between cells.
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.reloadData()
         
     }
     
@@ -38,32 +46,42 @@ class ProfileViewController: UIViewController {
     func saveUserInfo() {
         let privateDataRef = FireStoreReferenceManager.referenceForUserPrivateData(uid: Auth.auth().currentUser!.uid)
         
+        // MARK: - Get cell text values
         var inputs = [String]()
+        
+        // MARK: Get text value from username cell.
+        let pictureUserCell = tableView.cellForRow(at: IndexPath(row:0, section: 0)) as! ProfileTableViewCell
+            inputs.append("\(pictureUserCell.CellNameField.text!)")
+        
+        // Get text value from introduction cell.
+        let introductionCell = tableView.cellForRow(at: IndexPath(row:1, section: 0)) as! ProfileDescriptionTableViewCell
+            inputs.append("\(introductionCell.cellTextView.text!)")
+        
+        
         // Get text values from info cells.
         for cell in 2..<7 {
             let index = IndexPath(row:cell, section: 0)
             print("idx", cell)
             let cell = tableView.cellForRow(at: index) as! ProfileIdentityInfoTableViewCell
-            print(cell.CellTextField.text!)
             inputs.append("\(cell.CellTextField.text!)")
 
         }
         print("inputs!", inputs)
         
+        // Set new User Data
+        privateDataRef.setData([
+            "username": inputs[0],
+            "introduction": inputs[1],
+            "lastname" : inputs[2],
+            "firstname": inputs[3],
+            "phone": inputs[4],
+            "email": inputs[5],
+            "password": inputs[6]
+            ])
+        
+        self.tableView.reloadData()
         
         
-        
-//        privateDataRef.getDocument { (DocumentSnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                let lastName = DocumentSnapshot?.get("lastname")
-//                let firstName = DocumentSnapshot?.get("firstname")
-//                let email = DocumentSnapshot.get("email")
-//
-//
-//            }
-//        }
     }
     
     

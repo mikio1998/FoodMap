@@ -100,7 +100,6 @@ class ProfileDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
         else {
             return true
         }
-        
         // ... otherwise return false since the updates
         // have already been made.
         return false
@@ -167,14 +166,5 @@ class ProfileIdentityInfoTableViewCell: UITableViewCell {
         default:
             CellTextField.text = "Couldn't fetch."
         }
-        
-        
-        
-        
-        
-        
     }
-    
-    
-    
 }

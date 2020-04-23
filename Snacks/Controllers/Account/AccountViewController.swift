@@ -12,6 +12,8 @@ import UIKit
 
 class AccountViewController: UIViewController {
     
+    @IBAction func unwindToAccountViewController(_ sender: UIStoryboardSegue) {}
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,11 +26,7 @@ class AccountViewController: UIViewController {
         // Hides unused cells.
         tableView.tableFooterView = UIView()
         
-        
     }
-    
-    
-    
 }
 
 extension AccountViewController: UITableViewDataSource, UITableViewDelegate {
