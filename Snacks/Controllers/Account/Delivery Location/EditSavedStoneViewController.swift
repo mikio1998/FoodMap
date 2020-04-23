@@ -24,17 +24,14 @@ class EditSavedStoneViewController: UIViewController {
   
     }
     
-    
+    // MARK: - Prepare for segue
+    // Saved edited stone. 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! AddressManagementViewController
         
-        
         // Reference to the stone document.
-//        let stoneRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones").document(stoneData.name)
         let stoneCollectionRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
-        
-        
-        
+
         var inputs = [String]()
         // Get text values from cells. Create Stone object with values.
         for cell in 0..<7 {

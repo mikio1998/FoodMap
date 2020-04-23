@@ -14,6 +14,11 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+
+    @IBAction func saveBarButtonPressed(_ sender: Any) {
+        saveUserInfo()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,9 +33,26 @@ class ProfileViewController: UIViewController {
         
     }
     
-//    func firestoreToArray() {
-//        let privateDataRef = FireStoreReferenceManager.referenceForUserPrivateData(uid: Auth.auth().currentUser!.uid)
-//
+    
+    
+    func saveUserInfo() {
+        let privateDataRef = FireStoreReferenceManager.referenceForUserPrivateData(uid: Auth.auth().currentUser!.uid)
+        
+        var inputs = [String]()
+        // Get text values from info cells.
+        for cell in 2..<7 {
+            let index = IndexPath(row:cell, section: 0)
+            print("idx", cell)
+            let cell = tableView.cellForRow(at: index) as! ProfileIdentityInfoTableViewCell
+            print(cell.CellTextField.text!)
+            inputs.append("\(cell.CellTextField.text!)")
+
+        }
+        print("inputs!", inputs)
+        
+        
+        
+        
 //        privateDataRef.getDocument { (DocumentSnapshot, err) in
 //            if let err = err {
 //                print("Error getting documents: \(err)")
@@ -42,7 +64,7 @@ class ProfileViewController: UIViewController {
 //
 //            }
 //        }
-//    }
+    }
     
     
     

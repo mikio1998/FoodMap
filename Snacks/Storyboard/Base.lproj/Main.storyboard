@@ -253,7 +253,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WKs-TS-zuP"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Profile" id="cRM-m6-rt8"/>
+                    <navigationItem key="navigationItem" title="My Profile" id="cRM-m6-rt8">
+                        <barButtonItem key="rightBarButtonItem" title="完了" id="OhK-la-3gs">
+                            <connections>
+                                <action selector="saveBarButtonPressed:" destination="aLu-nS-6SC" id="JUf-CO-V4B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="HMR-SL-xES" id="vXd-pF-r3Q"/>
                     </connections>
