@@ -22,6 +22,10 @@ class ProfileViewController: UIViewController {
         
         // Hides unused cells.
         tableView.tableFooterView = UIView()
+        
+        // Remove lines between cells.
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
     }
     
 
