@@ -55,57 +55,25 @@ class ProfileDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     func setUpCellTextView() {
         cellTextView.delegate = self
         
-        cellTextView.text = "自己紹介。。"
-        cellTextView.textColor = UIColor.lightGray
+        // If user has no Introduction,
+        // set text as placeholder.
+        if setUserInfoStruct.introduction == "" {
+            cellTextView.text = "自己紹介。。。"
+            cellTextView.textColor = UIColor.lightGray
+        } else {
+            cellTextView.text = setUserInfoStruct.introduction
+            cellTextView.textColor = UIColor.black
+        }
         
         // Select textView as soon as view loads.
         cellTextView.becomeFirstResponder()
         cellTextView.selectedTextRange = cellTextView.textRange(from: cellTextView.beginningOfDocument, to: cellTextView.beginningOfDocument)
     }
     
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//      // Combine the textView text and the replacement text to
-//      // create the updated text string
-//      let currentText: String = textView.text
-//      let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-//
-//      // If updated text view will be empty, add the placeholder
-//      // and set the cursor to the beginning of the text view
-//      if updatedText.isEmpty {
-//          textView.text = "自己紹介。。"
-//          textView.textColor = UIColor.lightGray
-//
-//          textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-//      }
-//      // Else if the text view's placeholder is showing and the
-//      // length of the replacement string is greater than 0, set
-//      // the text color to black then set its text to the
-//      // replacement string
-//       else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-//          textView.textColor = UIColor.black
-//          textView.text = text
-//      }
-//      // For every other case, the text should change with the usual
-//      // behavior...
-//      else {
-//          return true
-//      }
-//      // ...otherwise return false since the updates have already
-//      // been made
-//    return false
-//    }
-//
-//
-//
-//
-//    func textViewDidChangeSelection(_ textView: UITextView) {
-//        if textView.textColor == UIColor.lightGray {
-//            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-//        }
-//    }
 
-    
-    
+    // MARK: - TextView placeholder
+    // TextView has no placeholder property. So, programatcally added it.
+    // https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // Combine the current textView text and replacement text
         // to create the updated string.
@@ -115,7 +83,7 @@ class ProfileDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
         // If updatedText will be empty, add the placeholder
         // and set cursor to beginning of textView.
         if updatedText.isEmpty {
-            textView.text = "自己紹介"
+            textView.text = "自己紹介。。。"
             textView.textColor = UIColor.lightGray
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.endOfDocument)
         }
@@ -154,7 +122,6 @@ class ProfileIdentityInfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var CellLabel: UILabel!
     
-
     @IBOutlet weak var CellTextField: UITextField!
     
     var cellLabelsArray = [
@@ -171,11 +138,38 @@ class ProfileIdentityInfoTableViewCell: UITableViewCell {
         "password1"
     ]
     
+    var setUserInfoStructVariables = [
+        "lastname",
+        "firstname",
+        "phonenumber",
+        "email",
+        "password"
+    ]
+    
     
     func setCellLabelandHolder(index: Int) {
         // Minus 2 since there are two other cells before these cells.
         CellLabel.text = cellLabelsArray[index-2]
         CellTextField.placeholder = cellTextFieldHolders[index-2]
+        
+        switch index {
+        case 2:
+            CellTextField.text = setUserInfoStruct.lastname
+        case 3:
+            CellTextField.text = setUserInfoStruct.firstname
+        case 4:
+            CellTextField.text = setUserInfoStruct.phonenumber
+        case 5:
+            CellTextField.text = setUserInfoStruct.email
+        case 6:
+            CellTextField.text = setUserInfoStruct.password
+
+        default:
+            CellTextField.text = "Couldn't fetch."
+        }
+        
+        
+        
         
         
         

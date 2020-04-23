@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 
 class setUserInfoClass {
@@ -40,7 +41,10 @@ struct setUserInfoStruct {
     static var username: String = ""
     static var email: String = ""
     static var firstname: String = ""
-    static var lastname: String = "haha"
+    static var lastname: String = ""
+    static var phonenumber: String = ""
+    static var introduction: String = ""
+    static var password: String = "placeholder password"
     
     
      //When UID is updated to the logging in User, changes HomeVC Struct property to true.
@@ -80,9 +84,8 @@ struct setUserInfoStruct {
         publicDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
 
-                //setUserInfoStruct.username = document.get("username") as? String ?? "User Name"
-                
-                print("Document data: \(username)")
+
+
             } else {
                 print("Document does not exist")
             }
@@ -91,23 +94,24 @@ struct setUserInfoStruct {
         // - Snapshot for Private Collection
         privateDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                
-//                setUserInfoClass.username = document.get("username") as? String ?? "username"
-//
-//                setUserInfoClass.email = document.get("email") as? String ?? "email"
-//                setUserInfoClass.firstname = document.get("firstname") as? String ?? "first"
-//                setUserInfoClass.lastname = document.get("lastname") as? String ?? "last"
-//                setUserInfoClass.uid = document.get("uid") as? String ?? "uid"
-                
 
                 setUserInfoStruct.username = document.get("username") as? String ?? "username"
                 
                 setUserInfoStruct.email = document.get("email") as? String ?? "email"
                 setUserInfoStruct.firstname = document.get("firstname") as? String ?? "first"
                 setUserInfoStruct.lastname = document.get("lastname") as? String ?? "last"
+                
+                setUserInfoStruct.phonenumber = document.get("phone") as? String ?? "0"
+                setUserInfoStruct.introduction = document.get("introduction") as? String ?? "Hello!"
+                
+                
                 setUserInfoStruct.uid = document.get("uid") as? String ?? "uid"
+                
+                
 
                 print("Document data: \(email) \(firstname) \(lastname) \(uid)")
+                print("Document data: \(phonenumber), \(introduction)")
+                print("Document data: \(username)")
             } else {
                 print("Document does not exist")
             }
@@ -141,10 +145,7 @@ class userInfo {
     }
 
     
-//    func setUser(uid: String, username: String, firstName: String, lastName: String, email: String) -> userInfo {
-//        return userInfo(uid: uid, username: username, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>)
-//
-//    }
+
 }
 struct currentUser {
     

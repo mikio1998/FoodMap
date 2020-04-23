@@ -18,11 +18,9 @@ protocol initiateTransitionProtocol {
 
 
 struct userInfoObserver {
-
     // When the logging in user's information is written, initiate transition to HomeVC.
     static var didFinishWritingUserInfo = false
 }
-
 
 class LogInViewController: UIViewController, initiateTransitionProtocol {
     
@@ -34,27 +32,15 @@ class LogInViewController: UIViewController, initiateTransitionProtocol {
     
     @IBOutlet weak var errorLabel: UILabel!
 
-    
-    
     func goToHomeVC() {
         let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarController
-        
         self.view.window?.rootViewController = homeViewController
         self.view.window?.makeKeyAndVisible()
     }
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         setUpElements()
-        
-        
-        
-
     }
     
     func setUpElements() {
@@ -66,7 +52,6 @@ class LogInViewController: UIViewController, initiateTransitionProtocol {
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(loginButton)
-        
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -78,9 +63,7 @@ class LogInViewController: UIViewController, initiateTransitionProtocol {
 //        self.view.window?.rootViewController = homeViewController
 //        self.view.window?.makeKeyAndVisible()
         
-        
-        
-        
+ 
         
 // MARK: - Temporarily deactivated --v--
         

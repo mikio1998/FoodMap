@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
@@ -15,7 +16,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,9 +28,29 @@ class ProfileViewController: UIViewController {
         
     }
     
-
-
+//    func firestoreToArray() {
+//        let privateDataRef = FireStoreReferenceManager.referenceForUserPrivateData(uid: Auth.auth().currentUser!.uid)
+//
+//        privateDataRef.getDocument { (DocumentSnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                let lastName = DocumentSnapshot?.get("lastname")
+//                let firstName = DocumentSnapshot?.get("firstname")
+//                let email = DocumentSnapshot.get("email")
+//
+//
+//            }
+//        }
+//    }
+    
+    
+    
+    
 }
+
+
+
 
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
