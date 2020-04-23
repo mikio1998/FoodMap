@@ -47,12 +47,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             // - Second Cell, the Profle Description Cell.
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Description Cell") as! ProfileDescriptionTableViewCell
-            cell.setCellTextFieldPlaceholder()
+            cell.setUpCellTextView()
+            
             return cell
         }
         // - Remaining Cells are Identity Info Cells.
         let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Identity Info Cell") as! ProfileIdentityInfoTableViewCell
-        cell.setCellLabel(index: indexPath.row)
+        cell.setCellLabelandHolder(index: indexPath.row)
         return cell
         
         
@@ -61,12 +62,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 255.0
+            return 210.0
         } else if indexPath.row == 1 {
-            return 120.0
+            return 110.0
         }
         
-        return 55.0
+        return 45.0
     }
     
     
