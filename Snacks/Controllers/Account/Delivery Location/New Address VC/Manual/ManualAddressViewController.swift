@@ -118,10 +118,10 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 90.0
+            return 100.0
         }
         
-        return 67.0
+        return 73.0
     }
     
     
