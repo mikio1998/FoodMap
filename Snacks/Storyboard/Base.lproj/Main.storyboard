@@ -474,6 +474,46 @@
             </objects>
             <point key="canvasLocation" x="5792.753623188406" y="1050.6696428571429"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="BD0-v9-Whg">
+            <objects>
+                <viewController id="uaF-Cm-Ps7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GK8-kK-Y11">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pu7-6w-B03">
+                                <rect key="frame" x="72" y="105" width="124" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-AJ-q9x">
+                                <rect key="frame" x="20" y="155" width="345" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rw-lA-TnM">
+                                <rect key="frame" x="184" y="656" width="102" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.78632614209999996" green="0.78632614209999996" blue="0.78632614209999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="PZN-C8-uVw" kind="show" id="oZX-Ua-wXa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="mH1-US-KFx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uqD-CL-lnx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mf7-YE-wUY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7475" y="1071"/>
+        </scene>
         <!--Map View-->
         <scene sceneID="qhs-pv-Q1d">
             <objects>
@@ -590,8 +630,13 @@
                                                     <rect key="frame" x="101" y="102" width="170" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Enter Address"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCc-13-yIM">
+                                                    <rect key="frame" x="101" y="102" width="170" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Enter Address"/>
                                                     <connections>
-                                                        <segue destination="PZN-C8-uVw" kind="show" id="C5v-o9-2qk"/>
+                                                        <segue destination="uaF-Cm-Ps7" kind="show" id="mXF-wB-xbg"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -638,121 +683,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P86-wE-I6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6563.7681159420299" y="1370.7589285714284"/>
-        </scene>
-        <!--Find Manually-->
-        <scene sceneID="K8r-aQ-R1A">
-            <objects>
-                <viewController id="D0U-VU-IWe" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZHF-oN-J5v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ri1-4b-sBP">
-                                <rect key="frame" x="20" y="414.5" width="374" height="440.5"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="都道府県" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfB-qP-h83">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="郵便番号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="as2-JL-WNA">
-                                        <rect key="frame" x="0.0" y="70" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="市区町村" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G26-jR-RuU">
-                                        <rect key="frame" x="0.0" y="140" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="番地" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JXw-lW-YpD">
-                                        <rect key="frame" x="0.0" y="210" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="他" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHE-6J-Unf">
-                                        <rect key="frame" x="0.0" y="280" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-vf-4jJ">
-                                        <rect key="frame" x="0.0" y="350" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="S5V-2E-gHu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="次へ"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2L-qx-fjF">
-                                        <rect key="frame" x="0.0" y="420" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Tf2-vf-4jJ" firstAttribute="height" secondItem="jfB-qP-h83" secondAttribute="height" id="Tez-rx-Hk9"/>
-                                    <constraint firstItem="as2-JL-WNA" firstAttribute="height" secondItem="jfB-qP-h83" secondAttribute="height" id="dlJ-zy-LSl"/>
-                                    <constraint firstItem="JXw-lW-YpD" firstAttribute="height" secondItem="jfB-qP-h83" secondAttribute="height" id="fLd-72-S7D"/>
-                                    <constraint firstItem="ZHE-6J-Unf" firstAttribute="height" secondItem="jfB-qP-h83" secondAttribute="height" id="gnJ-9B-p7O"/>
-                                    <constraint firstItem="G26-jR-RuU" firstAttribute="height" secondItem="jfB-qP-h83" secondAttribute="height" id="ig6-MW-uQn"/>
-                                </constraints>
-                            </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" highlightedImage="camera.on.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cao-x1-jD5">
-                                <rect key="frame" x="24" y="119" width="67" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-5e-gtb">
-                                <rect key="frame" x="99" y="119" width="67" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRb-Hu-TIx">
-                                <rect key="frame" x="174" y="119" width="67" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYh-R4-fEY">
-                                <rect key="frame" x="324" y="119" width="67" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6K-co-u0d">
-                                <rect key="frame" x="249" y="119" width="67" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="bUu-nR-eX5">
-                                <rect key="frame" x="20" y="293.5" width="374" height="86"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6v-oP-sEd">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="情報" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X1b-Cv-V1W">
-                                        <rect key="frame" x="0.0" y="52" width="374" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="X1b-Cv-V1W" firstAttribute="height" secondItem="M6v-oP-sEd" secondAttribute="height" id="El8-Ah-Nu4"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="bUu-nR-eX5" firstAttribute="leading" secondItem="mYe-wP-Sp8" secondAttribute="leading" constant="20" id="0sk-Kj-qp4"/>
-                            <constraint firstItem="ri1-4b-sBP" firstAttribute="leading" secondItem="mYe-wP-Sp8" secondAttribute="leading" constant="20" id="4vX-cj-DSA"/>
-                            <constraint firstItem="mYe-wP-Sp8" firstAttribute="trailing" secondItem="bUu-nR-eX5" secondAttribute="trailing" constant="20" id="PWy-3W-fCd"/>
-                            <constraint firstItem="mYe-wP-Sp8" firstAttribute="trailing" secondItem="ri1-4b-sBP" secondAttribute="trailing" constant="20" id="pR7-YL-Zw5"/>
-                            <constraint firstItem="ri1-4b-sBP" firstAttribute="top" secondItem="bUu-nR-eX5" secondAttribute="bottom" constant="35" id="paQ-De-qdB"/>
-                            <constraint firstItem="mYe-wP-Sp8" firstAttribute="bottom" secondItem="ri1-4b-sBP" secondAttribute="bottom" constant="7" id="zKe-AX-91x"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="mYe-wP-Sp8"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Find Manually" id="XwI-kU-ujh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvk-NY-Gm5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8304" y="1073"/>
         </scene>
         <!--Manual Address View Controller-->
         <scene sceneID="02P-hh-6O0">
@@ -858,7 +788,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGt-s2-HQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mex-AD-PsH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7321.739130434783" y="1072.7678571428571"/>
+            <point key="canvasLocation" x="8230" y="1070"/>
         </scene>
         <!--Edit Saved Stone View Controller-->
         <scene sceneID="KTJ-gm-QNo">

@@ -1,4 +1,5 @@
-//
+// 35.7126910, 139.7682031
+
 //  HomeViewController.swift
 //  Snacks
 //
@@ -31,7 +32,7 @@ class HomeViewController: UIViewController {
     // viewDidAppear will automatically be called by iOS
     override func viewDidAppear(_ animated: Bool) {
         
-        // Check if Onboarding is already complete in UserDefaults.
+        // MARK: - Check if Onboarding is already complete in UserDefaults.
         if UserDefaults.standard.bool(forKey: "hasViewedOnboarding") {
             return
         }
@@ -45,7 +46,6 @@ class HomeViewController: UIViewController {
     func getCurrentLocation() {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
-        
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
