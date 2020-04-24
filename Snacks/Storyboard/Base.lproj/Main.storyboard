@@ -474,45 +474,42 @@
             </objects>
             <point key="canvasLocation" x="5792.753623188406" y="1050.6696428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Address-->
         <scene sceneID="BD0-v9-Whg">
             <objects>
-                <viewController id="uaF-Cm-Ps7" sceneMemberID="viewController">
+                <viewController id="uaF-Cm-Ps7" customClass="GooglePlacesAutocompleteViewController" customModule="Snacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GK8-kK-Y11">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pu7-6w-B03">
-                                <rect key="frame" x="72" y="105" width="124" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-AJ-q9x">
-                                <rect key="frame" x="20" y="155" width="345" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rw-lA-TnM">
-                                <rect key="frame" x="184" y="656" width="102" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.78632614209999996" green="0.78632614209999996" blue="0.78632614209999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="PZN-C8-uVw" kind="show" id="oZX-Ua-wXa"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytZ-Ku-nPA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ytZ-Ku-nPA" firstAttribute="bottom" secondItem="mH1-US-KFx" secondAttribute="bottom" id="383-Jg-NTV"/>
+                            <constraint firstItem="ytZ-Ku-nPA" firstAttribute="top" secondItem="mH1-US-KFx" secondAttribute="top" id="HjH-uS-oxv"/>
+                            <constraint firstItem="ytZ-Ku-nPA" firstAttribute="leading" secondItem="mH1-US-KFx" secondAttribute="leading" id="Xzu-Mg-N4L"/>
+                            <constraint firstItem="ytZ-Ku-nPA" firstAttribute="trailing" secondItem="mH1-US-KFx" secondAttribute="trailing" id="gI6-2y-OCk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mH1-US-KFx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uqD-CL-lnx"/>
+                    <navigationItem key="navigationItem" title="Address" id="uqD-CL-lnx">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="84u-Qg-RqJ">
+                            <connections>
+                                <action selector="searchWithAddress:" destination="uaF-Cm-Ps7" id="6NI-qo-6m2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="googleMapsContainer" destination="ytZ-Ku-nPA" id="g6N-k2-LGf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf7-YE-wUY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7475" y="1071"/>
+            <point key="canvasLocation" x="7322" y="1142"/>
         </scene>
         <!--Map View-->
         <scene sceneID="qhs-pv-Q1d">
@@ -555,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjh-uC-eel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7321.739130434783" y="1721.6517857142856"/>
+            <point key="canvasLocation" x="7322" y="1840"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qqg-59-ohd">
@@ -605,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7b-ET-rVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8088" y="1732"/>
+            <point key="canvasLocation" x="8083" y="1840"/>
         </scene>
         <!--New Address-->
         <scene sceneID="ayk-Ec-Gg7">
@@ -682,7 +679,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P86-wE-I6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6563.7681159420299" y="1370.7589285714284"/>
+            <point key="canvasLocation" x="6564" y="1418"/>
         </scene>
         <!--Manual Address View Controller-->
         <scene sceneID="02P-hh-6O0">
@@ -788,7 +785,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGt-s2-HQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mex-AD-PsH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8230" y="1070"/>
+            <point key="canvasLocation" x="8135" y="1142"/>
         </scene>
         <!--Edit Saved Stone View Controller-->
         <scene sceneID="KTJ-gm-QNo">
@@ -905,7 +902,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Sa-ek-Lk4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="T6L-Fk-SRG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6473.913043478261" y="703.79464285714278"/>
+            <point key="canvasLocation" x="6564" y="471"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1083,6 +1080,7 @@
     <resources>
         <image name="camera.on.rectangle.fill" catalog="system" width="64" height="48"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="yensign.circle.fill" catalog="system" width="64" height="60"/>
     </resources>

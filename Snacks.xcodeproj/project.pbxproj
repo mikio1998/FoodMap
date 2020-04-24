@@ -20,6 +20,7 @@
 		C1504ECF243C50D80075FC17 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ECE243C50D80075FC17 /* LogInViewController.swift */; };
 		C1504ED2243C53BC0075FC17 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1504ED1243C53BC0075FC17 /* Utilities.swift */; };
 		C1504ED4243C55C10075FC17 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */; };
+		C1520A112452D85F00ACEB9B /* GooglePlacesAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1520A102452D85F00ACEB9B /* GooglePlacesAutocompleteViewController.swift */; };
 		C16DE57B2443001D00040686 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE57A2443001D00040686 /* UserInformation.swift */; };
 		C16DE57D24431A4400040686 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */; };
 		C17489652441B77B00B0691E /* AccountCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17489642441B77B00B0691E /* AccountCells.swift */; };
@@ -57,6 +58,7 @@
 		C1504ECE243C50D80075FC17 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C1504ED1243C53BC0075FC17 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		C1504ED3243C55C10075FC17 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1520A102452D85F00ACEB9B /* GooglePlacesAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlacesAutocompleteViewController.swift; sourceTree = "<group>"; };
 		C16DE57A2443001D00040686 /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		C16DE57C24431A4400040686 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
 		C17489642441B77B00B0691E /* AccountCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCells.swift; sourceTree = "<group>"; };
@@ -193,12 +195,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C1520A0F2452D73B00ACEB9B /* Curr Location map */ = {
+			isa = PBXGroup;
+			children = (
+				C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */,
+			);
+			path = "Curr Location map";
+			sourceTree = "<group>";
+		};
 		C16DE5772442D62400040686 /* Account */ = {
 			isa = PBXGroup;
 			children = (
 				C1971B98243EDE3400353CAF /* AccountViewController.swift */,
 				C1DC4C7B2445B22900F447A3 /* Profile */,
-				C1DC4C7C2445B25800F447A3 /* Delivery Location */,
+				C1DC4C7C2445B25800F447A3 /* Saved Stones */,
 				C1DC4C7D2445B26800F447A3 /* Payment Options */,
 			);
 			path = Account;
@@ -222,14 +232,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		C1DC4C7C2445B25800F447A3 /* Delivery Location */ = {
+		C1DC4C7C2445B25800F447A3 /* Saved Stones */ = {
 			isa = PBXGroup;
 			children = (
-				C1F569632449AA6D002FA0C8 /* New Address VC */,
 				C1F5695F24499733002FA0C8 /* AddressManagementViewController.swift */,
 				C1F1DEAE244AED04000B17AC /* EditSavedStoneViewController.swift */,
+				C1F569632449AA6D002FA0C8 /* New Address VC */,
 			);
-			path = "Delivery Location";
+			path = "Saved Stones";
 			sourceTree = "<group>";
 		};
 		C1DC4C7D2445B26800F447A3 /* Payment Options */ = {
@@ -253,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F569642449AAB2002FA0C8 /* ManualAddressViewController.swift */,
+				C1520A102452D85F00ACEB9B /* GooglePlacesAutocompleteViewController.swift */,
 			);
 			path = Manual;
 			sourceTree = "<group>";
@@ -260,9 +271,9 @@
 		C1F569632449AA6D002FA0C8 /* New Address VC */ = {
 			isa = PBXGroup;
 			children = (
-				C1F1DEAD244AECB3000B17AC /* Manual */,
 				C1F5695B24498A19002FA0C8 /* NewAddressViewController.swift */,
-				C12D99662446DB6D003F1174 /* DeliveryMapViewController.swift */,
+				C1520A0F2452D73B00ACEB9B /* Curr Location map */,
+				C1F1DEAD244AECB3000B17AC /* Manual */,
 			);
 			path = "New Address VC";
 			sourceTree = "<group>";
@@ -423,6 +434,7 @@
 				C1504ECD243C50C90075FC17 /* SignUpViewController.swift in Sources */,
 				C101477C2441B00100EEEA17 /* TabBarController.swift in Sources */,
 				C1971B9B243EF64600353CAF /* StoneLocation.swift in Sources */,
+				C1520A112452D85F00ACEB9B /* GooglePlacesAutocompleteViewController.swift in Sources */,
 				C1F5695C24498A19002FA0C8 /* NewAddressViewController.swift in Sources */,
 				C192C650243C7D4C007ADEF9 /* Constants.swift in Sources */,
 				C1F1DEAF244AED04000B17AC /* EditSavedStoneViewController.swift in Sources */,
