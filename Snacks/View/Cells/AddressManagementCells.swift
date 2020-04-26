@@ -104,5 +104,9 @@ class NewManualAddressScreenTextFieldCell: UITableViewCell {
     
 }
 
+// MARK: - Google address search bar results cell
+class SearchResultsCell: UITableViewCell {
+    
+}
 
 
