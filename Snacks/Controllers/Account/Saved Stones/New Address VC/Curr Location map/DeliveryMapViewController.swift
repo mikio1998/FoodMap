@@ -31,8 +31,6 @@ class DeliveryMapViewController: UIViewController, GMSMapViewDelegate {
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         
         view = mapView
-        
-        
         //let currentLocation = CLLocationCoordinate2DMake(35.724605, 139.771596)
         //let marker = GMSMarker(position: currentLocation)
         let marker = GMSMarker(position: camera.target)
@@ -45,11 +43,6 @@ class DeliveryMapViewController: UIViewController, GMSMapViewDelegate {
             marker.position = position.target
             print(marker.position)
         }
-
-        
-        
-        
-        
     }
     
 

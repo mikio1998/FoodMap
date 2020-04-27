@@ -933,14 +933,24 @@
                     <view key="view" contentMode="scaleToFill" id="EhI-Zd-dyc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IKr-69-wON" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="133" width="414" height="680"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="kjG-Uq-Zyg"/>
                     </view>
                     <navigationItem key="navigationItem" id="yfH-Cq-81n"/>
+                    <connections>
+                        <outlet property="MapView" destination="IKr-69-wON" id="bFC-BK-mKz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foM-MB-btj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7296" y="534"/>
+            <point key="canvasLocation" x="7295.652173913044" y="533.70535714285711"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
