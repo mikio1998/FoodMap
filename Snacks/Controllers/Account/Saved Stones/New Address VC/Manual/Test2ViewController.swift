@@ -21,17 +21,22 @@ class Test2ViewController: UIViewController {
     // Latitude, longitude, initially at Tokyo.
     var selectionCoordinates: [Double] = [35.6762, 139.6503]
     
+    var mapMarker: GMSMarker?
+    
     
     // Views to present: (searchController, resultsViewController)
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
-
+    
+        
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     
         // MARK: - Set up MapView
         MapView.delegate = self
@@ -71,29 +76,30 @@ class Test2ViewController: UIViewController {
         // When UISearchController presents the results view, present it in
         // this view controller, not one further up the chain.
         definesPresentationContext = true
-        
-        // MARK: - Add map marker
-//        let marker = GMSMarker()
-//
-//        let location = GMSCameraPosition.camera(withLatitude: selectionCoordinates[0], longitude: selectionCoordinates[1], zoom: 16.0)
-//
-//        marker.position = CLLocationCoordinate2D(latitude: selectionCoordinates[0], longitude: selectionCoordinates[1])
-//        marker.title = selectionName
-        
-        
     }
 }
 
-extension Test2ViewController: GMSMapViewDelegate {
 
+
+extension Test2ViewController: GMSMapViewDelegate {
+    
+    
+    // when map animation is called.
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         
-        
-        let marker = GMSMarker(position: self.MapView.camera.target)
-        marker.title = self.selectionName
-        marker.map = self.MapView
-        
+        // Call, when user selects new location.
+        // Remove the previous mapMarker from the map.
+        // self.mapMarker?.map = nil
+
     }
+    
+    // didchange
+//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+//        self.mapMarker = GMSMarker(position: self.MapView.camera.target)
+//        self.mapMarker?.title = self.selectionName
+//
+//    }
+    
     
 }
 
@@ -116,19 +122,33 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
         print("Place Coordinates: \(place.coordinate.latitude) \(place.coordinate.longitude)")
         print("vars", self.selectionName, self.selectionCoordinates)
         
-//        let y = CLLocationDegrees(
-//        let x = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: place.coordinate.latitude) ?? 35.6762, longitude: CLLocationDegrees(exactly: place.coordinate.longitude) ?? 139.6503)
         
-
+        // MARK: - Place Marker at selected Location.
+        let coordinates = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        //let marker = GMSMarker(position: coordinates)
+        //marker.title = place.name
+        //marker.map = self.MapView
         
-        // Create Location with selection.
+        self.mapMarker = GMSMarker(position: coordinates)
+        self.mapMarker?.title = place.name
+        self.mapMarker?.map = self.MapView
+        
+        
+        // MARK: - Animate map to new Location.
         let location = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 16.0)
         // Animate MapView to the selected location.
         self.MapView.animate(to: location)
         
 
         
+
+        
         }
+    
+    
+    
+    
+    
 
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didFailAutocompleteWithError error: Error){
