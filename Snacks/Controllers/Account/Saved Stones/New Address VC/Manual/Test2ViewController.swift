@@ -23,7 +23,8 @@ class Test2ViewController: UIViewController {
     // Latitude, longitude, initially at Tokyo.
     var selectionCoordinates: [Double] = [35.6762, 139.6503]
     var selectionFormattedAddress: String = "Tokyo Japan"
-    var geocodedAddress: [String] = []
+    //var selectionPlusCode: GMSPlusCode!
+    
     
     var mapMarker: GMSMarker?
     
@@ -83,23 +84,12 @@ class Test2ViewController: UIViewController {
 
 
 extension Test2ViewController: GMSMapViewDelegate {
-    
-    
     // when map animation is called.
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        
         // Call, when user selects new location.
-        // Remove the previous mapMarker from the map.
-        // self.mapMarker?.map = nil
-
     }
     
-    // didchange
-//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-//        self.mapMarker = GMSMarker(position: self.MapView.camera.target)
-//        self.mapMarker?.title = self.selectionName
-//
-//    }
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         performSegue(withIdentifier: "Map View To Manual View", sender: self)
         return true
@@ -109,28 +99,15 @@ extension Test2ViewController: GMSMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "Map View To Manual View") {
             let destinationVC = segue.destination as! ManualAddressViewController
+
+            let formattedAddressArray: [String] = selectionFormattedAddress.components(separatedBy: ", ")
+            destinationVC.MapResults = formattedAddressArray
             
-            
-            var formattedAddressArray: [String] = selectionFormattedAddress.components(separatedBy: ", ")
-            
-            // Remove last element (Japan)
-            let addressArray = formattedAddressArray.removeLast()
-            
-            
-            
-            for addressLine in addressArray {
-                print(addressLine)
-                //destinationVC.MapResults.append(addressLine)
-            }
-            
-            
+            destinationVC.MapCoordinates = selectionCoordinates
             
             
         }
-
     }
-    
-    
 }
 
 
@@ -144,15 +121,20 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
         // MARK: -Do something with the selected place.
         self.selectionName = place.name ?? "Location"
         self.selectionFormattedAddress = place.formattedAddress ?? "Formatted Address"
-        self.selectionCoordinates.append(place.coordinate.latitude)
-        self.selectionCoordinates.append(place.coordinate.latitude)
+        self.selectionCoordinates[0] = place.coordinate.latitude
+        self.selectionCoordinates[1] = place.coordinate.longitude
         
         
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
-        print("Place Coordinates: \(place.coordinate.latitude) \(place.coordinate.longitude)")
-        print("vars", self.selectionName, self.selectionCoordinates, self.selectionFormattedAddress)
+        //self.selectionPlusCode = GMSPlusCode()
+        //self.selectionPlusCode = place.plusCode!
+        
+        
+        
+//        print("Place name: \(place.name)")
+//        print("Place address: \(place.formattedAddress)")
+//        print("Place attributions: \(place.attributions)")
+//        print("Place Coordinates: \(place.coordinate.latitude) \(place.coordinate.longitude)")
+//        print("vars", self.selectionName, self.selectionCoordinates, self.selectionFormattedAddress)
         
         // TODO
         

@@ -15,7 +15,8 @@ class ManualAddressViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-
+    @IBOutlet weak var mapCoordinatesLabel: UILabel!
+    
     @IBOutlet weak var saveButton: UIButton!
     
     
@@ -25,16 +26,21 @@ class ManualAddressViewController: UIViewController {
     }
     
     var MapResults: [String] = []
+    var MapCoordinates: [Double] = [0.0, 0.0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        mapCoordinatesLabel.text = "\(MapCoordinates[0]), \(MapCoordinates[1])"
+        
         
         // Remove lines between cells.
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-       
+        
+        print("MapResults", MapResults)
+        
     }
     
     func saveToDB() {
@@ -77,18 +83,8 @@ class ManualAddressViewController: UIViewController {
             "other": newStone.other
         
         ])
-
-        
-        // Dismiss modal on tap.
-        //self.dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -103,6 +99,7 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellLabelsArray = ["Name", "Description", "郵便番号", "都道府県", "市区町村", "番地", "他"]
+        // MapResults = [banchi, 市区町村, 都道府県 郵便番号, japan]
         
         // Images Cell
         if indexPath.row == 0 {
@@ -112,9 +109,42 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
         
         // Textfield Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "New Manual Address Screen Text Field Cell", for: indexPath) as! NewManualAddressScreenTextFieldCell
-        cell.setCellLabel(label: cellLabelsArray[(indexPath.row)-1])
         
-        return cell
+        switch indexPath.row {
+        case 1:
+            cell.setCellLabel(label: "名前", text: "")
+            return cell
+        case 2:
+            cell.setCellLabel(label: "場所の説明", text: "")
+            return cell
+        case 3:
+            cell.setCellLabel(label: "住所1", text: MapResults[0])
+            return cell
+        case 4:
+            cell.setCellLabel(label: "住所2", text: MapResults[1])
+            return cell
+        case 5:
+            cell.setCellLabel(label: "住所3", text: MapResults[2])
+            return cell
+        case 6:
+            cell.setCellLabel(label: "住所4", text: MapResults[3])
+            return cell
+        case 7:
+            // Array Range Check.
+            if MapResults.count > 4 {
+                cell.setCellLabel(label: "住所5", text: MapResults[4])
+                return cell
+            }
+            cell.setCellLabel(label: "住所5", text: "")
+            return cell
+        default:
+            cell.setCellLabel(label: "Error fetching Label.", text: "Error fetching Text.")
+            return cell
+        }
+        
+        //cell.setCellLabel(label: cellLabelsArray[(indexPath.row)-1], text[])
+        
+        //return cell
 
     }
     

@@ -712,7 +712,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0ne-8B-p4o">
-                                <rect key="frame" x="0.0" y="88" width="414" height="640"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -783,9 +783,9 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrT-gW-qhs">
-                                <rect key="frame" x="0.0" y="728" width="414" height="85"/>
+                                <rect key="frame" x="0.0" y="753" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -794,12 +794,20 @@
                                     <segue destination="mex-AD-PsH" kind="unwind" unwindAction="unwindToAddressManagement:" id="z5F-Ma-znx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2i-yM-jd6">
+                                <rect key="frame" x="20" y="724" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="HX5-gY-lqG"/>
                     </view>
                     <navigationItem key="navigationItem" id="9HD-DZ-8Pg"/>
                     <connections>
+                        <outlet property="mapCoordinatesLabel" destination="w2i-yM-jd6" id="oF4-Pn-Rzf"/>
                         <outlet property="saveButton" destination="LrT-gW-qhs" id="WVF-1h-APc"/>
                         <outlet property="tableView" destination="0ne-8B-p4o" id="4f0-2G-ZvD"/>
                     </connections>
@@ -807,7 +815,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGt-s2-HQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mex-AD-PsH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8135" y="1142"/>
+            <point key="canvasLocation" x="8134.7826086956529" y="1141.7410714285713"/>
         </scene>
         <!--Edit Saved Stone View Controller-->
         <scene sceneID="KTJ-gm-QNo">

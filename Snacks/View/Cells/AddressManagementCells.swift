@@ -98,8 +98,9 @@ class NewManualAddressScreenTextFieldCell: UITableViewCell {
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
-    func setCellLabel(label: String) {
+    func setCellLabel(label: String, text: String) {
         cellLabel.text = label
+        textField.text = text
     }
     
 }
