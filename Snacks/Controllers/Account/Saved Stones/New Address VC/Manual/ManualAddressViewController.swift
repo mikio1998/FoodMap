@@ -24,6 +24,8 @@ class ManualAddressViewController: UIViewController {
         saveToDB()
     }
     
+    var MapResults: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

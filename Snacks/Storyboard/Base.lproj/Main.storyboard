@@ -509,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mf7-YE-wUY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7557" y="1158"/>
+            <point key="canvasLocation" x="8742" y="889"/>
         </scene>
         <!--Map View-->
         <scene sceneID="qhs-pv-Q1d">
@@ -946,11 +946,12 @@
                     <navigationItem key="navigationItem" id="yfH-Cq-81n"/>
                     <connections>
                         <outlet property="MapView" destination="IKr-69-wON" id="bFC-BK-mKz"/>
+                        <segue destination="PZN-C8-uVw" kind="show" identifier="Map View To Manual View" id="GyE-m6-Teb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foM-MB-btj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7295.652173913044" y="533.70535714285711"/>
+            <point key="canvasLocation" x="7322" y="1160"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">

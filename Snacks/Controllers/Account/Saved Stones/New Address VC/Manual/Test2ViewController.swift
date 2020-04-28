@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+
+
 class Test2ViewController: UIViewController {
 
 
@@ -20,6 +22,8 @@ class Test2ViewController: UIViewController {
     var selectionName: String = "Tokyo"
     // Latitude, longitude, initially at Tokyo.
     var selectionCoordinates: [Double] = [35.6762, 139.6503]
+    var selectionFormattedAddress: String = "Tokyo Japan"
+    var geocodedAddress: [String] = []
     
     var mapMarker: GMSMarker?
     
@@ -28,14 +32,11 @@ class Test2ViewController: UIViewController {
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
-    
-        
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     
         // MARK: - Set up MapView
@@ -99,6 +100,35 @@ extension Test2ViewController: GMSMapViewDelegate {
 //        self.mapMarker?.title = self.selectionName
 //
 //    }
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        performSegue(withIdentifier: "Map View To Manual View", sender: self)
+        return true
+    }
+    
+    // Push the map results to ManualAddressViewController.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "Map View To Manual View") {
+            let destinationVC = segue.destination as! ManualAddressViewController
+            
+            
+            var formattedAddressArray: [String] = selectionFormattedAddress.components(separatedBy: ", ")
+            
+            // Remove last element (Japan)
+            let addressArray = formattedAddressArray.removeLast()
+            
+            
+            
+            for addressLine in addressArray {
+                print(addressLine)
+                //destinationVC.MapResults.append(addressLine)
+            }
+            
+            
+            
+            
+        }
+
+    }
     
     
 }
@@ -110,39 +140,37 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                      didAutocompleteWith place: GMSPlace) {
         searchController?.isActive = false
-        // Do something with the selected place.
         
+        // MARK: -Do something with the selected place.
         self.selectionName = place.name ?? "Location"
+        self.selectionFormattedAddress = place.formattedAddress ?? "Formatted Address"
         self.selectionCoordinates.append(place.coordinate.latitude)
         self.selectionCoordinates.append(place.coordinate.latitude)
+        
         
         print("Place name: \(place.name)")
         print("Place address: \(place.formattedAddress)")
         print("Place attributions: \(place.attributions)")
         print("Place Coordinates: \(place.coordinate.latitude) \(place.coordinate.longitude)")
-        print("vars", self.selectionName, self.selectionCoordinates)
+        print("vars", self.selectionName, self.selectionCoordinates, self.selectionFormattedAddress)
+        
+        // TODO
+        
+    
         
         
         // MARK: - Place Marker at selected Location.
         let coordinates = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-        //let marker = GMSMarker(position: coordinates)
-        //marker.title = place.name
-        //marker.map = self.MapView
         
         self.mapMarker = GMSMarker(position: coordinates)
         self.mapMarker?.title = place.name
         self.mapMarker?.map = self.MapView
-        
+            
         
         // MARK: - Animate map to new Location.
         let location = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 16.0)
         // Animate MapView to the selected location.
         self.MapView.animate(to: location)
-        
-
-        
-
-        
         }
     
     
