@@ -22,7 +22,7 @@ class Test2ViewController: UIViewController {
     var selectionName: String = "Tokyo"
     // Latitude, longitude, initially at Tokyo.
     var selectionCoordinates: [Double] = [35.6762, 139.6503]
-    var selectionFormattedAddress: String = "Tokyo Japan"
+    var selectionFormattedAddress: [String] = ["Tokyo", "Japan"]
     //var selectionPlusCode: GMSPlusCode!
     
     
@@ -88,6 +88,7 @@ extension Test2ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         // Call, when user selects new location.
     }
+    
     // MARK: Marker is dragged.
     // Update location coordinates and address.
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
@@ -113,14 +114,25 @@ extension Test2ViewController: GMSMapViewDelegate {
             }
             let pm = placemarks![0]
             print(pm)
-//            print(pm.name)  // name
-//            print(pm.administrativeArea)  // state or province (tokyo)
-//            print(pm.locality)  // city (taito-ku)
-//            print(pm.postalCode) //postal code
-//            print(pm.thoroughfare) // street addy
-//            print(pm.location?.coordinate.latitude)
+            
+            let name = pm.name ?? ""
+            let postalcode = pm.postalCode ?? ""
+            let thoroughfare = pm.thoroughfare ?? ""
+            let locality = pm.locality ?? ""
+            let administrativeArea = pm.administrativeArea ?? ""
+            let country = pm.country ?? ""
+            
             
 
+            print(pm.name)  // name
+            print(pm.administrativeArea)  // state or province (tokyo)
+            print(pm.locality)  // city (taito-ku)
+            print(pm.postalCode) //postal code
+            print(pm.thoroughfare) // street addy
+            print(pm.location?.coordinate.latitude, pm.location?.coordinate.longitude)
+
+            self.selectionFormattedAddress = [name, postalcode, thoroughfare, locality, administrativeArea]
+            
 
             
         })
@@ -139,9 +151,7 @@ extension Test2ViewController: GMSMapViewDelegate {
         if (segue.identifier == "Map View To Manual View") {
             let destinationVC = segue.destination as! ManualAddressViewController
 
-            let formattedAddressArray: [String] = selectionFormattedAddress.components(separatedBy: ", ")
-            destinationVC.MapResults = formattedAddressArray
-            
+            destinationVC.MapResults = selectionFormattedAddress
             destinationVC.MapCoordinates = selectionCoordinates
             
             
@@ -160,7 +170,13 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
         // MARK: - Do something with the selected place.
         
         self.selectionName = place.name ?? "Location"
-        self.selectionFormattedAddress = place.formattedAddress ?? "Formatted Address"
+        
+        // Formatted Address to array of strings:
+        let placeAddress = place.formattedAddress ?? "Formatted Address"
+        let formattedAddressArray: [String] = placeAddress.components(separatedBy: ", ")
+        self.selectionFormattedAddress = formattedAddressArray
+
+        // Selection coordinates.
         self.selectionCoordinates[0] = place.coordinate.latitude
         self.selectionCoordinates[1] = place.coordinate.longitude
 
