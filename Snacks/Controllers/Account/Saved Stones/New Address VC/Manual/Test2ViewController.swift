@@ -88,6 +88,45 @@ extension Test2ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         // Call, when user selects new location.
     }
+    // MARK: Marker is dragged.
+    // Update location coordinates and address.
+    func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
+        print("Ended dragging!")
+        
+        // Coordinates
+        self.selectionCoordinates[0] = marker.position.latitude
+        self.selectionCoordinates[1] = marker.position.longitude
+        
+        // Address
+        //let coordinates = CLLocationCoordinate2D(latitude: selectionCoordinates[0], longitude: selectionCoordinates[1])
+        let coordinates1 = CLLocation(latitude: selectionCoordinates[0], longitude: selectionCoordinates[1])
+        CLGeocoder().reverseGeocodeLocation(coordinates1, completionHandler: {(placemarks, err) -> Void in
+            print(coordinates1)
+            guard err == nil else {
+                print("Reverse geocoder failed with error" + err!.localizedDescription)
+                return
+            }
+            
+            guard placemarks!.count > 0 else {
+                print("Problem with the data received from geocoder")
+                return
+            }
+            let pm = placemarks![0]
+            print(pm)
+//            print(pm.name)  // name
+//            print(pm.administrativeArea)  // state or province (tokyo)
+//            print(pm.locality)  // city (taito-ku)
+//            print(pm.postalCode) //postal code
+//            print(pm.thoroughfare) // street addy
+//            print(pm.location?.coordinate.latitude)
+            
+
+
+            
+        })
+        
+        
+    }
     
 
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -118,34 +157,21 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
                      didAutocompleteWith place: GMSPlace) {
         searchController?.isActive = false
         
-        // MARK: -Do something with the selected place.
+        // MARK: - Do something with the selected place.
+        
         self.selectionName = place.name ?? "Location"
         self.selectionFormattedAddress = place.formattedAddress ?? "Formatted Address"
         self.selectionCoordinates[0] = place.coordinate.latitude
         self.selectionCoordinates[1] = place.coordinate.longitude
-        
-        
-        //self.selectionPlusCode = GMSPlusCode()
-        //self.selectionPlusCode = place.plusCode!
-        
-        
-        
-//        print("Place name: \(place.name)")
-//        print("Place address: \(place.formattedAddress)")
-//        print("Place attributions: \(place.attributions)")
-//        print("Place Coordinates: \(place.coordinate.latitude) \(place.coordinate.longitude)")
-//        print("vars", self.selectionName, self.selectionCoordinates, self.selectionFormattedAddress)
-        
-        // TODO
-        
-    
+
         
         
         // MARK: - Place Marker at selected Location.
-        let coordinates = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-        
+        let coordinates = CLLocationCoordinate2D(latitude: selectionCoordinates[0], longitude: selectionCoordinates[1])
+        //let coordinates = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         self.mapMarker = GMSMarker(position: coordinates)
         self.mapMarker?.title = place.name
+        self.mapMarker?.isDraggable = true
         self.mapMarker?.map = self.MapView
             
         

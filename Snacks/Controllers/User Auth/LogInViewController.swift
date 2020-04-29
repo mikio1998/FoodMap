@@ -45,6 +45,10 @@ class LogInViewController: UIViewController, initiateTransitionProtocol {
     
     func setUpElements() {
         
+        emailTextField.text = "a@b.com"
+        passwordTextField.text = "tester1!"
+        
+        
         // Hide the error label
         errorLabel.alpha = 0
         
