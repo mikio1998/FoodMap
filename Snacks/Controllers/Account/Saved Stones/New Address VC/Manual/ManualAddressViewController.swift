@@ -60,7 +60,7 @@ class ManualAddressViewController: UIViewController {
             inputs.append("\(cell.textField.text!)")
         }
         
-        
+        // Create new stone
         let newStone =
             Stone(name: inputs[0],
                   description: inputs[1],

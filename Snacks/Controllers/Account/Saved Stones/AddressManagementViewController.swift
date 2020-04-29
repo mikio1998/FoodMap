@@ -29,7 +29,12 @@ class AddressManagementViewController: UIViewController {
     
     // Func that unwinds VC's to this VC.
     // To pass data: https://www.youtube.com/watch?v=ULd2v4mHyQ4
-    @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {}
+    @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {
+        
+        // When unwind is triggered, reload the data.
+        self.firestoreToArray()
+        self.tableView.reloadData()
+    }
         
 
     

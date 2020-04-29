@@ -789,7 +789,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
-                                    <action selector="saveButton:" destination="mex-AD-PsH" eventType="touchUpInside" id="0Dn-vk-DCJ"/>
                                     <action selector="saveButtonPressed:" destination="PZN-C8-uVw" eventType="touchUpInside" id="PaL-v3-8ls"/>
                                     <segue destination="mex-AD-PsH" kind="unwind" unwindAction="unwindToAddressManagement:" id="z5F-Ma-znx"/>
                                 </connections>
@@ -815,7 +814,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGt-s2-HQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mex-AD-PsH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8134.7826086956529" y="1141.7410714285713"/>
+            <point key="canvasLocation" x="8117" y="1160"/>
         </scene>
         <!--Edit Saved Stone View Controller-->
         <scene sceneID="KTJ-gm-QNo">
