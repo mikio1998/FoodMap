@@ -24,7 +24,7 @@ class AddressManagementViewController: UIViewController {
     
     var savedStonesArray: [Stone] = []
 
-    var selectedStone: Stone = Stone(name: "", description: "", 都道府県: "", 市区町村: "", 郵便番号: "", 番地: "", other: "")
+    var selectedStone: Stone = Stone(name: "", description: "", Address1: "", Address2: "", Address3: "", Address4: "", Address5: "")
     
     
     // Func that unwinds VC's to this VC.
@@ -65,13 +65,13 @@ class AddressManagementViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     let Name = document.get("name") as! String
                     let Description = document.get("description") as! String
-                    let 都道府県 = document.get("都道府県") as! String
-                    let 市区町村 = document.get("市区町村") as! String
-                    let 郵便番号 = document.get("郵便番号") as! String
-                    let 番地 = document.get("番地") as! String
-                    let other = document.get("other") as! String
+                    let Address1 = document.get("Address1") as! String
+                    let Address2 = document.get("Address2") as! String
+                    let Address3 = document.get("Address3") as! String
+                    let Address4 = document.get("Address4") as! String
+                    let Address5 = document.get("Address5") as! String
 
-                    let stone = Stone(name: Name, description: Description, 都道府県: 都道府県, 市区町村: 市区町村, 郵便番号: 郵便番号, 番地: 番地, other: other)
+                    let stone = Stone(name: Name, description: Description, Address1: Address1, Address2: Address2, Address3: Address3, Address4: Address4, Address5: Address5)
                     self.savedStonesArray.append(stone)
                     self.tableView.reloadData()
                 }
@@ -104,7 +104,10 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
         let stone = savedStonesArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "My Address Cell", for: indexPath) as! MyAddressCell
         
-        cell.setCellElements(name: stone.name, 郵便番号: stone.郵便番号, 都道府県: stone.都道府県, 市区町村: stone.市区町村, 番地: stone.番地, other: stone.other, image: "izu-stone")
+        
+        
+        cell.setCellElements(name: stone.name, Address1: stone.Address1, Address2: stone.Address2, Address3: stone.Address3, Address4: stone.Address4, Address5: stone.Address5, image: "izu-stone")
+        
         
         
         
@@ -126,11 +129,14 @@ extension AddressManagementViewController: UITableViewDataSource, UITableViewDel
         let newStone = Stone(
             name: self.savedStonesArray[indexPath.row].name,
             description: self.savedStonesArray[indexPath.row].description,
-            都道府県: self.savedStonesArray[indexPath.row].都道府県,
-            市区町村: self.savedStonesArray[indexPath.row].市区町村,
-            郵便番号: self.savedStonesArray[indexPath.row].郵便番号,
-            番地: self.savedStonesArray[indexPath.row].番地,
-            other: self.savedStonesArray[indexPath.row].other)
+            Address1: self.savedStonesArray[indexPath.row].Address1,
+            Address2: self.savedStonesArray[indexPath.row].Address2,
+            Address3: self.savedStonesArray[indexPath.row].Address3,
+            Address4: self.savedStonesArray[indexPath.row].Address4,
+            Address5: self.savedStonesArray[indexPath.row].Address5)
+        
+        
+        
         
         self.selectedStone = newStone
         //self.selectedStone.append(newStone)

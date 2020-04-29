@@ -94,23 +94,23 @@ class Stone {
     // Do later
     //var lastvisit: Date
     
-    var 都道府県: String
-    var 市区町村: String
-    var 郵便番号: String
-    var 番地: String
-    var other: String
+    var Address1: String
+    var Address2: String
+    var Address3: String
+    var Address4: String
+    var Address5: String
     
-    init(name: String, description: String, 都道府県: String,  市区町村: String, 郵便番号: String, 番地: String, other: String) {
+    init(name: String, description: String, Address1: String,  Address2: String, Address3: String, Address4: String, Address5: String) {
         
         self.name = name
         self.description = description
         //self.lastvisit = lastvisit
         
-        self.都道府県 = 都道府県
-        self.市区町村 = 市区町村
-        self.郵便番号 = 郵便番号
-        self.番地 = 番地
-        self.other = other
+        self.Address1 = Address1
+        self.Address2 = Address2
+        self.Address3 = Address3
+        self.Address4 = Address4
+        self.Address5 = Address5
         
         
     }

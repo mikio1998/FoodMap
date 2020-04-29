@@ -64,11 +64,11 @@ class ManualAddressViewController: UIViewController {
         let newStone =
             Stone(name: inputs[0],
                   description: inputs[1],
-                  都道府県: inputs[3],
-                  市区町村: inputs[4],
-                  郵便番号: inputs[2],
-                  番地: inputs[5],
-                  other: inputs[6])
+                  Address1: inputs[2],
+                  Address2: inputs[3],
+                  Address3: inputs[4],
+                  Address4: inputs[5],
+                  Address5: inputs[6])
 
         print(newStone)
         
@@ -76,11 +76,11 @@ class ManualAddressViewController: UIViewController {
         stonesRef.document(newStone.name).setData([
             "name": newStone.name,
             "description": newStone.description,
-            "都道府県": newStone.都道府県,
-            "市区町村": newStone.市区町村,
-            "郵便番号": newStone.郵便番号,
-            "番地": newStone.番地,
-            "other": newStone.other
+            "Address1": newStone.Address1,
+            "Address2": newStone.Address2,
+            "Address3": newStone.Address3,
+            "Address4": newStone.Address4,
+            "Address5": newStone.Address5
         
         ])
         
@@ -97,9 +97,7 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellLabelsArray = ["Name", "Description", "郵便番号", "都道府県", "市区町村", "番地", "他"]
-        // MapResults = [banchi, 市区町村, 都道府県 郵便番号, japan]
+
         
         // Images Cell
         if indexPath.row == 0 {

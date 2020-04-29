@@ -20,8 +20,6 @@ class EditSavedStoneViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
         
     @IBAction func saveButtonPressed(_ sender: Any) {
-        
-  
     }
     
     // MARK: - Prepare for segue
@@ -46,11 +44,11 @@ class EditSavedStoneViewController: UIViewController {
         let newStone =
             Stone(name: inputs[0],
                   description: inputs[1],
-                  都道府県: inputs[3],
-                  市区町村: inputs[4],
-                  郵便番号: inputs[2],
-                  番地: inputs[5],
-                  other: inputs[6])
+                  Address1: inputs[2],
+                  Address2: inputs[3],
+                  Address3: inputs[4],
+                  Address4: inputs[5],
+                  Address5: inputs[6])
 
         // TODO: delete old document
         stoneCollectionRef.document(stoneData.name).delete()
@@ -59,19 +57,21 @@ class EditSavedStoneViewController: UIViewController {
         stoneCollectionRef.document(newStone.name).setData([
             "name": newStone.name,
             "description": newStone.description,
-            "都道府県": newStone.都道府県,
-            "市区町村": newStone.市区町村,
-            "郵便番号": newStone.郵便番号,
-            "番地": newStone.番地,
-            "other": newStone.other
+            "Address1": newStone.Address1,
+            "Address2": newStone.Address2,
+            "Address3": newStone.Address3,
+            "Address4": newStone.Address4,
+            "Address5": newStone.Address5
         ])
         
         // Fill in savedStonesArray with updated stones.
         destinationVC.firestoreToArray()
     }
+
+// MARK: - ViewDidLoad
     
-    //var stoneData: [Stone] = []
-    var stoneData: Stone = Stone(name: "", description: "", 都道府県: "", 市区町村: "", 郵便番号: "", 番地: "", other: "")
+    // stoneData holds current stone data values.
+    var stoneData: Stone = Stone(name: "", description: "", Address1: "", Address2: "", Address3: "", Address4: "", Address5: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +87,8 @@ class EditSavedStoneViewController: UIViewController {
 
 }
 
+// MARK: - TableView
+
 extension EditSavedStoneViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
@@ -97,23 +99,23 @@ extension EditSavedStoneViewController: UITableViewDelegate, UITableViewDataSour
         
         // Cell Labels in array form.
         let labels = [
-            "Name",
-            "Description",
-            "郵便番号",
-            "都道府県",
-            "市区町村",
-            "番地",
-            "other"]
+            "名前",
+            "場所の説明",
+            "住所１",
+            "住所２",
+            "住所３",
+            "住所４",
+            "住所５"]
         
         // Stone data in array form.
         let stone = [
             stoneData.name,
             stoneData.description,
-            stoneData.郵便番号,
-            stoneData.都道府県,
-            stoneData.市区町村,
-            stoneData.番地,
-            stoneData.other]
+            stoneData.Address1,
+            stoneData.Address2,
+            stoneData.Address3,
+            stoneData.Address4,
+            stoneData.Address5]
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Edit Saved Stone Text Cell", for: indexPath) as! EditSavedStoneTextCell
