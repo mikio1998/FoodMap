@@ -773,10 +773,18 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8F-hk-qIz">
+                                                    <rect key="frame" x="244" y="5" width="129" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellLabel" destination="rom-ey-iZq" id="NYz-3T-snj"/>
+                                            <outlet property="errorLabel" destination="k8F-hk-qIz" id="Jz5-7n-3Wq"/>
                                             <outlet property="textField" destination="83z-dV-oXy" id="zSj-4x-cO7"/>
                                         </connections>
                                     </tableViewCell>
@@ -790,7 +798,6 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="PZN-C8-uVw" eventType="touchUpInside" id="PaL-v3-8ls"/>
-                                    <segue destination="mex-AD-PsH" kind="unwind" unwindAction="unwindToAddressManagement:" id="z5F-Ma-znx"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2i-yM-jd6">
@@ -809,12 +816,13 @@
                         <outlet property="mapCoordinatesLabel" destination="w2i-yM-jd6" id="oF4-Pn-Rzf"/>
                         <outlet property="saveButton" destination="LrT-gW-qhs" id="WVF-1h-APc"/>
                         <outlet property="tableView" destination="0ne-8B-p4o" id="4f0-2G-ZvD"/>
+                        <segue destination="mex-AD-PsH" kind="unwind" identifier="Unwind To Address Management" unwindAction="unwindToAddressManagement:" id="edc-WP-eTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGt-s2-HQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mex-AD-PsH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8117" y="1160"/>
+            <point key="canvasLocation" x="8115.9420289855079" y="1158.4821428571429"/>
         </scene>
         <!--Edit Saved Stone View Controller-->
         <scene sceneID="KTJ-gm-QNo">

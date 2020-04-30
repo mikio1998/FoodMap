@@ -102,6 +102,7 @@ class NewManualAddressScreenImagesCell: UITableViewCell {
 class NewManualAddressScreenTextFieldCell: UITableViewCell {
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     func setCellLabel(label: String, text: String) {
         cellLabel.text = label

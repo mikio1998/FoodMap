@@ -23,7 +23,7 @@ class EditSavedStoneViewController: UIViewController {
         
         
         
-        let alert = UIAlertController(title: "Name Required", message: "message", preferredStyle: .alert)
+        //let alert = UIAlertController(title: "Name Required", message: "message", preferredStyle: .alert)
         
         let index = IndexPath(row: 0, section: 0)
         let nameCell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
@@ -31,7 +31,7 @@ class EditSavedStoneViewController: UIViewController {
         if nameCell.textField.text!.isEmpty == true {
             nameCell.errorLabel.alpha = 1
             nameCell.errorLabel.textColor = .red
-            nameCell.errorLabel.text = "* Required *"
+            nameCell.errorLabel.text = "* 必須 *"
             
         }
         else {

@@ -21,13 +21,25 @@ class ManualAddressViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        print("Pressed!")
-        saveToDB()
+        
+        //Unwind To Address Management
+        let index = IndexPath(row: 1, section: 0)
+        let nameCell = tableView.cellForRow(at: index) as! NewManualAddressScreenTextFieldCell
+        
+        if nameCell.textField.text!.isEmpty == true {
+            nameCell.errorLabel.alpha = 1
+            nameCell.errorLabel.textColor = .red
+            nameCell.errorLabel.text = "* 必須 *"
+        } else {
+            //saveToDB()
+            performSegue(withIdentifier: "Unwind To Address Management", sender: self)
+        }
     }
     
     var MapResults: [String] = []
     var MapCoordinates: [Double] = [0.0, 0.0]
     
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,11 +54,27 @@ class ManualAddressViewController: UIViewController {
         print("MapResults", MapResults)
         
     }
-    
-    func saveToDB() {
-
-        let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
+    // MARK: - Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let destinationVC = segue.destination as! AddressManagementViewController
+        
+        // Helper function: does firebase tasks.
+        saveToDB()
+        
+        print("Before Remove", destinationVC.savedStonesArray)
+        destinationVC.savedStonesArray.removeAll()
+        print("After Remove", destinationVC.savedStonesArray)
+        destinationVC.firestoreToArray()
+
+    }
+    
+    
+    // MARK: - Save to DB helper
+    // Write the textField values into
+    // a new FireBase Document
+    func saveToDB() {
+        let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
         var inputs = [String]()
         
         // Get the cells.
@@ -81,9 +109,7 @@ class ManualAddressViewController: UIViewController {
             "Address3": newStone.Address3,
             "Address4": newStone.Address4,
             "Address5": newStone.Address5
-        
         ])
-        
     }
 }
 
