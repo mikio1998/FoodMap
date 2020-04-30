@@ -11,8 +11,6 @@ import Firebase
 
 
 class setUserInfoClass {
-
-    
     static var username: String = ""
     static var email: String = ""
     static var firstname: String = ""
@@ -27,17 +25,17 @@ class setUserInfoClass {
             print("done!")
             print(userInfoObserver.didFinishWritingUserInfo)
         }
-        
-        
-        
     }
-    
+}
+// MARK: - Current Users location coordinates
+struct currentUserLocation {
+    // Default set as Tokyo Station
+    static var latitude: Double = 35.681708
+    static var longitude: Double = 139.767053
+
 }
 
-
 struct setUserInfoStruct {
-
-    
     static var username: String = ""
     static var email: String = ""
     static var firstname: String = ""
@@ -98,10 +96,6 @@ struct setUserInfoStruct {
                 print("Document does not exist")
             }
         }
-        
-
-        
-        
     }
 
 }
@@ -123,11 +117,7 @@ class userInfo {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
-
     }
-
-    
-
 }
 struct currentUser {
     
@@ -139,8 +129,6 @@ struct currentUser {
     
     
     static var current = userInfo(uid: currentUser.uid, username: currentUser.username, firstName: currentUser.firstName, lastName: currentUser.lastName, email: currentUser.email)
-
-
 }
 
     

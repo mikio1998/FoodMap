@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import GoogleMaps
 import GooglePlaces
 
@@ -21,7 +22,7 @@ class Test2ViewController: UIViewController {
     // Place Name
     var selectionName: String = "Tokyo"
     // Latitude, longitude, initially at Tokyo.
-    var selectionCoordinates: [Double] = [35.6762, 139.6503]
+    var selectionCoordinates: [Double] = [35.681708, 139.767053]
     var selectionFormattedAddress: [String] = ["Tokyo", "Japan"]
     //var selectionPlusCode: GMSPlusCode!
     
@@ -47,6 +48,9 @@ class Test2ViewController: UIViewController {
         // GOOGLE MAPS SDK: User Location
         MapView.isMyLocationEnabled = true
         MapView.settings.myLocationButton = true
+       
+        
+        
         
         // Setting Initial map location.
         let location = GMSCameraPosition.camera(withLatitude: selectionCoordinates[0], longitude: selectionCoordinates[1], zoom: 15.0)
@@ -89,32 +93,83 @@ extension Test2ViewController: GMSMapViewDelegate {
         // Call, when user selects new location.
     }
     
-    // MARK: Marker is dragged.
+    // MARK:  - Marker is dragged.
     // Update location coordinates and address.
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         print("Ended dragging!")
         
-        // Coordinates
+        // MARK: Selection Coordinates
         self.selectionCoordinates[0] = marker.position.latitude
         self.selectionCoordinates[1] = marker.position.longitude
         
-        // Address
-        //let coordinates = CLLocationCoordinate2D(latitude: selectionCoordinates[0], longitude: selectionCoordinates[1])
-        let coordinates1 = CLLocation(latitude: selectionCoordinates[0], longitude: selectionCoordinates[1])
-        CLGeocoder().reverseGeocodeLocation(coordinates1, completionHandler: {(placemarks, err) -> Void in
-            print(coordinates1)
+        // MARK: Selection Address
+        GeocodeHelper(lat: selectionCoordinates[0], long: selectionCoordinates[1])
+    }
+ 
+    
+    // MARK: - MyLocationButton Tapped.
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        print("MyLocationButton tapped.")
+
+        // Coordinates
+        let coordinates = CLLocationCoordinate2D(latitude: currentUserLocation.latitude, longitude: currentUserLocation.longitude)
+
+        // MARK: Place Marker at selected Location.
+        self.mapMarker = GMSMarker(position: coordinates)
+        self.mapMarker?.title = "現在位置"
+        self.mapMarker?.isDraggable = true
+        self.mapMarker?.map = self.MapView
+        
+        // MARK: Change selectionCoordinates values
+        // So we can pass correct data if marker is tapped.
+        self.selectionCoordinates = [currentUserLocation.latitude, currentUserLocation.longitude]
+        
+        // MARK: Change selectionFormattedAddress values
+        // So we can pass correct data if marker is tapped.
+        GeocodeHelper(lat: currentUserLocation.latitude, long: currentUserLocation.longitude)
+        
+        // MARK: Animate map to new Location.
+        let location = GMSCameraPosition.camera(withLatitude: currentUserLocation.latitude, longitude: currentUserLocation.longitude, zoom: 16.0)
+        // Animate MapView to the selected location.
+        self.MapView.animate(to: location)
+        return true
+    }
+    
+    // MARK: Marker Tapped
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        performSegue(withIdentifier: "Map View To Manual View", sender: self)
+        return true
+    }
+    // MARK: Push the map results to ManualAddressViewController.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "Map View To Manual View") {
+            let destinationVC = segue.destination as! ManualAddressViewController
+
+            destinationVC.MapResults = selectionFormattedAddress
+            destinationVC.MapCoordinates = selectionCoordinates
+
+        }
+    }
+    
+    // MARK: Geocode helper function
+    func GeocodeHelper(lat: Double, long: Double) {
+        // MARK: input: Latitude and Longitude
+        // Updates selectionFormattedAddress array values,
+        // with new coordinate location.
+        let coordinates = CLLocation(latitude: lat, longitude: long)
+        
+        CLGeocoder().reverseGeocodeLocation(coordinates, completionHandler: {(placemarks, err) -> Void in
+            print(coordinates)
             guard err == nil else {
                 print("Reverse geocoder failed with error" + err!.localizedDescription)
                 return
             }
-            
             guard placemarks!.count > 0 else {
                 print("Problem with the data received from geocoder")
                 return
             }
             let pm = placemarks![0]
             print(pm)
-            
             let name = pm.name ?? ""
             let postalcode = pm.postalCode ?? ""
             let thoroughfare = pm.thoroughfare ?? ""
@@ -122,43 +177,13 @@ extension Test2ViewController: GMSMapViewDelegate {
             let administrativeArea = pm.administrativeArea ?? ""
             let country = pm.country ?? ""
             
-            
-
-            print(pm.name)  // name
-            print(pm.administrativeArea)  // state or province (tokyo)
-            print(pm.locality)  // city (taito-ku)
-            print(pm.postalCode) //postal code
-            print(pm.thoroughfare) // street addy
-            print(pm.location?.coordinate.latitude, pm.location?.coordinate.longitude)
-
             self.selectionFormattedAddress = [name, postalcode, thoroughfare, locality, administrativeArea]
-            
-
-            
         })
-        
-        
     }
     
-
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        performSegue(withIdentifier: "Map View To Manual View", sender: self)
-        return true
-    }
     
-    // Push the map results to ManualAddressViewController.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "Map View To Manual View") {
-            let destinationVC = segue.destination as! ManualAddressViewController
-
-            destinationVC.MapResults = selectionFormattedAddress
-            destinationVC.MapCoordinates = selectionCoordinates
-            
-            
-        }
-    }
+    
 }
-
 
 
 // MARK: - Handle the user's selection.
@@ -196,11 +221,6 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
         // Animate MapView to the selected location.
         self.MapView.animate(to: location)
         }
-    
-    
-    
-    
-    
 
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                          didFailAutocompleteWithError error: Error){
@@ -218,3 +238,5 @@ extension Test2ViewController: GMSAutocompleteResultsViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }
+
+

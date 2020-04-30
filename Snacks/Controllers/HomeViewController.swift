@@ -52,7 +52,6 @@ class HomeViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        
     }
 }
 
@@ -60,9 +59,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController: CLLocationManagerDelegate {
     // Called when User location changes.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-           guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-           print("locations = \(locValue.latitude) \(locValue.longitude)")
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        currentUserLocation.latitude = locValue.latitude
+        currentUserLocation.longitude = locValue.longitude
+
+        
         
         //lblLocation.text = "latitude = \(locValue.latitude), longitude = \(locValue.longitude)"
     }
-}
+    }

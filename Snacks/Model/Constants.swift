@@ -78,12 +78,7 @@ struct FireBaseKeys {
         
     }
 }
-//都道府県
-//市区町村
-//郵便番号
-//番地
-//else
-// (name: String, description: String, lastvisit: Date, 都道府県: String,  市区町村: String, 郵便番号: String, 番地: String, other: String)
+
 
 // MARK: - Stone Class
 class Stone {
