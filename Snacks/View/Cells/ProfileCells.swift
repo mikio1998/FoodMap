@@ -42,14 +42,9 @@ class ProfileTableViewCell: UITableViewCell {
     }
 
 }
-
-
+// MARK: - TextView Cell
+// Profile Description TextView Cell.
 class ProfileDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
-    
-
-    
-    
-    
     @IBOutlet weak var cellTextView: UITextView!
     
     func setUpCellTextView() {
@@ -69,8 +64,6 @@ class ProfileDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
         cellTextView.becomeFirstResponder()
         cellTextView.selectedTextRange = cellTextView.textRange(from: cellTextView.beginningOfDocument, to: cellTextView.beginningOfDocument)
     }
-    
-
     // MARK: - TextView placeholder
     // TextView has no placeholder property. So, programatcally added it.
     // https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
@@ -112,8 +105,6 @@ class ProfileDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
     }
-    
-    
 }
 
 

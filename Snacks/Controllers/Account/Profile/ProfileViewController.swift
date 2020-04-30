@@ -40,23 +40,21 @@ class ProfileViewController: UIViewController {
         tableView.reloadData()
         
     }
-    
-    
-    
+
+    // MARK: Helper func: save user info.
     func saveUserInfo() {
         let privateDataRef = FireStoreReferenceManager.referenceForUserPrivateData(uid: Auth.auth().currentUser!.uid)
         
-        // MARK: - Get cell text values
+        // Get cell text values
         var inputs = [String]()
         
-        // MARK: Get text value from username cell.
+        // Get text value from username cell.
         let pictureUserCell = tableView.cellForRow(at: IndexPath(row:0, section: 0)) as! ProfileTableViewCell
             inputs.append("\(pictureUserCell.CellNameField.text!)")
         
         // Get text value from introduction cell.
         let introductionCell = tableView.cellForRow(at: IndexPath(row:1, section: 0)) as! ProfileDescriptionTableViewCell
             inputs.append("\(introductionCell.cellTextView.text!)")
-        
         
         // Get text values from info cells.
         for cell in 2..<7 {
@@ -80,13 +78,7 @@ class ProfileViewController: UIViewController {
             ])
         
         self.tableView.reloadData()
-        
-        
     }
-    
-    
-    
-    
 }
 
 
@@ -109,10 +101,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else if indexPath.row == 1 {
             // - Second Cell, the Profle Description Cell.
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Description Cell") as! ProfileDescriptionTableViewCell
             cell.setUpCellTextView()
-            
             return cell
         }
         // - Remaining Cells are Identity Info Cells.

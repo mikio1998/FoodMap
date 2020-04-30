@@ -20,9 +20,6 @@ class NewAddressViewController: UIViewController {
         // Hides unused cells.
         tableView.tableFooterView = UIView()
     }
-    
-
-
 }
 
 

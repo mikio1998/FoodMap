@@ -21,10 +21,6 @@ class EditSavedStoneViewController: UIViewController {
         
     @IBAction func saveButtonPressed(_ sender: Any) {
         
-        
-        
-        //let alert = UIAlertController(title: "Name Required", message: "message", preferredStyle: .alert)
-        
         let index = IndexPath(row: 0, section: 0)
         let nameCell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
         
@@ -38,10 +34,7 @@ class EditSavedStoneViewController: UIViewController {
 
             performSegue(withIdentifier: "unwindToAddressManagement", sender: self)
         }
-        
 
-
-        
     }
 
 
@@ -61,11 +54,7 @@ class EditSavedStoneViewController: UIViewController {
         tableView.delegate = self
         // Hides unused cells.
         tableView.tableFooterView = UIView()
-        
-        let index = IndexPath(row: 0, section: 0)
-        let NameCell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
-        
-        //saveButton.isEnabled = false
+
  
     }
     
@@ -85,11 +74,17 @@ class EditSavedStoneViewController: UIViewController {
         // Get text values from cells. Create Stone object with values.
         for cell in 0..<7 {
             let index = IndexPath(row:cell, section: 0)
-            //print(tableView.cellForRow(at: index), "cell!")
-            let cell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
-            //print(cell.textField.text ?? "")
-
-            inputs.append("\(cell.textField.text!)")
+            
+            
+            if index.row == 1 { // MARK: Address Description Cell
+                let cell = tableView.cellForRow(at: index) as! AddressDescriptionTableViewCell
+                inputs.append("\(cell.cellTextView.text!)")
+                
+                
+            } else { // MARK: Other Cells
+                let cell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
+                inputs.append("\(cell.textField.text!)")
+            }
         }
         
         let newStone =
@@ -156,6 +151,14 @@ extension EditSavedStoneViewController: UITableViewDelegate, UITableViewDataSour
             stoneData.Address4,
             stoneData.Address5]
         
+        // MARK: The Description (second) cell is unique.
+        if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Address Description TableView Cell", for: indexPath) as! AddressDescriptionTableViewCell
+            cell.setUpCellTextView(descriptionText: stoneData.description)
+            return cell
+        }
+        
+        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Edit Saved Stone Text Cell", for: indexPath) as! EditSavedStoneTextCell
 
@@ -164,13 +167,19 @@ extension EditSavedStoneViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    // MARK: - Cell size
+    // MARK: Cell size
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        
+        // Address Description Cell
+        if indexPath.row == 1 {
+            return 105.0
+        }
+        // Other cells
+        return 50.0
     }
 }
 
-
+// MARK: - Collection View
 extension EditSavedStoneViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5

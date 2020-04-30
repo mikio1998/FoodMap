@@ -19,7 +19,6 @@ class ManualAddressViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
-    
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         //Unwind To Address Management
@@ -31,7 +30,6 @@ class ManualAddressViewController: UIViewController {
             nameCell.errorLabel.textColor = .red
             nameCell.errorLabel.text = "* 必須 *"
         } else {
-            //saveToDB()
             performSegue(withIdentifier: "Unwind To Address Management", sender: self)
         }
     }
@@ -46,10 +44,12 @@ class ManualAddressViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         mapCoordinatesLabel.text = "\(MapCoordinates[0]), \(MapCoordinates[1])"
-        
-        
+    
         // Remove lines between cells.
-        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        //self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        // Hides unused cells.
+        tableView.tableFooterView = UIView()
         
         print("MapResults", MapResults)
         
@@ -125,9 +125,16 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         
-        // Images Cell
+        // MARK: Description Cell
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "New Manual Address Screen Images Cell", for: indexPath)
+            return cell
+        }
+        // MARK: Description Cell
+        else if indexPath.row == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "New Manual Address Description Cell", for: indexPath) as! NewManualAddressDescriptionTableViewCell
+            cell.setUpCellTextView(descriptionText: "")
+            
             return cell
         }
         
@@ -138,9 +145,7 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
         case 1:
             cell.setCellLabel(label: "名前", text: "")
             return cell
-        case 2:
-            cell.setCellLabel(label: "場所の説明", text: "")
-            return cell
+        // skip case 2
         case 3:
             cell.setCellLabel(label: "住所1", text: MapResults[0])
             return cell
@@ -173,11 +178,13 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { // image cell
             return 100.0
+        } else if indexPath.row == 2 { // description cell
+            return 105.0
         }
         
-        return 73.0
+        return 58.0
     }
     
     
