@@ -66,12 +66,17 @@ class EditSavedStoneTextCell: UITableViewCell {
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var errorLabel: UILabel!
     
     
     func setTextFieldAndLabel(labelText: String, fieldText: String) {
         self.cellLabel.text = labelText
         self.textField.text = fieldText
     }
+    
+    
+
+    
 }
 
 

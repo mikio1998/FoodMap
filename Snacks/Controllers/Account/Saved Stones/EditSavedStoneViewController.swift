@@ -20,11 +20,62 @@ class EditSavedStoneViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
         
     @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        
+        
+        let alert = UIAlertController(title: "Name Required", message: "message", preferredStyle: .alert)
+        
+        let index = IndexPath(row: 0, section: 0)
+        let nameCell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
+        
+        if nameCell.textField.text!.isEmpty == true {
+            nameCell.errorLabel.alpha = 1
+            nameCell.errorLabel.textColor = .red
+            nameCell.errorLabel.text = "* Required *"
+            
+        }
+        else {
+
+            performSegue(withIdentifier: "unwindToAddressManagement", sender: self)
+        }
+        
+
+
+        
+    }
+
+
+    
+    // stoneData holds current stone data values.
+    var stoneData: Stone = Stone(name: "", description: "", Address1: "", Address2: "", Address3: "", Address4: "", Address5: "")
+    
+    // MARK: - ViewDidLoad
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        // Hides unused cells.
+        tableView.tableFooterView = UIView()
+        
+        let index = IndexPath(row: 0, section: 0)
+        let NameCell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
+        
+        //saveButton.isEnabled = false
+ 
     }
     
-    // MARK: - Prepare for segue
-    // Saved edited stone. 
+   
+    
+    
+    // MARK: - Prepare for save segue
+    // Saved edited stone.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let destinationVC = segue.destination as! AddressManagementViewController
         
         // Reference to the stone document.
@@ -36,7 +87,7 @@ class EditSavedStoneViewController: UIViewController {
             let index = IndexPath(row:cell, section: 0)
             //print(tableView.cellForRow(at: index), "cell!")
             let cell = tableView.cellForRow(at: index) as! EditSavedStoneTextCell
-            print(cell.textField.text ?? "")
+            //print(cell.textField.text ?? "")
 
             inputs.append("\(cell.textField.text!)")
         }
@@ -65,26 +116,14 @@ class EditSavedStoneViewController: UIViewController {
         ])
         
         // Fill in savedStonesArray with updated stones.
+        print("Before Remove", destinationVC.savedStonesArray)
+        destinationVC.savedStonesArray.removeAll()
+        print("After Remove", destinationVC.savedStonesArray)
         destinationVC.firestoreToArray()
-    }
 
-// MARK: - ViewDidLoad
-    
-    // stoneData holds current stone data values.
-    var stoneData: Stone = Stone(name: "", description: "", Address1: "", Address2: "", Address3: "", Address4: "", Address5: "")
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        collectionView.dataSource = self
-        collectionView.delegate = self
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        // Hides unused cells.
-        tableView.tableFooterView = UIView()
     }
-
+    
 }
 
 // MARK: - TableView

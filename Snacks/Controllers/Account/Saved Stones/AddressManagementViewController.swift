@@ -32,11 +32,11 @@ class AddressManagementViewController: UIViewController {
     @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {
         
         // When unwind is triggered, reload the data.
-        self.firestoreToArray()
-        self.tableView.reloadData()
+        //self.firestoreToArray()
+        //self.tableView.reloadData()
+
     }
         
-
     
     
     override func viewDidLoad() {
@@ -50,8 +50,9 @@ class AddressManagementViewController: UIViewController {
         
         // Remove lines between cells.
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
+
         firestoreToArray()
+        print("saved stones array", savedStonesArray)
     }
     
     
@@ -59,10 +60,11 @@ class AddressManagementViewController: UIViewController {
         
         // Empty the savedStonesArray every time called.
         // Removes duplcates after changes.
-        self.savedStonesArray.removeAll()
+        //self.savedStonesArray.removeAll()
         
         let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
-
+        
+        
         stonesRef.getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -82,6 +84,7 @@ class AddressManagementViewController: UIViewController {
                 }
             }
         }
+        
     }
 }
 
