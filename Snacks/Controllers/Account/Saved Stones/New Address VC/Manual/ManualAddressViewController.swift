@@ -11,8 +11,28 @@ import Firebase
 import FirebaseDatabase
 
 
+
+struct Location {
+    var selectName: String
+    var selectCoordinates: [Double] = [35.681708, 139.767053]
+    var selectFormattedAddress: [String] = ["Tokyo", "Japan"]
+}
+
 class ManualAddressViewController: UIViewController {
 
+    var location: Location? {
+        didSet {
+            print("Didset")
+            print(location?.selectFormattedAddress)
+        }
+        willSet {
+            print("willset")
+        }
+    }
+    
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var mapCoordinatesLabel: UILabel!
@@ -20,7 +40,7 @@ class ManualAddressViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        
+        print("Save Pressed")
         //Unwind To Address Management
         let index = IndexPath(row: 1, section: 0)
         let nameCell = tableView.cellForRow(at: index) as! NewManualAddressScreenTextFieldCell
@@ -34,12 +54,24 @@ class ManualAddressViewController: UIViewController {
         }
     }
     
-    var MapResults: [String] = []
+    
+    // MARK: DATA HOLDING VARIABLES
+    var AddressData: [String] = []
     var MapCoordinates: [Double] = [0.0, 0.0]
+    
+    // Current editing cell
+    var EditingCellAt: Int = 0
+
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Testing out struct
+        location = Location(selectName: "", selectCoordinates: MapCoordinates, selectFormattedAddress: AddressData)
+        print("LOCATION",location)
+        
+        
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,22 +83,21 @@ class ManualAddressViewController: UIViewController {
         // Hides unused cells.
         tableView.tableFooterView = UIView()
         
-        print("MapResults", MapResults)
+        print("AddressData", AddressData)
         
     }
-    // MARK: - Prepare for segue
+    // MARK: - PREPARE for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationVC = segue.destination as! AddressManagementViewController
         
-        // Helper function: does firebase tasks.
+        // MARK: Helper function: does firebase tasks.
         saveToDB()
         
         print("Before Remove", destinationVC.savedStonesArray)
         destinationVC.savedStonesArray.removeAll()
         print("After Remove", destinationVC.savedStonesArray)
         destinationVC.firestoreToArray()
-
     }
     
     
@@ -77,17 +108,43 @@ class ManualAddressViewController: UIViewController {
         let stonesRef = FireStoreReferenceManager.referenceForUserPublicData(uid: Auth.auth().currentUser!.uid).collection("stones")
         var inputs = [String]()
         
+        //MARK: TODO: Get data from AddressData
+        
         // Get the cells.
         // Should iterate in order.
         for cell in 1..<8 {
-            let ndx = IndexPath(row:cell, section: 0)
-            let cell = tableView.cellForRow(at: ndx) as! NewManualAddressScreenTextFieldCell
-
-            print("\(cell.textField.text!)")
             
-            inputs.append("\(cell.textField.text!)")
+            switch cell {
+            case 2:
+                let ndx = IndexPath(row:cell, section: 0)
+                let cell = tableView.cellForRow(at: ndx) as! NewManualAddressDescriptionTableViewCell
+                    
+                print("\(cell.cellTextView.text!)")
+            default:
+                let ndx = IndexPath(row:cell, section: 0)
+                print(ndx.row)
+                let cell = tableView.cellForRow(at: ndx) as! NewManualAddressScreenTextFieldCell
+                print("\(cell.textField.text!)")
+                inputs.append("\(cell.textField.text!)")
+            }
+            
+            
+            
+//            if cell == 2 { // Description TextView
+//                let ndx = IndexPath(row:cell, section: 0)
+//                let cell = tableView.cellForRow(at: ndx) as! NewManualAddressDescriptionTableViewCell
+//
+//                print("\(cell.cellTextView.text!)")
+//                inputs.append("\(cell.cellTextView.text!)")
+//            } else {
+//                let ndx = IndexPath(row:cell, section: 0)
+//                let cell = tableView.cellForRow(at: ndx) as! NewManualAddressScreenTextFieldCell
+//                print("\(cell.textField.text!)")
+//                inputs.append("\(cell.textField.text!)")
+//            }
+            
+
         }
-        
         // Create new stone
         let newStone =
             Stone(name: inputs[0],
@@ -128,40 +185,71 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
         // MARK: Description Cell
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "New Manual Address Screen Images Cell", for: indexPath)
+            
+            
             return cell
         }
         // MARK: Description Cell
         else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "New Manual Address Description Cell", for: indexPath) as! NewManualAddressDescriptionTableViewCell
-            cell.setUpCellTextView(descriptionText: "")
             
+            cell.cellTextView.tag = indexPath.row
+            
+            //cell.cellTextView.delegate = self
+
+            cell.setUpCellTextView(descriptionText: location?.selectFormattedAddress[1] ?? "")
+            
+            print(cell.cellTextView.tag)
             return cell
         }
         
         // Textfield Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "New Manual Address Screen Text Field Cell", for: indexPath) as! NewManualAddressScreenTextFieldCell
+
+        // TODO: Do case7 check for all cells (in case for short address)
         
         switch indexPath.row {
         case 1:
-            cell.setCellLabel(label: "名前", text: "")
+//            cell.setCellLabel(label: "名前", text: AddressData[0])
+            cell.textField.tag = indexPath.row
+            cell.textField.delegate = self
+            
+            cell.setCellLabel(label: "名前", text: location?.selectFormattedAddress[0] ?? "")
             return cell
         // skip case 2
         case 3:
-            cell.setCellLabel(label: "住所1", text: MapResults[0])
+            
+            cell.textField.tag = indexPath.row
+            //cell.textField.delegate = self
+            cell.setCellLabel(label: "住所1", text: location?.selectFormattedAddress[2] ?? "")
+            
             return cell
         case 4:
-            cell.setCellLabel(label: "住所2", text: MapResults[1])
+            
+            cell.textField.tag = indexPath.row
+            cell.textField.delegate = self
+            cell.setCellLabel(label: "住所2", text: location?.selectFormattedAddress[3] ?? "")
             return cell
         case 5:
-            cell.setCellLabel(label: "住所3", text: MapResults[2])
+            
+            cell.textField.tag = indexPath.row
+            cell.textField.delegate = self
+            cell.setCellLabel(label: "住所3", text: location?.selectFormattedAddress[4] ?? "")
             return cell
         case 6:
-            cell.setCellLabel(label: "住所4", text: MapResults[3])
+            
+            cell.textField.tag = indexPath.row
+            cell.textField.delegate = self
+            cell.setCellLabel(label: "住所4", text: location?.selectFormattedAddress[5] ?? "")
             return cell
         case 7:
             // Array Range Check.
-            if MapResults.count > 4 {
-                cell.setCellLabel(label: "住所5", text: MapResults[4])
+            //if AddressData.count > 7 {
+            if (location?.selectFormattedAddress.count)! > 7 {
+                //cell.setCellLabel(label: "住所5", text: AddressData[7])
+                cell.textField.tag = indexPath.row
+                cell.textField.delegate = self
+                cell.setCellLabel(label: "住所5", text: location?.selectFormattedAddress[6] ?? "")
                 return cell
             }
             cell.setCellLabel(label: "住所5", text: "")
@@ -170,23 +258,91 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
             cell.setCellLabel(label: "Error fetching Label.", text: "Error fetching Text.")
             return cell
         }
-        
-        //cell.setCellLabel(label: cellLabelsArray[(indexPath.row)-1], text[])
-        
-        //return cell
-
     }
     
+//    // MARK: HELPER get cell data.
+//    func GetCellTextValues() {
+//
+//    }
+//
+//    // MARK: TODO
+//    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+//        print("ended editing")
+//        // address1 to address5
+//        if (3 <= indexPath!.row || indexPath!.row < 8) {
+//            let cell = tableView.cellForRow(at: indexPath!) as! NewManualAddressScreenTextFieldCell
+//
+//            MapResults[indexPath!.row-3] = cell.textField.text!
+//            print(MapResults)
+//
+//        }
+//
+//    }
+    
+    // MARK: Cell Sizing
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 { // image cell
             return 100.0
         } else if indexPath.row == 2 { // description cell
             return 105.0
         }
-        
-        return 58.0
+        return 158
+        //return 58.0
     }
+}
+
+// MARK: - VC a Delegate of UITextFieldDelegate & UITextViewDelegate
+// MARK: Update Address Data when TextView/TextField of Cell is edited.
+extension ManualAddressViewController: UITextFieldDelegate {
+    
+    // StackOverflow: UITextField and UITextView disappears after scrolling in tableview?
+    // https://stackoverflow.com/questions/46403526/uitextfield-and-uitextview-disappears-after-scrolling-in-tableview
+    
+    // * Why not didEndEditing? *
+    // In the case when you press save while still edting a textField/View,
+    // the delegate method will not be able to trigger.
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let result = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+        print("Editing Result:", result)
+        location?.selectFormattedAddress[textField.tag-1] = result
+        print("Updated:", location?.selectFormattedAddress)
+        return true
+    }
+    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        let result = (textView.text as NSString?)?.replacingCharacters(in: range, with: text) ?? text
+//        location?.selectFormattedAddress[textView.tag-1] = result
+//        return true
+//
+//    }
+    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        let result = (textView.text as NSString?)?.replacingCharacters(in: range, with: text) ?? text
+//        location?.selectFormattedAddress[textView.tag-1] = result
+//        return true
+//    }
+    
+    // Use didEndEditing to print out changes to Console.
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("Ended editing Cell \(textField.tag)")
+        print("Updated:", location?.selectFormattedAddress) }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        print("Ended editing Cell \(textView.tag)")
+//        print("Updated:", location?.selectFormattedAddress) }
+    
     
     
 }
 
+//extension ManualAddressViewController: UITextViewDelegate {
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        let result = (textView.text as NSString?)?.replacingCharacters(in: range, with: text) ?? text
+//        location?.selectFormattedAddress[textView.tag-1] = result
+//        return true
+//    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        print("Ended editing Cell \(textView.tag)")
+//        print("Updated:", location?.selectFormattedAddress) }
+//
+//}

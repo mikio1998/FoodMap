@@ -23,7 +23,7 @@ class Test2ViewController: UIViewController {
     var selectionName: String = "Tokyo"
     // Latitude, longitude, initially at Tokyo.
     var selectionCoordinates: [Double] = [35.681708, 139.767053]
-    var selectionFormattedAddress: [String] = ["Tokyo", "Japan"]
+    var selectionFormattedAddress: [String] = ["", ""]
     //var selectionPlusCode: GMSPlusCode!
     
     
@@ -144,8 +144,15 @@ extension Test2ViewController: GMSMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "Map View To Manual View") {
             let destinationVC = segue.destination as! ManualAddressViewController
-
-            destinationVC.MapResults = selectionFormattedAddress
+            
+            // Add two empty "" to beginning
+            // of selectionFormattedAddress
+            // Empty strings for Name and Description
+            
+            selectionFormattedAddress.insert("x", at: 0)
+            selectionFormattedAddress.insert("y", at: 0)
+            
+            destinationVC.AddressData = selectionFormattedAddress
             destinationVC.MapCoordinates = selectionCoordinates
 
         }

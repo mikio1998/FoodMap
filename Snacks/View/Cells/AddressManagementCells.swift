@@ -231,8 +231,19 @@ class NewManualAddressDescriptionTableViewCell: UITableViewCell, UITextViewDeleg
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
     }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("Ended editing Cell \(textView.tag)")
+        
+        
+    }
+    
+    
 }
 
+//protocol TextFieldCellDelegate {
+//    func textFieldText(cell: UITableViewCell, text: String)
+//}
 class NewManualAddressScreenTextFieldCell: UITableViewCell {
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -243,6 +254,22 @@ class NewManualAddressScreenTextFieldCell: UITableViewCell {
         textField.text = text
     }
 }
+//extension NewManualAddressScreenTextFieldCell: UITextFieldDelegate {
+////    func textFieldDidBeginEditing(_ textField: UITextField) {
+////        print("EDITING")
+////    }
+//
+//    // Delegate method
+//    // Called every time text is being updated.
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let result = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+//        delegate.textFieldText(self, text: result)
+//    }
+//}
+
+
+
+
 
 // MARK: - Google address search bar results cell
 class SearchResultsCell: UITableViewCell {

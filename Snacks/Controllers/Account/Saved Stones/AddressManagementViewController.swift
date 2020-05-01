@@ -17,6 +17,10 @@ class AddressManagementViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+
+    
+    
+    
     // Stone Data
     //var savedStonesArray = [Dictionary<String, String>]()
     //var savedStoneNames: [String] = []
@@ -29,14 +33,10 @@ class AddressManagementViewController: UIViewController {
     
     // Func that unwinds VC's to this VC.
     // To pass data: https://www.youtube.com/watch?v=ULd2v4mHyQ4
-    @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {
-        
-        // When unwind is triggered, reload the data.
-        //self.firestoreToArray()
-        //self.tableView.reloadData()
-
+    @IBAction func unwindToAddressManagement(_ sender: UIStoryboardSegue) {}
+    @IBAction func AddNewButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "Add New Address Segue", sender: self)
     }
-        
     
     
     override func viewDidLoad() {
