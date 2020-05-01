@@ -67,7 +67,7 @@ class ManualAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Testing out struct
+        // Instantiate Location
         location = Location(selectName: "", selectCoordinates: MapCoordinates, selectFormattedAddress: AddressData)
         print("LOCATION",location)
         
