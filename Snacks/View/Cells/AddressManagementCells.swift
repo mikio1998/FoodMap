@@ -157,12 +157,7 @@ class GetAddressMenuCurrentLocationCell: UITableViewCell {
 
 
 
-// MARK: - New Manual Address Screen
-
-// MARK: Images Cell
-class NewManualAddressScreenImagesCell: UITableViewCell {
-    // Five Image Views
-}
+// MARK: - Manual Address TableView Cells
 
 // MARK: Description TextView Cell
 class NewManualAddressDescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
@@ -171,12 +166,13 @@ class NewManualAddressDescriptionTableViewCell: UITableViewCell, UITextViewDeleg
     @IBOutlet weak var cellTextView: UITextView!
     
     func setUpCellTextView(descriptionText: String) {
-        cellTextView.delegate = self
+        //cellTextView.delegate = self
         cellLabel.text = "場所の説明"
+
         
         // Set the TextCell text (Be it empty or not).
         cellTextView.text = descriptionText
-        
+
         // If user has no Description,
         // set text as placeholder.
         if cellTextView.text.isEmpty {
@@ -186,64 +182,13 @@ class NewManualAddressDescriptionTableViewCell: UITableViewCell, UITextViewDeleg
             //cellTextView.text = setUserInfoStruct.introduction
             cellTextView.textColor = UIColor.black
         }
-        
+
         // Select textView as soon as view loads.
-        cellTextView.becomeFirstResponder()
+        //cellTextView.becomeFirstResponder()
         cellTextView.selectedTextRange = cellTextView.textRange(from: cellTextView.beginningOfDocument, to: cellTextView.beginningOfDocument)
     }
-    // MARK: - TextView placeholder
-    // TextView has no placeholder property. So, programatcally added it.
-    // https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        // Combine the current textView text and replacement text
-        // to create the updated string.
-        let currentText: String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-        
-        // If updatedText will be empty, add the placeholder
-        // and set cursor to beginning of textView.
-        if updatedText.isEmpty {
-            textView.text = "山手線　上野駅西口。。\nお寺の左側、。。"
-            textView.textColor = UIColor.lightGray
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.endOfDocument)
-        }
-        
-        // Else, if the textView's placeholder is showing,
-        // and replacement string length is greater than zero,
-        // set the textColor to black and set text to the replacement string.
-        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-            textView.textColor = UIColor.black
-            textView.text = text
-        }
-        // For every other case, the text should change
-        // with the usual behavior...
-        else {
-            return true
-        }
-        // ... otherwise return false since the updates
-        // have already been made.
-        return false
-    }
-    // To prevent the user from changing the cursor position,
-    // while the placeholder is visible.
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        print("Ended editing Cell \(textView.tag)")
-        
-        
-    }
-    
-    
 }
 
-//protocol TextFieldCellDelegate {
-//    func textFieldText(cell: UITableViewCell, text: String)
-//}
 class NewManualAddressScreenTextFieldCell: UITableViewCell {
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -254,19 +199,6 @@ class NewManualAddressScreenTextFieldCell: UITableViewCell {
         textField.text = text
     }
 }
-//extension NewManualAddressScreenTextFieldCell: UITextFieldDelegate {
-////    func textFieldDidBeginEditing(_ textField: UITextField) {
-////        print("EDITING")
-////    }
-//
-//    // Delegate method
-//    // Called every time text is being updated.
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let result = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-//        delegate.textFieldText(self, text: result)
-//    }
-//}
-
 
 
 

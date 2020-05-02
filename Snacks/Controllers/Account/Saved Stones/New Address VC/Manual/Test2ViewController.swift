@@ -149,8 +149,8 @@ extension Test2ViewController: GMSMapViewDelegate {
             // of selectionFormattedAddress
             // Empty strings for Name and Description
             
-            selectionFormattedAddress.insert("x", at: 0)
-            selectionFormattedAddress.insert("y", at: 0)
+            selectionFormattedAddress.insert("", at: 0)
+            selectionFormattedAddress.insert("", at: 0)
             
             destinationVC.AddressData = selectionFormattedAddress
             destinationVC.MapCoordinates = selectionCoordinates

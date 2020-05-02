@@ -67,7 +67,7 @@ class ManualAddressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Instantiate Location
+        // Instantiate Location@^
         location = Location(selectName: "", selectCoordinates: MapCoordinates, selectFormattedAddress: AddressData)
         print("LOCATION",location)
         
@@ -195,7 +195,7 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
             
             cell.cellTextView.tag = indexPath.row
             
-            //cell.cellTextView.delegate = self
+            cell.cellTextView.delegate = self
 
             cell.setUpCellTextView(descriptionText: location?.selectFormattedAddress[1] ?? "")
             
@@ -220,7 +220,7 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
         case 3:
             
             cell.textField.tag = indexPath.row
-            //cell.textField.delegate = self
+            cell.textField.delegate = self
             cell.setCellLabel(label: "住所1", text: location?.selectFormattedAddress[2] ?? "")
             
             return cell
@@ -291,14 +291,14 @@ extension ManualAddressViewController: UITableViewDelegate, UITableViewDataSourc
     }
 }
 
-// MARK: - VC a Delegate of UITextFieldDelegate & UITextViewDelegate
-// MARK: Update Address Data when TextView/TextField of Cell is edited.
+// MARK: - VC a Delegate of UITextFieldDelegate
+// MARK: Update Address Data when TextView of Cell is edited.
 extension ManualAddressViewController: UITextFieldDelegate {
     
     // StackOverflow: UITextField and UITextView disappears after scrolling in tableview?
     // https://stackoverflow.com/questions/46403526/uitextfield-and-uitextview-disappears-after-scrolling-in-tableview
     
-    // * Why not didEndEditing? *
+    // MARK: * Why not didEndEditing? *
     // In the case when you press save while still edting a textField/View,
     // the delegate method will not be able to trigger.
     
@@ -335,14 +335,87 @@ extension ManualAddressViewController: UITextFieldDelegate {
     
 }
 
-//extension ManualAddressViewController: UITextViewDelegate {
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        let result = (textView.text as NSString?)?.replacingCharacters(in: range, with: text) ?? text
-//        location?.selectFormattedAddress[textView.tag-1] = result
-//        return true
-//    }
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        print("Ended editing Cell \(textView.tag)")
-//        print("Updated:", location?.selectFormattedAddress) }
-//
-//}
+// MARK: - VC a Delegate of UITextFieldDelegate
+// MARK: Update Address Data when TextField of Cell is edited.
+extension ManualAddressViewController: UITextViewDelegate {
+    
+    
+    
+    
+    // MARK: - TextView placeholder
+    // TextView has no placeholder property. So, programatcally added it.
+    // https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let currentText: String
+        
+        // Aka. If there's no user input.
+        if (textView.textColor == UIColor.lightGray) {
+            currentText = ""
+        } else { // There is user input.
+            currentText = textView.text
+        }
+
+        
+        
+        print("CURRENT TEXT:", currentText)
+        
+        // Make updatedText the Address description data.
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        print("UPDATED TEXT:", updatedText)
+
+        // Update the data. 
+        location?.selectFormattedAddress[textView.tag-1] = updatedText
+        
+        
+        // If updatedText will be empty, add the placeholder
+        // and set cursor to beginning of textView.
+        if updatedText.isEmpty {
+            textView.text = "山手線　上野駅西口。。\nお寺の左側、。。"
+            textView.textColor = UIColor.lightGray
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.endOfDocument)
+        }
+        
+        // Else, if the textView's placeholder is gray,
+        // and replacement string length is greater than zero,
+        // set the textColor to black and set text to the replacement string.
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.textColor = UIColor.black
+            textView.text = text
+            // Here, user input updated as Address Description Data.
+            
+            
+            
+        }
+        // For every other case, the text should change
+        // with the usual behavior...
+        else {
+            print("else")
+            
+            return true
+        }
+        // ... otherwise return false since the updates
+        // have already been made.
+        return false
+    }
+    
+    
+    // To prevent the user from changing the cursor position,
+    // while the placeholder is visible.
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+    }
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("Ended editing Cell \(textView.tag)")
+        print(location?.selectFormattedAddress)
+        //print("Updated:", location?.selectFormattedAddress)
+        
+    }
+
+}
+
